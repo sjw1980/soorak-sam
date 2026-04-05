@@ -13,6 +13,7 @@
 |------|---------|------|
 | ASPICE | Automotive Software Process Improvement and Capability dEtermination | 자동차 SW 프로세스 개선 및 역량 평가 표준 |
 | SWE | Software Engineering | 소프트웨어 엔지니어링 프로세스 그룹 (SWE-1~SWE-6) |
+| SPL | Software Product Line | 소프트웨어 제품 라인 프로세스 그룹 (SPL-2) |
 | SUP | Supporting | 지원 프로세스 그룹 (SUP-1, SUP-8, SUP-9, SUP-10) |
 | MAN | Management | 관리 프로세스 그룹 (MAN-3) |
 | QA | Quality Assurance | 품질 보증 (SUP-1) |
@@ -51,6 +52,9 @@
 | QAP | Quality Assurance Plan | 품질 보증 계획 (SUP-1) |
 | CMP | Configuration Management Plan | 형상 관리 계획 (SUP-8) |
 | RCA | Root Cause Analysis | 근본 원인 분석 |
+| FEAT | Feature | 피처 모델 항목 (SPL-2) |
+| BUILD | Build Activity | 빌드 활동 정의 (SPL-2) |
+| REL | Release | 출시 노트 (SPL-2) |
 
 ### 기술 약어
 
@@ -142,6 +146,9 @@
 | MAN-3 마일스톤 | `MAN3-MS-` | `MAN3-MS-0001` |
 | MAN-3 리스크 | `MAN3-RSK-` | `MAN3-RSK-0001` |
 | MAN-3 이슈 | `MAN3-ISS-` | `MAN3-ISS-0001` |
+| SPL-2 피처 | `SPL2-FEAT-` | `SPL2-FEAT-0001` |
+| SPL-2 빌드 활동 | `SPL2-BUILD-` | `SPL2-BUILD-0001` |
+| SPL-2 출시 노트 | `SPL2-REL-` | `SPL2-REL-0001` |
 
 ---
 
