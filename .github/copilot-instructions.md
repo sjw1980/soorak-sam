@@ -63,6 +63,51 @@
 | API | Application Programming Interface | 응용 프로그램 인터페이스 |
 | FMEA | Failure Mode and Effects Analysis | 고장 모드 및 영향 분석 |
 | AUTOSAR | AUTomotive Open System ARchitecture | 자동차 개방형 시스템 아키텍처 |
+| CAN | Controller Area Network | 계측 제어기 통신망 |
+| CASE | Computer-Aided Software Engineering | 컴퓨터 지원 소프트웨어 공학 |
+| CPU | Central Processing Unit | 중앙 처리 장치 |
+| ECU | Electronic Control Unit | 전자 제어 장치 |
+| EEPROM | Electrically Erasable Programmable Read-Only Memory | 전기적으로 소거 및 프로그램 가능 읽기 전용 메모리 |
+| I/O | Input / Output | 입력/출력 |
+| LIN | Local Interconnect Network | 로컬 상호 연결 네트워크 |
+| MISRA | Motor Industry Software Reliability Association | 자동차 산업 소프트웨어 신뢰성 협회 |
+| MOST | Media Oriented Systems Transport | 미디어 지향 시스템 전송 |
+| PWM | Pulse Width Modulation | 펄스 폭 변조 |
+| RAM | Random Access Memory | 임의 접근 메모리 |
+| ROM | Read Only Memory | 읽기 전용 메모리 |
+| USB | Universal Serial Bus | 범용 직렬 버스 |
+
+### 표준·기관 약어
+
+| 약어 | 전체 명칭 | 설명 |
+|------|---------|------|
+| AS | Automotive SPICE | 자동차 SPICE (ASPICE의 약칭) |
+| IEC | International Electrotechnical Commission | 국제 전기 기술 위원회 |
+| IEEE | Institute of Electrical and Electronics Engineers | 전기 전자 기술자 협회 |
+| ISO | International Organization for Standardization | 국제 표준화 기구 |
+| MISRA | Motor Industry Software Reliability Association | 자동차 산업 소프트웨어 신뢰성 협회 |
+| SPICE | Software Process Improvement and Capability dEtermination | 소프트웨어 프로세스 개선 및 능력 평가 |
+| SUG | SPICE User Group | SPICE 사용자 그룹 |
+
+### 프로세스 모델 약어
+
+| 약어 | 전체 명칭 | 설명 |
+|------|---------|------|
+| BP | Base Practice | 기본 사례 — 프로세스 수행의 필수 활동 |
+| GP | Generic Practice | 일반 사례 — 프로세스 능력 수준 달성을 위한 활동 |
+| GR | Generic Resource | 일반 자원 — 프로세스 수행에 필요한 자원 |
+| PA | Process Attribute | 프로세스 속성 — 능력 수준 측정 기준 |
+| PAM | Process Assessment Model | 프로세스 평가 모델 |
+| PRM | Process Reference Model | 프로세스 참조 모델 |
+| WP | Work Product | 작업 산출물 |
+| WPC | Work Product Characteristic | 작업 산출물 특징 |
+
+### 계약·조달 약어
+
+| 약어 | 전체 명칭 | 설명 |
+|------|---------|------|
+| CFP | Call For Proposals | 제안 요청서 |
+| ITT | Invitation To Tender | 입찰 초청서 |
 
 ---
 
