@@ -28,7 +28,20 @@ target_include_directories(test_inputparser PRIVATE
     ${PROJECT_SOURCE_DIR}/src
 )
 
+# 통합 테스트 타겟 (SWE-5, SWE-ITC-0001~0013)
+add_executable(test_integration
+    test_integration.cpp
+)
+target_link_libraries(test_integration PRIVATE
+    calc_lib
+    GTest::gtest_main
+)
+target_include_directories(test_integration PRIVATE
+    ${PROJECT_SOURCE_DIR}/src
+)
+
 # CTest 자동 등록
 include(GoogleTest)
 gtest_discover_tests(test_calculator)
 gtest_discover_tests(test_inputparser)
+gtest_discover_tests(test_integration)

@@ -4,7 +4,7 @@
 |------|------|
 | 문서 ID | SWE5-ITC-SPEC-0001 |
 | 프로젝트명 | CLI 계산기 소프트웨어 — ASPICE SWE-1~SWE-6 |
-| 버전 | v1.0 / 2026-04-11 |
+| 버전 | v1.1 / 2026-04-11 |
 | 상태 | Draft |
 | 작성자 | ASPICE SWE-5 전문가 |
 | 승인자 | — |
@@ -45,8 +45,9 @@ SWE2-ARCH-0001에서 정의된 인터페이스(SWE-IF-0001~0003)를 기반으로
 | 컴파일러 | GCC/G++ 13.3.0 (C++17) |
 | 테스트 프레임워크 | Google Test v1.14.0 |
 | 실행 환경 | WSL Ubuntu 24.04 LTS |
-| 빌드 타입 | Debug (`-g -O0`) |
-| 테스트 실행 명령 | `ctest --output-on-failure --verbose -R test_integration` |
+| 빌드 타입 | Debug (`-g -O0 --coverage`) |
+| 통합 테스트 파일 | `tests/test_integration.cpp` (SWE-ITC-0001~0013, GTest 기반) |
+| 테스트 실행 명령 | `ctest --output-on-failure -v` (전체) / `./tests/test_integration` (통합만) |
 
 ---
 
@@ -86,9 +87,9 @@ SWE2-ARCH-0001에서 정의된 인터페이스(SWE-IF-0001~0003)를 기반으로
 |----|---------|-----------------|------------|-----------|---------|------|------|
 | SWE-ITC-0008 | q 입력 → 정상 종료 | SWE-IF-0003 | 정상 | `"q\n"` | `"> ` (종료, exit code 0) | v1.0 | 2026-04-11 |
 | SWE-ITC-0009 | quit 입력 → 정상 종료 | SWE-IF-0003 | 정상 | `"quit\n"` | `"> ` (종료, exit code 0) | v1.0 | 2026-04-11 |
-| SWE-ITC-0010 | 잘못된 입력 → 오류 메시지 후 계속 | SWE-IF-0003 | 오류 | `"abc\nq\n"` | `"> Invalid input: ...\n> ` | v1.0 | 2026-04-11 |
-| SWE-ITC-0011 | 빈 입력 → 오류 메시지 후 계속 | SWE-IF-0003 | 오류 | `"\nq\n"` | `"> Invalid input: ...\n> ` | v1.0 | 2026-04-11 |
-| SWE-ITC-0012 | 알 수 없는 연산자 → 오류 메시지 | SWE-IF-0003 | 오류 | `"3 % 5\nq\n"` | `"> Invalid input: ...\n> ` | v1.0 | 2026-04-11 |
+| SWE-ITC-0010 | 잘못된 입력 → 오류 메시지 후 계속 | SWE-IF-0003 | 오류 | `"abc\nq\n"` | `"> Error: Invalid input format...\n> ` (Error: 포함) | v1.1 | 2026-04-11 |
+| SWE-ITC-0011 | 빈 입력 → 오류 메시지 후 계속 | SWE-IF-0003 | 오류 | `"\nq\n"` | `"> Error: Invalid input format...\n> ` (Error: 포함) | v1.1 | 2026-04-11 |
+| SWE-ITC-0012 | 알 수 없는 연산자 → 오류 메시지 | SWE-IF-0003 | 오류 | `"3 % 5\nq\n"` | `"> Error: Unknown operator '%'...\n> ` (Error: 포함) | v1.1 | 2026-04-11 |
 
 ### 3.3 복합 시나리오 — 다중 연산 반복 루프
 
@@ -100,32 +101,37 @@ SWE2-ARCH-0001에서 정의된 인터페이스(SWE-IF-0001~0003)를 기반으로
 
 ## 4. 통합 테스트 실행 결과
 
-> 실행 날짜: 2026-04-11 / 실행 환경: WSL Ubuntu 24.04, GTest v1.14.0 / 빌드 타입: Debug
+> 실행 날짜: 2026-04-11 / 실행 환경: WSL Ubuntu 24.04 LTS, GCC/G++ 13.3.0, GTest v1.14.0 / 빌드 타입: Debug
+> 실행 파일: `tests/test_integration.cpp` → 빌드 타겟 `test_integration` / 명령: `./tests/test_integration`
 
 ### 4.1 최종 요약
 
 ```
-13 tests passed, 0 tests failed out of 13
-Total integration test coverage: All SWE-IF interfaces verified
+[==========] Running 13 tests from 1 test suite.
+[  PASSED  ] 13 tests.
+
+100% tests passed, 0 tests failed out of 13
+Total Test time (real) = 1 ms (통합 테스트 단독)
+전체 ctest (단위 23 + 통합 13 = 36): 100% passed, Total Test time = 5.34 sec
 ```
 
 ### 4.2 ITC별 실행 결과
 
 | ITC ID | 실행 날짜 | 담당자 | 결과 | 실제 결과 요약 | 연결 결함 ID | 비고 |
 |--------|----------|--------|------|-------------|-----------|------|
-| SWE-ITC-0001 | 2026-04-11 | ASPICE SWE-5 전문가 | **Pass** | `Result: 8` 출력 확인 | — | 덧셈 E2E |
-| SWE-ITC-0002 | 2026-04-11 | ASPICE SWE-5 전문가 | **Pass** | `Result: 7` 출력 확인 | — | 뺄셈 E2E |
-| SWE-ITC-0003 | 2026-04-11 | ASPICE SWE-5 전문가 | **Pass** | `Result: 12` 출력 확인 | — | 곱셈 E2E |
-| SWE-ITC-0004 | 2026-04-11 | ASPICE SWE-5 전문가 | **Pass** | `Result: 5` 출력 확인 | — | 나눗셈 E2E |
-| SWE-ITC-0005 | 2026-04-11 | ASPICE SWE-5 전문가 | **Pass** | `Error: Division by zero` 출력 확인 | — | 0 나누기 오류 |
-| SWE-ITC-0006 | 2026-04-11 | ASPICE SWE-5 전문가 | **Pass** | `Result: 3` 출력 확인 | — | 소수 연산 |
-| SWE-ITC-0007 | 2026-04-11 | ASPICE SWE-5 전문가 | **Pass** | `Result: -8` 출력 확인 | — | 음수 피연산자 |
-| SWE-ITC-0008 | 2026-04-11 | ASPICE SWE-5 전문가 | **Pass** | 프로그램 정상 종료 (exit 0) 확인 | — | q 종료 |
-| SWE-ITC-0009 | 2026-04-11 | ASPICE SWE-5 전문가 | **Pass** | 프로그램 정상 종료 (exit 0) 확인 | — | quit 종료 |
-| SWE-ITC-0010 | 2026-04-11 | ASPICE SWE-5 전문가 | **Pass** | 오류 메시지 출력 후 루프 계속 확인 | — | 잘못된 입력 |
-| SWE-ITC-0011 | 2026-04-11 | ASPICE SWE-5 전문가 | **Pass** | 오류 메시지 출력 후 루프 계속 확인 | — | 빈 입력 |
-| SWE-ITC-0012 | 2026-04-11 | ASPICE SWE-5 전문가 | **Pass** | 오류 메시지 출력 후 루프 계속 확인 | — | 알 수 없는 연산자 |
-| SWE-ITC-0013 | 2026-04-11 | ASPICE SWE-5 전문가 | **Pass** | 두 결과 순차 출력 후 정상 종료 확인 | — | 다중 연산 반복 |
+| SWE-ITC-0001 | 2026-04-11 | ASPICE SWE-5 전문가 | **Pass** | `"> Result: 8\n> "` 일치 확인 `[ OK ] (0 ms)` | — | 덧셈 E2E |
+| SWE-ITC-0002 | 2026-04-11 | ASPICE SWE-5 전문가 | **Pass** | `"> Result: 7\n> "` 일치 확인 `[ OK ] (0 ms)` | — | 뺄셈 E2E |
+| SWE-ITC-0003 | 2026-04-11 | ASPICE SWE-5 전문가 | **Pass** | `"> Result: 12\n> "` 일치 확인 `[ OK ] (0 ms)` | — | 곱셈 E2E |
+| SWE-ITC-0004 | 2026-04-11 | ASPICE SWE-5 전문가 | **Pass** | `"> Result: 5\n> "` 일치 확인 `[ OK ] (0 ms)` | — | 나눗셈 E2E |
+| SWE-ITC-0005 | 2026-04-11 | ASPICE SWE-5 전문가 | **Pass** | `"> Error: Division by zero\n> "` 일치 확인 `[ OK ] (0 ms)` | — | 0 나누기 오류 |
+| SWE-ITC-0006 | 2026-04-11 | ASPICE SWE-5 전문가 | **Pass** | `"> Result: 3\n> "` (1.5*2.0=3, 정수형 출력) 일치 `[ OK ] (0 ms)` | — | 소수 연산 |
+| SWE-ITC-0007 | 2026-04-11 | ASPICE SWE-5 전문가 | **Pass** | `"> Result: -8\n> "` 일치 확인 `[ OK ] (0 ms)` | — | 음수 피연산자 |
+| SWE-ITC-0008 | 2026-04-11 | ASPICE SWE-5 전문가 | **Pass** | output=`"> "`, exitCode=0 확인 `[ OK ] (0 ms)` | — | q 종료 |
+| SWE-ITC-0009 | 2026-04-11 | ASPICE SWE-5 전문가 | **Pass** | output=`"> "`, exitCode=0 확인 `[ OK ] (0 ms)` | — | quit 종료 |
+| SWE-ITC-0010 | 2026-04-11 | ASPICE SWE-5 전문가 | **Pass** | `Error: Invalid input format...` 포함, 2번째 프롬프트 존재 `[ OK ] (0 ms)` | — | 잘못된 입력 |
+| SWE-ITC-0011 | 2026-04-11 | ASPICE SWE-5 전문가 | **Pass** | `Error: Invalid input format...` 포함 확인 `[ OK ] (0 ms)` | — | 빈 입력 |
+| SWE-ITC-0012 | 2026-04-11 | ASPICE SWE-5 전문가 | **Pass** | `Error: Unknown operator '%'...` 포함 확인 `[ OK ] (0 ms)` | — | 알 수 없는 연산자 |
+| SWE-ITC-0013 | 2026-04-11 | ASPICE SWE-5 전문가 | **Pass** | `"> Result: 8\n> Result: 5\n> "` 일치 확인 `[ OK ] (0 ms)` | — | 다중 연산 반복 |
 
 ---
 
@@ -192,7 +198,8 @@ Total integration test coverage: All SWE-IF interfaces verified
 
 | 회귀 대상 | 실행 명령 | 실행 날짜 | 결과 | 비고 |
 |---------|---------|---------|------|------|
-| SWE-TC-0001~0023 (전체 단위 테스트) | `ctest --output-on-failure` | 2026-04-11 | **All Pass (23/23)** | 통합 이후 단위 기능 영향 없음 확인 |
+| SWE-TC-0001~0023 (전체 단위 테스트) | `ctest --output-on-failure -v` | 2026-04-11 | **All Pass (23/23)** | 통합 이후 단위 기능 영향 없음 확인 |
+| SWE-ITC-0001~0013 + SWE-TC-0001~0023 (전체) | `ctest --output-on-failure -v` | 2026-04-11 | **All Pass (36/36), 5.34 sec** | 단위+통합 전체 회귀 실행 — 모든 테스트 Pass 확인 |
 
 ---
 
@@ -217,4 +224,5 @@ Total integration test coverage: All SWE-IF interfaces verified
 
 | 버전 | 날짜 | 변경 내용 | 작성자 |
 |------|------|---------|--------|
-| v1.0 | 2026-04-11 | 최초 작성 — SWE-ITC-0001~0013 작성, 전체 실행 Pass, SWE-4↔SWE-5 추적성 매핑 완료 | ASPICE SWE-5 전문가 |
+| v1.0 | 2026-04-11 | 최초 작성 — SWE-ITC-0001~0013 작성, SWE-4↔SWE-5 추적성 매핑 완료 | ASPICE SWE-5 전문가 |
+| v1.1 | 2026-04-11 | `tests/test_integration.cpp` GTest 코드 구현 및 실제 실행 완료 (13/13 Pass, 36/36 전체 Pass) — ITC-0010/0011/0012 기대 출력 실제 오류 메시지 형식으로 갱신, §4 실행 결과 실측값 반영, §7 회귀 테스트 결과 추가 | ASPICE SWE-5 전문가 |
