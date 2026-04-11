@@ -4,7 +4,7 @@
 |------|------|
 | 문서 ID | SUP1-QAR-0001 |
 | 프로젝트명 | CLI 계산기 소프트웨어 — ASPICE SWE-1~SWE-6 |
-| 버전 | v1.1 / 2026-04-11 |
+| 버전 | v1.2 / 2026-04-11 |
 | 상태 | Draft |
 | 작성자 | ASPICE SUP-1 전문가 |
 | 승인자 | — |
@@ -56,15 +56,15 @@
 
 ## 3. 부적합 사항 (NC) 목록
 
-| ID | 대상 프로세스 / 산출물 | 위반 기준 | 객관적 증거 | 심각도 | 상태 | 담당자 | 버전 | 날짜 |
-|----|-------------------|---------|-----------|--------|------|--------|------|------|
-| SUP1-NC-0001 | 전체 산출물 (11개) | ASPICE GP 2.1.4 — 산출물은 지정된 승인자에 의해 검토·승인되어야 함 | 전체 산출물 헤더 "승인자: —" 기재 확인 | High | Open | 각 산출물 담당 에이전트 | v1.0 | 2026-04-11 |
-| SUP1-NC-0002 | SWE-4, SWE-5, SWE-6 프로세스 | ASPICE SWE-4 BP1~BP4, SWE-5 BP1~BP5, SWE-6 BP1~BP5 — 단위·통합·적격성 검증 산출물 작성 필수 | docs/ 하위 SWE-4/, SWE-5/, SWE-6/ 디렉터리 및 산출물 부재 확인. MAN3-WBS-0005~0010 전 항목 Open 상태 | High | Open | ASPICE SWE-4/5/6 전문가 | v1.0 | 2026-04-11 |
-| SUP1-NC-0003 | MAN3-WBS-0004 / src/ 소스코드 | ASPICE SWE-3 BP5 — 소프트웨어 단위 구현 산출물은 설계 명세와 일치해야 함. WBS Closed 선언 시 해당 산출물이 존재해야 함 | MAN3-PP-0001 WBS-0004 상태 "Closed" 이나 src/에 `Calculator.cpp/h`, `InputParser.cpp/h`, `AppController.cpp/h`, `types.h` 등 실제 구현 파일 미존재. `src/main.c` 만 임시 파일로 존재 | High | Open | ASPICE SWE-3 전문가 | v1.0 | 2026-04-11 |
-| SUP1-NC-0004 | SWE1-TRACE-0001 vs SWE2-ARCH-0001 | ASPICE SUP-1 BP3 — 산출물 간 상태 정보는 일관성을 유지해야 함 | SWE1-TRACE-0001 §2.1에서 SWE-COMP-0001~0002 상태를 "Approved"로 기재하였으나, SWE2-ARCH-0001 §2.1에서 동일 컴포넌트의 상태는 "Draft"로 기재됨 — 불일치 | Medium | Open | ASPICE SWE-1/SWE-2 전문가 | v1.0 | 2026-04-11 |
-| SUP1-NC-0005 | SUP-8 형상 관리 | ASPICE SUP-8 BP1 — 형상 항목(CI)이 식별·등록되어야 함. SPL2-REL-0001이 SUP8-BL-0001, SUP8-CI-XXXX를 참조하는 경우 해당 산출물이 존재해야 함 | docs/에 SUP-8 디렉터리 및 형상 관리 계획·형상 항목 목록·베이스라인 정의 산출물 전무 확인. SPL2-REL-0001 §1 및 SPL2-TRACE-0001 §1.3에서 SUP8-BL-0001, SUP8-CI-XXXX 참조 | Medium | **Resolved** | ASPICE SUP-8 전문가 | v1.1 | 2026-04-11 |
-| SUP1-NC-0006 | SWE1-REQ-SPEC-0001 파일명 | 공통 ID 체계 규칙 — 파일명은 `<문서ID>-<설명>.md` 형식을 따라야 함 (예: SWE1-REQ-SPEC-0001-requirements.md) | 파일명 `SWE-1-requirements.md` — 문서 내부 ID `SWE1-REQ-SPEC-0001`과 불일치. 타 산출물(SWE2-ARCH-0001, SWE3-UNIT-SPEC-0001 등)은 파일명이 문서 ID와 일치함 | Low | Open | ASPICE SWE-1 전문가 | v1.0 | 2026-04-11 |
-| SUP1-NC-0007 | MAN3-PP-0001 | ASPICE MAN-3 BP1 — 프로젝트 계획서에 프로젝트 관리자(담당자)가 지정되어야 함 | MAN3-PP-0001 헤더 "프로젝트 관리자: —" 기재 확인 | Medium | Open | ASPICE MAN-3 전문가 | v1.0 | 2026-04-11 |
+| ID | 대상 프로세스 / 산출물 | 위반 기준 | 객관적 증거 | 심각도 | 상태 | 담당자 | 버전 | 날짜 | SUP-9 연결 PR |
+|----|-------------------|---------|-----------|--------|------|--------|------|------|----|
+| SUP1-NC-0001 | 전체 산출물 (11개) | ASPICE GP 2.1.4 — 산출물은 지정된 승인자에 의해 검토·승인되어야 함 | 전체 산출물 헤더 "승인자: —" 기재 확인 | High | Open | 각 산출물 담당 에이전트 | v1.0 | 2026-04-11 | **SUP9-PR-0003** |
+| SUP1-NC-0002 | SWE-4, SWE-5, SWE-6 프로세스 | ASPICE SWE-4 BP1~BP4, SWE-5 BP1~BP5, SWE-6 BP1~BP5 — 단위·통합·적격성 검증 산출물 작성 필수 | docs/ 하위 SWE-4/, SWE-5/, SWE-6/ 디렉터리 및 산출물 부재 확인. MAN3-WBS-0005~0010 전 항목 Open 상태 | High | Open | ASPICE SWE-4/5/6 전문가 | v1.0 | 2026-04-11 | **SUP9-PR-0002** |
+| SUP1-NC-0003 | MAN3-WBS-0004 / src/ 소스코드 | ASPICE SWE-3 BP5 — 소프트웨어 단위 구현 산출물은 설계 명세와 일치해야 함. WBS Closed 선언 시 해당 산출물이 존재해야 함 | MAN3-PP-0001 WBS-0004 상태 "Closed" 이나 src/에 `Calculator.cpp/h`, `InputParser.cpp/h`, `AppController.cpp/h`, `types.h` 등 실제 구현 파일 미존재. `src/main.c` 만 임시 파일로 존재 | High | Open | ASPICE SWE-3 전문가 | v1.0 | 2026-04-11 | **SUP9-PR-0001** |
+| SUP1-NC-0004 | SWE1-TRACE-0001 vs SWE2-ARCH-0001 | ASPICE SUP-1 BP3 — 산출물 간 상태 정보는 일관성을 유지해야 함 | SWE1-TRACE-0001 §2.1에서 SWE-COMP-0001~0002 상태를 "Approved"로 기재하였으나, SWE2-ARCH-0001 §2.1에서 동일 컴포넌트의 상태는 "Draft"로 기재됨 — 불일치 | Medium | Open | ASPICE SWE-1/SWE-2 전문가 | v1.0 | 2026-04-11 | **SUP9-PR-0005** |
+| SUP1-NC-0005 | SUP-8 형상 관리 | ASPICE SUP-8 BP1 — 형상 항목(CI)이 식별·등록되어야 함. SPL2-REL-0001이 SUP8-BL-0001, SUP8-CI-XXXX를 참조하는 경우 해당 산출물이 존재해야 함 | docs/에 SUP-8 디렉터리 및 형상 관리 계획·형상 항목 목록·베이스라인 정의 산출물 전무 확인. SPL2-REL-0001 §1 및 SPL2-TRACE-0001 §1.3에서 SUP8-BL-0001, SUP8-CI-XXXX 참조 | Medium | **Resolved** | ASPICE SUP-8 전문가 | v1.1 | 2026-04-11 | — |
+| SUP1-NC-0006 | SWE1-REQ-SPEC-0001 파일명 | 공통 ID 체계 규칙 — 파일명은 `<문서ID>-<설명>.md` 형식을 따라야 함 (예: SWE1-REQ-SPEC-0001-requirements.md) | 파일명 `SWE-1-requirements.md` — 문서 내부 ID `SWE1-REQ-SPEC-0001`과 불일치. 타 산출물(SWE2-ARCH-0001, SWE3-UNIT-SPEC-0001 등)은 파일명이 문서 ID와 일치함 | Low | Open | ASPICE SWE-1 전문가 | v1.0 | 2026-04-11 | **SUP9-PR-0006** |
+| SUP1-NC-0007 | MAN3-PP-0001 | ASPICE MAN-3 BP1 — 프로젝트 계획서에 프로젝트 관리자(담당자)가 지정되어야 함 | MAN3-PP-0001 헤더 "프로젝트 관리자: —" 기재 확인 | Medium | Open | ASPICE MAN-3 전문가 | v1.0 | 2026-04-11 | **SUP9-PR-0004** |
 
 ---
 
@@ -245,3 +245,4 @@
 |------|------|---------|--------|
 | v1.0 | 2026-04-11 | 최초 작성 — docs/ 전체 산출물 1차 QA 감사 수행 (NC 7건 식별) | ASPICE SUP-1 전문가 |
 | v1.1 | 2026-04-11 | NC-0005 상태 Resolved 반영 — SUP8-CMP-0001, SUP8-CI-LIST-0001 작성 완료 확인 | ASPICE SUP-8 전문가 |
+| v1.2 | 2026-04-11 | SUP-9 문제 보고서 ID 교차 참조 추가 — NC 항목별 SUP9-PR-XXXX 연결 (SUP9-PRM-0001 작성 완료 반영) | ASPICE SUP-9 전문가 |
