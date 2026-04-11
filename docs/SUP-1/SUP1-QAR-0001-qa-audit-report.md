@@ -4,7 +4,7 @@
 |------|------|
 | 문서 ID | SUP1-QAR-0001 |
 | 프로젝트명 | CLI 계산기 소프트웨어 — ASPICE SWE-1~SWE-6 |
-| 버전 | v1.0 / 2026-04-11 |
+| 버전 | v1.1 / 2026-04-11 |
 | 상태 | Draft |
 | 작성자 | ASPICE SUP-1 전문가 |
 | 승인자 | — |
@@ -62,7 +62,7 @@
 | SUP1-NC-0002 | SWE-4, SWE-5, SWE-6 프로세스 | ASPICE SWE-4 BP1~BP4, SWE-5 BP1~BP5, SWE-6 BP1~BP5 — 단위·통합·적격성 검증 산출물 작성 필수 | docs/ 하위 SWE-4/, SWE-5/, SWE-6/ 디렉터리 및 산출물 부재 확인. MAN3-WBS-0005~0010 전 항목 Open 상태 | High | Open | ASPICE SWE-4/5/6 전문가 | v1.0 | 2026-04-11 |
 | SUP1-NC-0003 | MAN3-WBS-0004 / src/ 소스코드 | ASPICE SWE-3 BP5 — 소프트웨어 단위 구현 산출물은 설계 명세와 일치해야 함. WBS Closed 선언 시 해당 산출물이 존재해야 함 | MAN3-PP-0001 WBS-0004 상태 "Closed" 이나 src/에 `Calculator.cpp/h`, `InputParser.cpp/h`, `AppController.cpp/h`, `types.h` 등 실제 구현 파일 미존재. `src/main.c` 만 임시 파일로 존재 | High | Open | ASPICE SWE-3 전문가 | v1.0 | 2026-04-11 |
 | SUP1-NC-0004 | SWE1-TRACE-0001 vs SWE2-ARCH-0001 | ASPICE SUP-1 BP3 — 산출물 간 상태 정보는 일관성을 유지해야 함 | SWE1-TRACE-0001 §2.1에서 SWE-COMP-0001~0002 상태를 "Approved"로 기재하였으나, SWE2-ARCH-0001 §2.1에서 동일 컴포넌트의 상태는 "Draft"로 기재됨 — 불일치 | Medium | Open | ASPICE SWE-1/SWE-2 전문가 | v1.0 | 2026-04-11 |
-| SUP1-NC-0005 | SUP-8 형상 관리 | ASPICE SUP-8 BP1 — 형상 항목(CI)이 식별·등록되어야 함. SPL2-REL-0001이 SUP8-BL-0001, SUP8-CI-XXXX를 참조하는 경우 해당 산출물이 존재해야 함 | docs/에 SUP-8 디렉터리 및 형상 관리 계획·형상 항목 목록·베이스라인 정의 산출물 전무 확인. SPL2-REL-0001 §1 및 SPL2-TRACE-0001 §1.3에서 SUP8-BL-0001, SUP8-CI-XXXX 참조 | Medium | Open | ASPICE SUP-8 전문가 | v1.0 | 2026-04-11 |
+| SUP1-NC-0005 | SUP-8 형상 관리 | ASPICE SUP-8 BP1 — 형상 항목(CI)이 식별·등록되어야 함. SPL2-REL-0001이 SUP8-BL-0001, SUP8-CI-XXXX를 참조하는 경우 해당 산출물이 존재해야 함 | docs/에 SUP-8 디렉터리 및 형상 관리 계획·형상 항목 목록·베이스라인 정의 산출물 전무 확인. SPL2-REL-0001 §1 및 SPL2-TRACE-0001 §1.3에서 SUP8-BL-0001, SUP8-CI-XXXX 참조 | Medium | **Resolved** | ASPICE SUP-8 전문가 | v1.1 | 2026-04-11 |
 | SUP1-NC-0006 | SWE1-REQ-SPEC-0001 파일명 | 공통 ID 체계 규칙 — 파일명은 `<문서ID>-<설명>.md` 형식을 따라야 함 (예: SWE1-REQ-SPEC-0001-requirements.md) | 파일명 `SWE-1-requirements.md` — 문서 내부 ID `SWE1-REQ-SPEC-0001`과 불일치. 타 산출물(SWE2-ARCH-0001, SWE3-UNIT-SPEC-0001 등)은 파일명이 문서 ID와 일치함 | Low | Open | ASPICE SWE-1 전문가 | v1.0 | 2026-04-11 |
 | SUP1-NC-0007 | MAN3-PP-0001 | ASPICE MAN-3 BP1 — 프로젝트 계획서에 프로젝트 관리자(담당자)가 지정되어야 함 | MAN3-PP-0001 헤더 "프로젝트 관리자: —" 기재 확인 | Medium | Open | ASPICE MAN-3 전문가 | v1.0 | 2026-04-11 |
 
@@ -76,7 +76,7 @@
 | SUP1-NC-0002 | SWE-4 → SWE-5 → SWE-6 순서로 산출물 작성 및 테스트 수행. MAN3-WBS-0005~0010 일정 확정 후 착수 | ASPICE SWE-4/5/6 전문가 | — | — | — | Open |
 | SUP1-NC-0003 | SWE-3 상세 설계(SWE3-UNIT-SPEC-0001) 기준으로 `Calculator.cpp/h`, `InputParser.cpp/h`, `AppController.cpp/h`, `types.h` 구현 파일 작성 및 `src/calc_lib/`, `src/cli/` 디렉터리 구조 구성. MAN3-WBS-0004 실제 완료 확인 후 상태 재검토 | ASPICE SWE-3 전문가 | SWE-4 착수 전 | — | — | Open |
 | SUP1-NC-0004 | SWE1-TRACE-0001 §2.1의 SWE-COMP-0001~0002 상태를 "Draft"로 수정하여 SWE2-ARCH-0001과 일치시키거나, SWE2-ARCH-0001을 먼저 Approved 처리 후 SWE1-TRACE를 갱신 | ASPICE SWE-2 전문가 | SWE-2 산출물 승인 시 | — | — | Open |
-| SUP1-NC-0005 | SUP-8 전문가 에이전트 수행 — 형상 항목(CI) 식별, 형상 관리 계획 수립, 베이스라인 정의 | ASPICE SUP-8 전문가 | SWE-6 완료 전 | — | — | Open |
+| SUP1-NC-0005 | SUP-8 전문가 에이전트 수행 — 형상 항목(CI) 식별, 형상 관리 계획 수립, 베이스라인 정의 | ASPICE SUP-8 전문가 | SWE-6 완료 전 | 2026-04-11 | SUP8-CMP-0001, SUP8-CI-LIST-0001 작성 완료 — CI 31개 식별, BL-0001 정의, CR 3건 등록 확인 | **Resolved** |
 | SUP1-NC-0006 | `docs/SWE-1/SWE-1-requirements.md` 파일명을 `SWE1-REQ-SPEC-0001-requirements.md`로 변경하고, 참조하는 모든 산출물의 링크/참조 경로 갱신 | ASPICE SWE-1 전문가 | 다음 SWE-1 산출물 갱신 시 | — | — | Open |
 | SUP1-NC-0007 | MAN3-PP-0001 §1 프로젝트 관리자 지정 및 헤더 갱신 | ASPICE MAN-3 전문가 | 즉시 | — | — | Open |
 
@@ -147,7 +147,7 @@
 | 출시 노트 구조 적합성 | ☑ 적합 | SPL2-REL-0001 §1~6 구조 완비 |
 | 출시 노트 CR/PR/DEF 참조 | ☑ (예정) | SWE-4~6 완료 후 갱신 예정 — 정상 |
 | SWE-REQ ↔ SPL2-FEAT 추적성 | ☑ 적합 | SPL2-TRACE-0001 §1.1 (8/8 커버) |
-| SUP-8 형상 관리 산출물 존재 | ☒ **부적합** | → **SUP1-NC-0005** |
+| SUP-8 형상 관리 산출물 존재 | ☑ **적합** | SUP8-CMP-0001, SUP8-CI-LIST-0001 작성 완료 (NC-0005 Resolved) |
 | 승인자 지정 | ☒ **부적합** | → **SUP1-NC-0001** |
 
 ---
@@ -160,10 +160,10 @@
 | SWE-1 | 2026-04-11 | 2 | 0 | 2 (NC-0001, NC-0006) | ⚠ 조건부 진행 |
 | SWE-2 | 2026-04-11 | 2 | 0 | 2 (NC-0001, NC-0004) | ⚠ 조건부 진행 |
 | SWE-3 | 2026-04-11 | 2 | 0 | 2 (NC-0001, NC-0003) | ❌ 시정 조치 필요 |
-| SPL-2 | 2026-04-11 | 2 | 0 | 2 (NC-0001, NC-0005) | ⚠ 조건부 진행 |
+| SPL-2 | 2026-04-11 | 2 | 1 (NC-0005) | 1 (NC-0001) | ⚠ 조건부 진행 |
 | SWE-4/5/6 | 2026-04-11 | 1 | 0 | 1 (NC-0002) | ❌ 착수 전 |
-| SUP-8 | 2026-04-11 | 1 | 0 | 1 (NC-0005) | ❌ 착수 전 |
-| **전체** | **2026-04-11** | **7** | **0** | **7** | **⚠ 진행 중** |
+| SUP-8 | 2026-04-11 | 1 | 1 (NC-0005) | 0 | ✅ 완료 |
+| **전체** | **2026-04-11** | **7** | **1** | **6** | **⚠ 진행 중** |
 
 ### 판정 기준
 
@@ -210,7 +210,7 @@
 | 17 | SWE-5 프로세스 산출물 완비 | ☒ **부적합** | → SUP1-NC-0002 (산출물 미작성) |
 | 18 | SWE-6 프로세스 산출물 완비 | ☒ **부적합** | → SUP1-NC-0002 (산출물 미작성) |
 | 19 | SPL-2 프로세스 산출물 완비 (빌드 환경 + 피처 + 출시 노트) | ☑ 적합 | 3개 산출물 모두 작성됨 |
-| 20 | SUP-8 형상 관리 산출물 존재 | ☒ **부적합** | → SUP1-NC-0005 (형상 관리 미수행) |
+| 20 | SUP-8 형상 관리 산출물 존재 | ☑ **적합** | SUP8-CMP-0001, SUP8-CI-LIST-0001 작성 완료 (NC-0005 Resolved) |
 | 21 | MAN-3 프로젝트 계획서 담당자 지정 | ☒ **부적합** | → SUP1-NC-0007 |
 | 22 | 실제 빌드 환경 구성 및 동작 검증 | ☑ 적합 | CMakeLists.txt 생성 후 빌드 성공 확인 (2026-04-11) |
 
@@ -234,7 +234,7 @@
 | **단기** | SUP1-NC-0004 | SWE1-TRACE-0001 내 컴포넌트 상태 불일치 수정 | SWE-2 산출물 승인 시 |
 | **단기** | SUP1-NC-0006 | SWE-1 요구사항 파일명 변경 | 다음 산출물 갱신 시 |
 | **중기** | SUP1-NC-0002 | SWE-4 → SWE-5 → SWE-6 순서로 산출물 작성 | 순차 진행 |
-| **중기** | SUP1-NC-0005 | SUP-8 형상 관리 산출물 작성 | SWE-6 완료 전 |
+| ~~중기~~ ✅ | SUP1-NC-0005 | SUP-8 형상 관리 산출물 작성 | ~~SWE-6 완료 전~~ **2026-04-11 완료** |
 | **최종** | SUP1-NC-0001 | 전체 산출물 승인자 지정 및 승인 수행 | 최종 릴리스 전 |
 
 ---
@@ -244,3 +244,4 @@
 | 버전 | 날짜 | 변경 내용 | 작성자 |
 |------|------|---------|--------|
 | v1.0 | 2026-04-11 | 최초 작성 — docs/ 전체 산출물 1차 QA 감사 수행 (NC 7건 식별) | ASPICE SUP-1 전문가 |
+| v1.1 | 2026-04-11 | NC-0005 상태 Resolved 반영 — SUP8-CMP-0001, SUP8-CI-LIST-0001 작성 완료 확인 | ASPICE SUP-8 전문가 |
