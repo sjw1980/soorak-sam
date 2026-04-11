@@ -6,7 +6,7 @@ cmake_minimum_required(VERSION 3.16)
 
 # Calculator 단위 테스트 (SWE-TC-0001~0008)
 add_executable(test_calculator
-    test_calculator.cpp
+    unit/test_calculator.cpp
 )
 target_link_libraries(test_calculator PRIVATE
     calc_lib
@@ -18,7 +18,7 @@ target_include_directories(test_calculator PRIVATE
 
 # InputParser 단위 테스트 (SWE-TC-0009~0023)
 add_executable(test_inputparser
-    test_inputparser.cpp
+    unit/test_inputparser.cpp
 )
 target_link_libraries(test_inputparser PRIVATE
     calc_lib
@@ -28,9 +28,12 @@ target_include_directories(test_inputparser PRIVATE
     ${PROJECT_SOURCE_DIR}/src
 )
 
+# ─────────────────────────────────────────────
 # 통합 테스트 타겟 (SWE-5, SWE-ITC-0001~0013)
+# ─────────────────────────────────────────────
+
 add_executable(test_integration
-    test_integration.cpp
+    integration/test_integration.cpp
 )
 target_link_libraries(test_integration PRIVATE
     calc_lib
