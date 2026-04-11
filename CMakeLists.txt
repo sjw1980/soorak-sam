@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.16)
 project(calculator
     VERSION 1.0.0
     DESCRIPTION "CLI 계산기 소프트웨어 — ASPICE SWE-1~SWE-6"
-    LANGUAGES C CXX
+    LANGUAGES CXX
 )
 
 # ─────────────────────────────────────────────
@@ -38,14 +38,25 @@ endif()
 # include 경로 (SPL2-BUILD-0001 §1.2)
 # ─────────────────────────────────────────────
 include_directories(${PROJECT_SOURCE_DIR}/include)
+include_directories(${PROJECT_SOURCE_DIR}/src)
 
 # ─────────────────────────────────────────────
-# 임시 실행 파일: src/main.c (placeholder)
-# 향후 src/calc_lib/ + src/cli/main.cpp 으로 대체
+# calc_lib 정적 라이브러리 (SWE-UNIT-0001~0004)
+# ─────────────────────────────────────────────
+add_library(calc_lib STATIC
+    src/Calculator.cpp
+    src/InputParser.cpp
+    src/AppController.cpp
+)
+target_include_directories(calc_lib PUBLIC ${PROJECT_SOURCE_DIR}/src)
+
+# ─────────────────────────────────────────────
+# 실행 파일 (SWE3-UNIT-SPEC-0001 §5)
 # ─────────────────────────────────────────────
 add_executable(calculator
-    src/main.c
+    src/main.cpp
 )
+target_link_libraries(calculator PRIVATE calc_lib)
 
 # ─────────────────────────────────────────────
 # Google Test 연동 (SPL2-FEAT-0011, SPL2-BUILD-0005)
