@@ -1,0 +1,37 @@
+16 @file:aspice-swe6.agent.md docs 폴더 및 src 폴더 확인해서. 인수테스트를 포함해서 너의 업무를 실시해줘. 
+
+15 @file:aspice-spl2.agent.md docs 레포에 포함되어 있는 테스트 중에.. SWE4용 테스트와 SWE5용 테스트를 분리해줘. 분리방법은 tests에 하위 폴더를 만들어서 unit과 integration을 분리해줘.
+
+14 @file:aspice-swe5.agent.md docs 폴더 및 src 폴더 확인해서.. 너의 업무를 실시해줘. swe2에 해당 하는 tc를 만들어서 실제 동작도 시켜봐야 해.. build 환경은 갖추어져 있어. 
+
+13 @file:aspice-swe5.agent.md docs 폴더 및 src 폴더 확인해서.. 너의 업무를 실시해줘
+
+12 @file:aspice-swe4.agent.md docs/swe-3및 src폴더 내용 확인해서.. 너의 업무를 실시해줘
+
+11 @file:aspice-swe3.agent.md docs/swe-3을 확인해서.. 실제 코드 작성해줘. build 환경은 갖추어져 있어.
+
+10 @file:aspice-sup9.agent.md docs 폴더내의 산출물을 확인해서 너의 업무를 실시해줘
+
+9 @file:aspice-sup8.agent.md docs 폴더내의 산출물을 확인해서 너의 업무를 실시해줘
+
+8 @file:aspice-sup1.agent.md docs 폴더내의 산출물을 확인해서 너의 업무를 실시해줘
+
+7 @file:aspice-spl2.agent.md docs 폴더내의 내용을 확인해서. 레포 루트에 src 폴더로 만들고 빌드 환경 구축해줘. 파일은 main.c 임시 파일을 만들면 돼.
+
+6 @file:aspice-swe3.agent.md docs 폴더내의 내용을 확인해서 너의 업무를 실시해줘
+
+5 @file:aspice-swe2.agent.md docs 폴더내의 내용을 확인해서 너의 업무를 실시해줘
+
+4 @file:aspice-swe1.agent.md docs 폴더내의 내용을 확인해서 너의 업무를 실시해줘
+
+3 @file:aspice-swe1.agent.md docs 폴더내의 내용을 확인해서 너의 업무를 실시해줘
+
+2 @file:aspice-spl2.agent.md docs 폴더내의 내용을 확인해서 너의 업무를 실시해줘
+
+1 @file:aspice-man3.agent.md docs 사칙 연산을 하는 계산기를 만들꺼야. 너의 업무를 실시해줘
+
+
+
+
+
+
