@@ -1,4 +1,6 @@
-﻿16 @file:aspice-swe6.agent.md docs 폴더 및 src 폴더 확인해서. 인수테스트를 포함해서 너의 업무를 실시해줘. 
+﻿17 /init 
+
+16 @file:aspice-swe6.agent.md docs 폴더 및 src 폴더 확인해서. 인수테스트를 포함해서 너의 업무를 실시해줘. 
 
 15 @file:aspice-spl2.agent.md docs 레포에 포함되어 있는 테스트 중에.. SWE4용 테스트와 SWE5용 테스트를 분리해줘. 분리방법은 tests에 하위 폴더를 만들어서 unit과 integration을 분리해줘.
 
