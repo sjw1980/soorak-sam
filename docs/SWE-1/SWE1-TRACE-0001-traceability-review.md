@@ -18,16 +18,16 @@
 
 | 상위 목표 ID | 상위 목표 내용 요약 | SW 요구사항 ID | SW 요구사항 제목 | 우선순위 | 상태 | 비고 |
 |------------|----------------|-------------|--------------|--------|------|------|
-| PROJ-GOAL-001 | 4칙 연산 기능 제공 (덧셈) | [SWE-REQ-0001](SWE-1-requirements.md#SWE-REQ-0001) | 덧셈 연산 | High | Approved | — |
-| PROJ-GOAL-001 | 4칙 연산 기능 제공 (뺄셈) | [SWE-REQ-0002](SWE-1-requirements.md#SWE-REQ-0002) | 뺄셈 연산 | High | Approved | — |
-| PROJ-GOAL-001 | 4칙 연산 기능 제공 (곱셈) | [SWE-REQ-0003](SWE-1-requirements.md#SWE-REQ-0003) | 곱셈 연산 | High | Approved | — |
-| PROJ-GOAL-001 | 4칙 연산 기능 제공 (나눗셈) | [SWE-REQ-0004](SWE-1-requirements.md#SWE-REQ-0004) | 나눗셈 연산 | High | Approved | — |
-| PROJ-GOAL-002 | 예외 상황 안전 처리 (0 나누기) | [SWE-REQ-0005](SWE-1-requirements.md#SWE-REQ-0005) | 0 나누기 예외 처리 | High | Approved | [MAN3-RSK-0002](../MAN-3/MAN3-PP-0001-project-plan.md#MAN3-RSK-0002) 대응 |
-| PROJ-GOAL-003 | CLI 기반 사용자 인터페이스 | [SWE-REQ-0006](SWE-1-requirements.md#SWE-REQ-0006) | CLI 사용자 인터페이스 | High | Approved | — |
-| PROJ-GOAL-003 | 반복 입력 처리 | [SWE-REQ-0007](SWE-1-requirements.md#SWE-REQ-0007) | 반복 입력 루프 | High | Approved | — |
-| PROJ-GOAL-003 | 사용자 주도 종료 | [SWE-REQ-0008](SWE-1-requirements.md#SWE-REQ-0008) | 종료 명령 처리 | High | Approved | — |
-| PROJ-GOAL-004 | C++17 표준 준수 | [SWE-REQ-0009](SWE-1-requirements.md#SWE-REQ-0009) | C++17 표준 준수 | Medium | Approved | [SPL2-BUILD-0001](../SPL-2/SPL2-BUILD-0001-build-environment.md) 연계 |
-| PROJ-GOAL-004 | 커버리지 100% 달성 | [SWE-REQ-0010](SWE-1-requirements.md#SWE-REQ-0010) | 단위 테스트 커버리지 | High | Approved | [MAN3-RSK-0001](../MAN-3/MAN3-PP-0001-project-plan.md#MAN3-RSK-0001) 대응 |
+| <a id="PROJ-GOAL-001"></a>[PROJ-GOAL-001](SWE1-TRACE-0001-traceability-review.md#PROJ-GOAL-001) | 4칙 연산 기능 제공 (덧셈) | [SWE-REQ-0001](SWE-1-requirements.md#SWE-REQ-0001) | 덧셈 연산 | High | Approved | — |
+| [PROJ-GOAL-001](SWE1-TRACE-0001-traceability-review.md#PROJ-GOAL-001) | 4칙 연산 기능 제공 (뺄셈) | [SWE-REQ-0002](SWE-1-requirements.md#SWE-REQ-0002) | 뺄셈 연산 | High | Approved | — |
+| [PROJ-GOAL-001](SWE1-TRACE-0001-traceability-review.md#PROJ-GOAL-001) | 4칙 연산 기능 제공 (곱셈) | [SWE-REQ-0003](SWE-1-requirements.md#SWE-REQ-0003) | 곱셈 연산 | High | Approved | — |
+| [PROJ-GOAL-001](SWE1-TRACE-0001-traceability-review.md#PROJ-GOAL-001) | 4칙 연산 기능 제공 (나눗셈) | [SWE-REQ-0004](SWE-1-requirements.md#SWE-REQ-0004) | 나눗셈 연산 | High | Approved | — |
+| <a id="PROJ-GOAL-002"></a>[PROJ-GOAL-002](SWE1-TRACE-0001-traceability-review.md#PROJ-GOAL-002) | 예외 상황 안전 처리 (0 나누기) | [SWE-REQ-0005](SWE-1-requirements.md#SWE-REQ-0005) | 0 나누기 예외 처리 | High | Approved | [MAN3-RSK-0002](../MAN-3/MAN3-PP-0001-project-plan.md#MAN3-RSK-0002) 대응 |
+| <a id="PROJ-GOAL-003"></a>[PROJ-GOAL-003](SWE1-TRACE-0001-traceability-review.md#PROJ-GOAL-003) | CLI 기반 사용자 인터페이스 | [SWE-REQ-0006](SWE-1-requirements.md#SWE-REQ-0006) | CLI 사용자 인터페이스 | High | Approved | — |
+| [PROJ-GOAL-003](SWE1-TRACE-0001-traceability-review.md#PROJ-GOAL-003) | 반복 입력 처리 | [SWE-REQ-0007](SWE-1-requirements.md#SWE-REQ-0007) | 반복 입력 루프 | High | Approved | — |
+| [PROJ-GOAL-003](SWE1-TRACE-0001-traceability-review.md#PROJ-GOAL-003) | 사용자 주도 종료 | [SWE-REQ-0008](SWE-1-requirements.md#SWE-REQ-0008) | 종료 명령 처리 | High | Approved | — |
+| <a id="PROJ-GOAL-004"></a>[PROJ-GOAL-004](SWE1-TRACE-0001-traceability-review.md#PROJ-GOAL-004) | C++17 표준 준수 | [SWE-REQ-0009](SWE-1-requirements.md#SWE-REQ-0009) | C++17 표준 준수 | Medium | Approved | [SPL2-BUILD-0001](../SPL-2/SPL2-BUILD-0001-build-environment.md) 연계 |
+| [PROJ-GOAL-004](SWE1-TRACE-0001-traceability-review.md#PROJ-GOAL-004) | 커버리지 100% 달성 | [SWE-REQ-0010](SWE-1-requirements.md#SWE-REQ-0010) | 단위 테스트 커버리지 | High | Approved | [MAN3-RSK-0001](../MAN-3/MAN3-PP-0001-project-plan.md#MAN3-RSK-0001) 대응 |
 
 ---
 

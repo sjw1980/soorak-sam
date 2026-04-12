@@ -27,10 +27,11 @@ CONTENT_ID_TO_DEF: dict[str, tuple[str, str]] = {
     "SWE-TC":   ("SWE-4", "SWE4-TC-SPEC-0001-unit-test.md"),
     "SWE-ITC":  ("SWE-5", "SWE5-ITC-SPEC-0001-integration-test.md"),
     "SWE-QTC":  ("SWE-6", "SWE6-QTC-SPEC-0001-qualification-test.md"),
-    "MAN3-RSK": ("MAN-3", "MAN3-PP-0001-project-plan.md"),
-    "MAN3-WBS": ("MAN-3", "MAN3-PP-0001-project-plan.md"),
-    "MAN3-MS":  ("MAN-3", "MAN3-PP-0001-project-plan.md"),
-    "MAN3-ISS": ("MAN-3", "MAN3-PP-0001-project-plan.md"),
+    "MAN3-RSK":  ("MAN-3", "MAN3-PP-0001-project-plan.md"),
+    "MAN3-WBS":  ("MAN-3", "MAN3-PP-0001-project-plan.md"),
+    "MAN3-MS":   ("MAN-3", "MAN3-PP-0001-project-plan.md"),
+    "MAN3-ISS":  ("MAN-3", "MAN3-PP-0001-project-plan.md"),
+    "PROJ-GOAL": ("SWE-1", "SWE1-TRACE-0001-traceability-review.md"),
 }
 
 # -----------------------------------------------------------------------
@@ -90,7 +91,7 @@ def add_content_anchors() -> None:
         content = def_file.read_text(encoding="utf-8")
 
         # Build a pattern matching any content ID with these prefixes
-        prefix_pat = "(?:" + "|".join(re.escape(p) for p in prefixes) + r")-\d{4}"
+        prefix_pat = "(?:" + "|".join(re.escape(p) for p in prefixes) + r")-\d{3,4}"
 
         # ---- First pass: record which IDs have dedicated section headings ----
         heading_ids: set[str] = set()
@@ -184,7 +185,7 @@ def _build_id_regex() -> re.Pattern[str]:
 
     content_prefixes = sorted(CONTENT_ID_TO_DEF.keys(), key=len, reverse=True)
     content_pat = (
-        "(?:" + "|".join(re.escape(p) for p in content_prefixes) + r")-\d{4}"
+        "(?:" + "|".join(re.escape(p) for p in content_prefixes) + r")-\d{3,4}"
     )
 
     combined = "(?:" + doc_pat + "|" + content_pat + ")"

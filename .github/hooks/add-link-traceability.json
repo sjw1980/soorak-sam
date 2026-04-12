@@ -3,7 +3,7 @@
 		"PostToolUse": [
 			{
 				"type": "command",
-				"command": "python aspice_linkify.py"
+				"command": "python .github/hooks/aspice_linkify.py"
 			}
 		]
 	}
