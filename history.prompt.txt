@@ -1,4 +1,8 @@
-﻿17 /init 
+﻿19 Continue: "Continue to iterate?"
+
+18 @file:aspice-man3.agent.md 프로젝트 전체를 살펴보고 마무리가 되었는지 더 할일이 없는지 확인해줘.
+
+17 /init 
 
 16 @file:aspice-swe6.agent.md docs 폴더 및 src 폴더 확인해서. 인수테스트를 포함해서 너의 업무를 실시해줘. 
 
