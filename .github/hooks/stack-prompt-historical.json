@@ -3,7 +3,7 @@
 		"UserPromptSubmit": [
 			{
 				"type": "command",
-				"windows": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"& { $OutputEncoding = [Console]::InputEncoding = [Console]::OutputEncoding = [System.Text.Encoding]::UTF8; & '.github\\hooks\\save-prompt.ps1' }\""
+				"command": "python .github/hooks/save-prompt.py"
 			}
 		]
 	}
