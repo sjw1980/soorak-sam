@@ -2,7 +2,7 @@
 
 | 항목       | 내용                                       |
 | ---------- | ------------------------------------------ |
-| 문서 ID    | SPL2-REL-0001                              |
+| 문서 ID    | [SPL2-REL-0001](SPL2-REL-0001-release-note.md)                              |
 | 프로젝트명 | CLI 계산기 소프트웨어 — ASPICE SWE-1~SWE-6 |
 | 제품명     | CLI Calculator                             |
 | 빌드 번호  | 20260411-1                                 |
@@ -21,8 +21,8 @@
 | 릴리스 날짜    | 2026-04-11                                           |
 | 베이스라인     | SUP8-BL-0001 (예정)                                  |
 | 릴리스 대상    | `build/Release/calculator` (Ubuntu 22.04 LTS x86_64) |
-| 빌드 환경 참조 | SPL2-BUILD-0001                                      |
-| 피처 모델 참조 | SPL2-FEAT-0001 ~ SPL2-FEAT-0012                      |
+| 빌드 환경 참조 | [SPL2-BUILD-0001](SPL2-BUILD-0001-build-environment.md)                                      |
+| 피처 모델 참조 | [SPL2-FEAT-0001](SPL2-FEAT-0001-feature-model.md) ~ SPL2-FEAT-0012                      |
 
 ---
 
@@ -32,7 +32,7 @@
 
 | 변경 요청 ID | 변경 내용                                        | 영향 컴포넌트 | 상태              |
 | ------------ | ------------------------------------------------ | ------------- | ----------------- |
-| —            | SWE-1 요구사항(SWE-REQ-0001~0008) 기반 최초 구현 | calc_lib, CLI | 구현 완료 (SWE-3) |
+| —            | SWE-1 요구사항([SWE-REQ-0001](../SWE-1/SWE-1-requirements.md#SWE-REQ-0001)~0008) 기반 최초 구현 | calc_lib, CLI | 구현 완료 (SWE-3) |
 | —            | 빌드 환경 정의 및 CMakeLists.txt 구성            | 빌드 시스템   | 완료              |
 
 ---
@@ -65,7 +65,7 @@
 | 분기 커버리지 100%            | ≥ 100%                      | ✅ 100%       | gcov 측정 (2026-04-11)                   |
 | SWE-5 통합 테스트 전체 Pass   | 모든 SWE-ITC Pass           | ✅ 13/13 Pass | 결함 0건 (2026-04-11)                    |
 | SWE-6 적격성 테스트 전체 Pass | 모든 SWE-QTC Pass           | ✅ 17/17 Pass | 2026-04-11                               |
-| SWE-REQ 추적성 100%           | SWE-REQ-0001~0010 전체 매핑 | ✅ 100%       | SWE-REQ-0001~0010 전체 SWE-QTC 매핑 확인 |
+| SWE-REQ 추적성 100%           | [SWE-REQ-0001](../SWE-1/SWE-1-requirements.md#SWE-REQ-0001)~0010 전체 매핑 | ✅ 100%       | [SWE-REQ-0001](../SWE-1/SWE-1-requirements.md#SWE-REQ-0001)~0010 전체 SWE-QTC 매핑 확인 |
 
 ---
 
@@ -78,9 +78,9 @@
 | 1    | SWE-4 단위 테스트 전체 Pass + 커버리지 100%              | ☑ 충족 (23/23 Pass, 100%)                    |
 | 2    | SWE-5 통합 테스트 전체 Pass + 미해결 결함 0건            | ☑ 충족 (13/13 Pass, 결함 0건)                |
 | 3    | SWE-6 적격성 테스트 전체 Pass                            | ☑ 충족 (17/17 Pass)                          |
-| 4    | SWE-REQ-0001~0010 → SWE-QTC 추적성 100% 확보             | ☑ 충족 (전체 매핑 완료)                      |
-| 5    | 모든 Open 리스크(MAN3-RSK-0001~0004) 해소 또는 수용 결정 | ☑ 충족 (MAN3-PP-0001 v1.1 — 전체 Closed)     |
-| 6    | SUP8-BL-0001 베이스라인 생성 완료                        | ☑ 충족 (SUP8-CI-LIST-0001 BL-0001 정의 완료) |
+| 4    | [SWE-REQ-0001](../SWE-1/SWE-1-requirements.md#SWE-REQ-0001)~0010 → SWE-QTC 추적성 100% 확보             | ☑ 충족 (전체 매핑 완료)                      |
+| 5    | 모든 Open 리스크([MAN3-RSK-0001](../MAN-3/MAN3-PP-0001-project-plan.md#MAN3-RSK-0001)~0004) 해소 또는 수용 결정 | ☑ 충족 ([MAN3-PP-0001](../MAN-3/MAN3-PP-0001-project-plan.md) v1.1 — 전체 Closed)     |
+| 6    | SUP8-BL-0001 베이스라인 생성 완료                        | ☑ 충족 ([SUP8-CI-LIST-0001](../SUP-8/SUP8-CI-LIST-0001-ci-baseline.md) BL-0001 정의 완료) |
 
 ---
 

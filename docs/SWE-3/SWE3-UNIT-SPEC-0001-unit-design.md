@@ -2,13 +2,13 @@
 
 | 항목 | 내용 |
 |------|------|
-| 문서 ID | SWE3-UNIT-SPEC-0001 |
+| 문서 ID | [SWE3-UNIT-SPEC-0001](SWE3-UNIT-SPEC-0001-unit-design.md) |
 | 프로젝트명 | CLI 계산기 소프트웨어 — ASPICE SWE-1~SWE-6 |
 | 버전 | v1.0 / 2026-04-11 |
 | 상태 | Draft |
 | 작성자 | ASPICE SWE-3 전문가 |
 | 승인자 | — |
-| 참조 문서 | SWE1-REQ-SPEC-0001 (SWE-1 요구사항 명세서), SWE2-ARCH-0001 (SWE-2 아키텍처 설계서) |
+| 참조 문서 | [SWE1-REQ-SPEC-0001](../SWE-1/SWE-1-requirements.md) (SWE-1 요구사항 명세서), [SWE2-ARCH-0001](../SWE-2/SWE2-ARCH-0001-software-architecture.md) (SWE-2 아키텍처 설계서) |
 
 ---
 
@@ -17,7 +17,7 @@
 ### 1.1 목적
 
 본 문서는 CLI 계산기 소프트웨어의 소프트웨어 단위(Unit) 상세 설계를 정의한다.
-SWE-2에서 도출된 컴포넌트(SWE-COMP-0001~SWE-COMP-0003)를 단위로 분해하고,
+SWE-2에서 도출된 컴포넌트([SWE-COMP-0001](../SWE-2/SWE2-ARCH-0001-software-architecture.md#SWE-COMP-0001)~[SWE-COMP-0003](../SWE-2/SWE2-ARCH-0001-software-architecture.md#SWE-COMP-0003))를 단위로 분해하고,
 각 단위의 함수/클래스 인터페이스, 사전/사후 조건, 내부 로직 알고리즘을 명세하여
 SWE-4 단위 테스트의 기반을 제공한다.
 
@@ -25,7 +25,7 @@ SWE-4 단위 테스트의 기반을 제공한다.
 
 - 대상 소프트웨어: CLI 계산기 (`calculator`)
 - 구현 언어: C++17
-- 상위 문서: SWE2-ARCH-0001
+- 상위 문서: [SWE2-ARCH-0001](../SWE-2/SWE2-ARCH-0001-software-architecture.md)
 
 ### 1.3 설계 원칙
 
@@ -40,20 +40,21 @@ SWE-4 단위 테스트의 기반을 제공한다.
 
 | ID | 단위명 | 상위 컴포넌트 ID | 역할 요약 | 구현 파일 | 버전 | 날짜 | 상태 |
 |----|--------|----------------|---------|---------|------|------|------|
-| SWE-UNIT-0001 | Calculator | SWE-COMP-0001 | 두 피연산자와 연산자를 받아 4칙 연산 수행 및 0 나누기 예외 처리 | `Calculator.h` / `Calculator.cpp` | v1.0 | 2026-04-11 | Draft |
-| SWE-UNIT-0002 | InputParser | SWE-COMP-0002 | 표준 입력 문자열을 파싱하여 연산 요청·종료 명령·오류를 구분 반환 | `InputParser.h` / `InputParser.cpp` | v1.0 | 2026-04-11 | Draft |
-| SWE-UNIT-0003 | AppController | SWE-COMP-0003 | 프로그램 메인 루프 관리, InputParser·Calculator 조율, 결과/오류 출력 | `AppController.h` / `AppController.cpp` | v1.0 | 2026-04-11 | Draft |
-| SWE-UNIT-0004 | Types (공통 타입) | SWE-COMP-0001, SWE-COMP-0002 | 공통 데이터 구조체(OperationResult, ParsedInput)·열거형(InputType) 정의 | `types.h` | v1.0 | 2026-04-11 | Draft |
+| [SWE-UNIT-0001](SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0001) | Calculator | [SWE-COMP-0001](../SWE-2/SWE2-ARCH-0001-software-architecture.md#SWE-COMP-0001) | 두 피연산자와 연산자를 받아 4칙 연산 수행 및 0 나누기 예외 처리 | `Calculator.h` / `Calculator.cpp` | v1.0 | 2026-04-11 | Draft |
+| [SWE-UNIT-0002](SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0002) | InputParser | [SWE-COMP-0002](../SWE-2/SWE2-ARCH-0001-software-architecture.md#SWE-COMP-0002) | 표준 입력 문자열을 파싱하여 연산 요청·종료 명령·오류를 구분 반환 | `InputParser.h` / `InputParser.cpp` | v1.0 | 2026-04-11 | Draft |
+| [SWE-UNIT-0003](SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0003) | AppController | [SWE-COMP-0003](../SWE-2/SWE2-ARCH-0001-software-architecture.md#SWE-COMP-0003) | 프로그램 메인 루프 관리, InputParser·Calculator 조율, 결과/오류 출력 | `AppController.h` / `AppController.cpp` | v1.0 | 2026-04-11 | Draft |
+| [SWE-UNIT-0004](SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0004) | Types (공통 타입) | [SWE-COMP-0001](../SWE-2/SWE2-ARCH-0001-software-architecture.md#SWE-COMP-0001), [SWE-COMP-0002](../SWE-2/SWE2-ARCH-0001-software-architecture.md#SWE-COMP-0002) | 공통 데이터 구조체(OperationResult, ParsedInput)·열거형(InputType) 정의 | `types.h` | v1.0 | 2026-04-11 | Draft |
 
 ---
 
-## 3. 공통 데이터 타입 정의 (SWE-UNIT-0004)
+<a id="SWE-UNIT-0004"></a>
+## 3. 공통 데이터 타입 정의 ([SWE-UNIT-0004](SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0004))
 
 ### 3.1 열거형: `InputType`
 
 | 항목 | 내용 |
 |------|------|
-| 단위 ID | SWE-UNIT-0004 |
+| 단위 ID | [SWE-UNIT-0004](SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0004) |
 | 파일 | `types.h` |
 | 설명 | InputParser의 파싱 결과 유형을 구분하는 열거형 |
 
@@ -69,9 +70,9 @@ enum class InputType {
 
 | 항목 | 내용 |
 |------|------|
-| 단위 ID | SWE-UNIT-0004 |
+| 단위 ID | [SWE-UNIT-0004](SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0004) |
 | 파일 | `types.h` |
-| 설명 | Calculator의 연산 결과 반환 구조체 (SWE-IF-0002 구현) |
+| 설명 | Calculator의 연산 결과 반환 구조체 ([SWE-IF-0002](../SWE-2/SWE2-ARCH-0001-software-architecture.md#SWE-IF-0002) 구현) |
 
 ```cpp
 struct OperationResult {
@@ -91,9 +92,9 @@ struct OperationResult {
 
 | 항목 | 내용 |
 |------|------|
-| 단위 ID | SWE-UNIT-0004 |
+| 단위 ID | [SWE-UNIT-0004](SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0004) |
 | 파일 | `types.h` |
-| 설명 | InputParser의 파싱 결과 반환 구조체 (SWE-IF-0003 구현) |
+| 설명 | InputParser의 파싱 결과 반환 구조체 ([SWE-IF-0003](../SWE-2/SWE2-ARCH-0001-software-architecture.md#SWE-IF-0003) 구현) |
 
 ```cpp
 struct ParsedInput {
@@ -117,19 +118,20 @@ struct ParsedInput {
 
 ## 4. 단위 상세 설계
 
-### 4.1 SWE-UNIT-0001 — Calculator
+<a id="SWE-UNIT-0001"></a>
+### 4.1 [SWE-UNIT-0001](SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0001) — Calculator
 
 #### 4.1.1 기본 정보
 
 | 항목 | 내용 |
 |------|------|
-| ID | SWE-UNIT-0001 |
+| ID | [SWE-UNIT-0001](SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0001) |
 | 단위명 | Calculator |
-| 상위 컴포넌트 | SWE-COMP-0001 |
+| 상위 컴포넌트 | [SWE-COMP-0001](../SWE-2/SWE2-ARCH-0001-software-architecture.md#SWE-COMP-0001) |
 | 구현 파일 | `Calculator.h`, `Calculator.cpp` |
-| 관련 요구사항 | SWE-REQ-0001, SWE-REQ-0002, SWE-REQ-0003, SWE-REQ-0004, SWE-REQ-0005, SWE-REQ-0009, SWE-REQ-0010 |
-| 소비 인터페이스 | SWE-IF-0001 (OperationRequest: operandA, op, operandB 수신) |
-| 제공 인터페이스 | SWE-IF-0002 (OperationResult 반환) |
+| 관련 요구사항 | [SWE-REQ-0001](../SWE-1/SWE-1-requirements.md#SWE-REQ-0001), [SWE-REQ-0002](../SWE-1/SWE-1-requirements.md#SWE-REQ-0002), [SWE-REQ-0003](../SWE-1/SWE-1-requirements.md#SWE-REQ-0003), [SWE-REQ-0004](../SWE-1/SWE-1-requirements.md#SWE-REQ-0004), [SWE-REQ-0005](../SWE-1/SWE-1-requirements.md#SWE-REQ-0005), [SWE-REQ-0009](../SWE-1/SWE-1-requirements.md#SWE-REQ-0009), [SWE-REQ-0010](../SWE-1/SWE-1-requirements.md#SWE-REQ-0010) |
+| 소비 인터페이스 | [SWE-IF-0001](../SWE-2/SWE2-ARCH-0001-software-architecture.md#SWE-IF-0001) (OperationRequest: operandA, op, operandB 수신) |
+| 제공 인터페이스 | [SWE-IF-0002](../SWE-2/SWE2-ARCH-0001-software-architecture.md#SWE-IF-0002) (OperationResult 반환) |
 
 #### 4.1.2 클래스 선언
 
@@ -199,19 +201,20 @@ function calculate(a, op, b):
 
 ---
 
-### 4.2 SWE-UNIT-0002 — InputParser
+<a id="SWE-UNIT-0002"></a>
+### 4.2 [SWE-UNIT-0002](SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0002) — InputParser
 
 #### 4.2.1 기본 정보
 
 | 항목 | 내용 |
 |------|------|
-| ID | SWE-UNIT-0002 |
+| ID | [SWE-UNIT-0002](SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0002) |
 | 단위명 | InputParser |
-| 상위 컴포넌트 | SWE-COMP-0002 |
+| 상위 컴포넌트 | [SWE-COMP-0002](../SWE-2/SWE2-ARCH-0001-software-architecture.md#SWE-COMP-0002) |
 | 구현 파일 | `InputParser.h`, `InputParser.cpp` |
-| 관련 요구사항 | SWE-REQ-0006, SWE-REQ-0007, SWE-REQ-0008, SWE-REQ-0009, SWE-REQ-0010 |
+| 관련 요구사항 | [SWE-REQ-0006](../SWE-1/SWE-1-requirements.md#SWE-REQ-0006), [SWE-REQ-0007](../SWE-1/SWE-1-requirements.md#SWE-REQ-0007), [SWE-REQ-0008](../SWE-1/SWE-1-requirements.md#SWE-REQ-0008), [SWE-REQ-0009](../SWE-1/SWE-1-requirements.md#SWE-REQ-0009), [SWE-REQ-0010](../SWE-1/SWE-1-requirements.md#SWE-REQ-0010) |
 | 소비 인터페이스 | 없음 (stdin 직접 읽기는 AppController에서 수행; parse()에 문자열 전달) |
-| 제공 인터페이스 | SWE-IF-0003 (ParsedInput 반환) |
+| 제공 인터페이스 | [SWE-IF-0003](../SWE-2/SWE2-ARCH-0001-software-architecture.md#SWE-IF-0003) (ParsedInput 반환) |
 
 #### 4.2.2 클래스 선언
 
@@ -318,20 +321,21 @@ function parse(line):
 
 ---
 
-### 4.3 SWE-UNIT-0003 — AppController
+<a id="SWE-UNIT-0003"></a>
+### 4.3 [SWE-UNIT-0003](SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0003) — AppController
 
 #### 4.3.1 기본 정보
 
 | 항목 | 내용 |
 |------|------|
-| ID | SWE-UNIT-0003 |
+| ID | [SWE-UNIT-0003](SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0003) |
 | 단위명 | AppController |
-| 상위 컴포넌트 | SWE-COMP-0003 |
+| 상위 컴포넌트 | [SWE-COMP-0003](../SWE-2/SWE2-ARCH-0001-software-architecture.md#SWE-COMP-0003) |
 | 구현 파일 | `AppController.h`, `AppController.cpp` |
-| 관련 요구사항 | SWE-REQ-0006, SWE-REQ-0007, SWE-REQ-0008, SWE-REQ-0009 |
-| 소비 인터페이스 | SWE-IF-0001 (OperationRequest: Calculator.calculate() 호출 파라미터 공급) |
-| | SWE-IF-0002 (OperationResult: Calculator.calculate() 반환값 수신) |
-| | SWE-IF-0003 (ParsedInput: InputParser.parse() 반환값 수신) |
+| 관련 요구사항 | [SWE-REQ-0006](../SWE-1/SWE-1-requirements.md#SWE-REQ-0006), [SWE-REQ-0007](../SWE-1/SWE-1-requirements.md#SWE-REQ-0007), [SWE-REQ-0008](../SWE-1/SWE-1-requirements.md#SWE-REQ-0008), [SWE-REQ-0009](../SWE-1/SWE-1-requirements.md#SWE-REQ-0009) |
+| 소비 인터페이스 | [SWE-IF-0001](../SWE-2/SWE2-ARCH-0001-software-architecture.md#SWE-IF-0001) (OperationRequest: Calculator.calculate() 호출 파라미터 공급) |
+| | [SWE-IF-0002](../SWE-2/SWE2-ARCH-0001-software-architecture.md#SWE-IF-0002) (OperationResult: Calculator.calculate() 반환값 수신) |
+| | [SWE-IF-0003](../SWE-2/SWE2-ARCH-0001-software-architecture.md#SWE-IF-0003) (ParsedInput: InputParser.parse() 반환값 수신) |
 | 제공 인터페이스 | 없음 (최상위 컨트롤러) |
 
 #### 4.3.2 클래스 선언
@@ -480,11 +484,11 @@ main.cpp
 
 | 단위 ID | 의존 단위 ID | 의존 유형 |
 |--------|-----------|---------|
-| SWE-UNIT-0001 | SWE-UNIT-0004 | 타입 사용 (OperationResult) |
-| SWE-UNIT-0002 | SWE-UNIT-0004 | 타입 사용 (ParsedInput, InputType) |
-| SWE-UNIT-0003 | SWE-UNIT-0001 | 함수 호출 (calculate) |
-| SWE-UNIT-0003 | SWE-UNIT-0002 | 함수 호출 (parse) |
-| SWE-UNIT-0003 | SWE-UNIT-0004 | 타입 사용 (OperationResult, ParsedInput) |
+| [SWE-UNIT-0001](SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0001) | [SWE-UNIT-0004](SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0004) | 타입 사용 (OperationResult) |
+| [SWE-UNIT-0002](SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0002) | [SWE-UNIT-0004](SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0004) | 타입 사용 (ParsedInput, InputType) |
+| [SWE-UNIT-0003](SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0003) | [SWE-UNIT-0001](SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0001) | 함수 호출 (calculate) |
+| [SWE-UNIT-0003](SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0003) | [SWE-UNIT-0002](SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0002) | 함수 호출 (parse) |
+| [SWE-UNIT-0003](SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0003) | [SWE-UNIT-0004](SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0004) | 타입 사용 (OperationResult, ParsedInput) |
 
 ---
 
@@ -492,7 +496,7 @@ main.cpp
 
 | 항목 | 규칙 | 근거 요구사항 |
 |------|------|------------|
-| 표준 준수 | C++17 (`-std=c++17`) | SWE-REQ-0009 |
+| 표준 준수 | C++17 (`-std=c++17`) | [SWE-REQ-0009](../SWE-1/SWE-1-requirements.md#SWE-REQ-0009) |
 | 헤더 가드 | `#pragma once` 사용 | 코딩 컨벤션 |
 | 네이밍 | 클래스: PascalCase, 함수/변수: camelCase | 코딩 컨벤션 |
 | 예외 처리 | C++ 예외(throw) 미사용 — 반환값 기반 오류 처리 | 단순성, 테스트 용이성 |

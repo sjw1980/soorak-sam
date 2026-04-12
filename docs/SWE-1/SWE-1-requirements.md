@@ -2,13 +2,13 @@
 
 | 항목 | 내용 |
 |------|------|
-| 문서 ID | SWE1-REQ-SPEC-0001 |
+| 문서 ID | [SWE1-REQ-SPEC-0001](SWE-1-requirements.md) |
 | 프로젝트명 | CLI 계산기 소프트웨어 — ASPICE SWE-1~SWE-6 |
 | 버전 | v1.0 / 2026-04-05 |
 | 상태 | Approved |
 | 작성자 | ASPICE SWE-1 전문가 |
 | 승인자 | — |
-| 참조 문서 | MAN3-PP-0001 (프로젝트 계획서) |
+| 참조 문서 | [MAN3-PP-0001](../MAN-3/MAN3-PP-0001-project-plan.md) (프로젝트 계획서) |
 
 ---
 
@@ -39,31 +39,32 @@
 
 | ID | 요구사항 내용 | 우선순위 | 검증 방법 | 버전 | 날짜 | 상태 | 출처 |
 |----|------------|--------|---------|------|------|------|------|
-| SWE-REQ-0001 | 소프트웨어는 두 개의 실수형 피연산자에 대해 덧셈(+) 연산을 수행하고, 결과를 표준 출력에 출력해야 한다. | High | SWE-TC (단위 테스트), SWE-QTC (적격성 테스트) | v1.0 | 2026-04-05 | Approved | 프로젝트 사양 |
-| SWE-REQ-0002 | 소프트웨어는 두 개의 실수형 피연산자에 대해 뺄셈(-) 연산을 수행하고, 결과를 표준 출력에 출력해야 한다. | High | SWE-TC, SWE-QTC | v1.0 | 2026-04-05 | Approved | 프로젝트 사양 |
-| SWE-REQ-0003 | 소프트웨어는 두 개의 실수형 피연산자에 대해 곱셈(*) 연산을 수행하고, 결과를 표준 출력에 출력해야 한다. | High | SWE-TC, SWE-QTC | v1.0 | 2026-04-05 | Approved | 프로젝트 사양 |
-| SWE-REQ-0004 | 소프트웨어는 두 개의 실수형 피연산자에 대해 나눗셈(/) 연산을 수행하고, 결과를 표준 출력에 출력해야 한다. | High | SWE-TC, SWE-QTC | v1.0 | 2026-04-05 | Approved | 프로젝트 사양 |
-| SWE-REQ-0005 | 나눗셈 수행 시 제수(divisor)가 0인 경우, 소프트웨어는 연산을 중단하고 오류 메시지를 표준 출력에 출력해야 하며, 프로그램이 비정상 종료되어서는 안 된다. | High | SWE-TC (경계값), SWE-QTC | v1.0 | 2026-04-05 | Approved | 프로젝트 사양 |
-| SWE-REQ-0006 | 소프트웨어는 CLI(표준 입력/출력)를 통해 사용자로부터 연산식(`<피연산자> <연산자> <피연산자>` 형식)을 입력받아야 한다. | High | SWE-TC, SWE-QTC | v1.0 | 2026-04-05 | Approved | 프로젝트 사양 |
-| SWE-REQ-0007 | 소프트웨어는 종료 명령이 입력되기 전까지 연산식 입력→결과 출력 사이클을 반복 수행해야 한다. | High | SWE-TC, SWE-QTC | v1.0 | 2026-04-05 | Approved | 프로젝트 사양 |
-| SWE-REQ-0008 | 사용자가 `q` 또는 `quit`을 입력하면, 소프트웨어는 반복 루프를 종료하고 정상적으로 프로그램을 종료(exit code 0)해야 한다. | High | SWE-TC, SWE-QTC | v1.0 | 2026-04-05 | Approved | 프로젝트 사양 |
+| [SWE-REQ-0001](SWE-1-requirements.md#SWE-REQ-0001) | 소프트웨어는 두 개의 실수형 피연산자에 대해 덧셈(+) 연산을 수행하고, 결과를 표준 출력에 출력해야 한다. | High | SWE-TC (단위 테스트), SWE-QTC (적격성 테스트) | v1.0 | 2026-04-05 | Approved | 프로젝트 사양 |
+| [SWE-REQ-0002](SWE-1-requirements.md#SWE-REQ-0002) | 소프트웨어는 두 개의 실수형 피연산자에 대해 뺄셈(-) 연산을 수행하고, 결과를 표준 출력에 출력해야 한다. | High | SWE-TC, SWE-QTC | v1.0 | 2026-04-05 | Approved | 프로젝트 사양 |
+| [SWE-REQ-0003](SWE-1-requirements.md#SWE-REQ-0003) | 소프트웨어는 두 개의 실수형 피연산자에 대해 곱셈(*) 연산을 수행하고, 결과를 표준 출력에 출력해야 한다. | High | SWE-TC, SWE-QTC | v1.0 | 2026-04-05 | Approved | 프로젝트 사양 |
+| [SWE-REQ-0004](SWE-1-requirements.md#SWE-REQ-0004) | 소프트웨어는 두 개의 실수형 피연산자에 대해 나눗셈(/) 연산을 수행하고, 결과를 표준 출력에 출력해야 한다. | High | SWE-TC, SWE-QTC | v1.0 | 2026-04-05 | Approved | 프로젝트 사양 |
+| [SWE-REQ-0005](SWE-1-requirements.md#SWE-REQ-0005) | 나눗셈 수행 시 제수(divisor)가 0인 경우, 소프트웨어는 연산을 중단하고 오류 메시지를 표준 출력에 출력해야 하며, 프로그램이 비정상 종료되어서는 안 된다. | High | SWE-TC (경계값), SWE-QTC | v1.0 | 2026-04-05 | Approved | 프로젝트 사양 |
+| [SWE-REQ-0006](SWE-1-requirements.md#SWE-REQ-0006) | 소프트웨어는 CLI(표준 입력/출력)를 통해 사용자로부터 연산식(`<피연산자> <연산자> <피연산자>` 형식)을 입력받아야 한다. | High | SWE-TC, SWE-QTC | v1.0 | 2026-04-05 | Approved | 프로젝트 사양 |
+| [SWE-REQ-0007](SWE-1-requirements.md#SWE-REQ-0007) | 소프트웨어는 종료 명령이 입력되기 전까지 연산식 입력→결과 출력 사이클을 반복 수행해야 한다. | High | SWE-TC, SWE-QTC | v1.0 | 2026-04-05 | Approved | 프로젝트 사양 |
+| [SWE-REQ-0008](SWE-1-requirements.md#SWE-REQ-0008) | 사용자가 `q` 또는 `quit`을 입력하면, 소프트웨어는 반복 루프를 종료하고 정상적으로 프로그램을 종료(exit code 0)해야 한다. | High | SWE-TC, SWE-QTC | v1.0 | 2026-04-05 | Approved | 프로젝트 사양 |
 
 ### 2.2 비기능 요구사항 (Non-Functional Requirements)
 
 | ID | 요구사항 내용 | 우선순위 | 검증 방법 | 버전 | 날짜 | 상태 | 출처 |
 |----|------------|--------|---------|------|------|------|------|
-| SWE-REQ-0009 | 소프트웨어는 C++17 표준(-std=c++17)을 준수하여 구현되어야 한다. | Medium | 빌드 플래그 확인 (SPL2-BUILD-0001) | v1.0 | 2026-04-05 | Approved | 프로젝트 사양 |
-| SWE-REQ-0010 | 단위 테스트 수행 시 문장 커버리지(Statement Coverage) 100% 및 분기 커버리지(Branch Coverage) 100%를 달성해야 한다. | High | SWE-4 커버리지 분석 (lcov/gcovr) | v1.0 | 2026-04-05 | Approved | MAN3-PP-0001 §1.3 |
+| <a id="SWE-REQ-0009"></a>[SWE-REQ-0009](SWE-1-requirements.md#SWE-REQ-0009) | 소프트웨어는 C++17 표준(-std=c++17)을 준수하여 구현되어야 한다. | Medium | 빌드 플래그 확인 ([SPL2-BUILD-0001](../SPL-2/SPL2-BUILD-0001-build-environment.md)) | v1.0 | 2026-04-05 | Approved | 프로젝트 사양 |
+| <a id="SWE-REQ-0010"></a>[SWE-REQ-0010](SWE-1-requirements.md#SWE-REQ-0010) | 단위 테스트 수행 시 문장 커버리지(Statement Coverage) 100% 및 분기 커버리지(Branch Coverage) 100%를 달성해야 한다. | High | SWE-4 커버리지 분석 (lcov/gcovr) | v1.0 | 2026-04-05 | Approved | [MAN3-PP-0001](../MAN-3/MAN3-PP-0001-project-plan.md) §1.3 |
 
 ---
 
 ## 3. 요구사항 상세 명세
 
-### SWE-REQ-0001 — 덧셈 연산
+<a id="SWE-REQ-0001"></a>
+### [SWE-REQ-0001](SWE-1-requirements.md#SWE-REQ-0001) — 덧셈 연산
 
 | 항목 | 내용 |
 |------|------|
-| ID | SWE-REQ-0001 |
+| ID | [SWE-REQ-0001](SWE-1-requirements.md#SWE-REQ-0001) |
 | 제목 | 덧셈 연산 |
 | 내용 | 두 개의 실수형 피연산자 `a`, `b`에 대해 `a + b`를 계산하고 결과를 반환·출력한다. |
 | 입력 | `a: double`, `b: double` |
@@ -72,11 +73,12 @@
 | 사후 조건 | 출력 결과 == `a + b` |
 | 예외 | 없음 |
 
-### SWE-REQ-0002 — 뺄셈 연산
+<a id="SWE-REQ-0002"></a>
+### [SWE-REQ-0002](SWE-1-requirements.md#SWE-REQ-0002) — 뺄셈 연산
 
 | 항목 | 내용 |
 |------|------|
-| ID | SWE-REQ-0002 |
+| ID | [SWE-REQ-0002](SWE-1-requirements.md#SWE-REQ-0002) |
 | 제목 | 뺄셈 연산 |
 | 내용 | 두 개의 실수형 피연산자 `a`, `b`에 대해 `a - b`를 계산하고 결과를 반환·출력한다. |
 | 입력 | `a: double`, `b: double` |
@@ -85,11 +87,12 @@
 | 사후 조건 | 출력 결과 == `a - b` |
 | 예외 | 없음 |
 
-### SWE-REQ-0003 — 곱셈 연산
+<a id="SWE-REQ-0003"></a>
+### [SWE-REQ-0003](SWE-1-requirements.md#SWE-REQ-0003) — 곱셈 연산
 
 | 항목 | 내용 |
 |------|------|
-| ID | SWE-REQ-0003 |
+| ID | [SWE-REQ-0003](SWE-1-requirements.md#SWE-REQ-0003) |
 | 제목 | 곱셈 연산 |
 | 내용 | 두 개의 실수형 피연산자 `a`, `b`에 대해 `a * b`를 계산하고 결과를 반환·출력한다. |
 | 입력 | `a: double`, `b: double` |
@@ -98,24 +101,26 @@
 | 사후 조건 | 출력 결과 == `a * b` |
 | 예외 | 없음 |
 
-### SWE-REQ-0004 — 나눗셈 연산
+<a id="SWE-REQ-0004"></a>
+### [SWE-REQ-0004](SWE-1-requirements.md#SWE-REQ-0004) — 나눗셈 연산
 
 | 항목 | 내용 |
 |------|------|
-| ID | SWE-REQ-0004 |
+| ID | [SWE-REQ-0004](SWE-1-requirements.md#SWE-REQ-0004) |
 | 제목 | 나눗셈 연산 |
-| 내용 | 두 개의 실수형 피연산자 `a`, `b`에 대해 `a / b`를 계산하고 결과를 반환·출력한다. `b == 0`인 경우는 SWE-REQ-0005에 따른다. |
+| 내용 | 두 개의 실수형 피연산자 `a`, `b`에 대해 `a / b`를 계산하고 결과를 반환·출력한다. `b == 0`인 경우는 [SWE-REQ-0005](SWE-1-requirements.md#SWE-REQ-0005)에 따른다. |
 | 입력 | `a: double`, `b: double` (b ≠ 0) |
 | 출력 | `double` 타입 나눗셈 결과 |
 | 사전 조건 | `b ≠ 0` |
 | 사후 조건 | 출력 결과 == `a / b` |
-| 예외 | `b == 0` → SWE-REQ-0005 처리 |
+| 예외 | `b == 0` → [SWE-REQ-0005](SWE-1-requirements.md#SWE-REQ-0005) 처리 |
 
-### SWE-REQ-0005 — 0 나누기 예외 처리
+<a id="SWE-REQ-0005"></a>
+### [SWE-REQ-0005](SWE-1-requirements.md#SWE-REQ-0005) — 0 나누기 예외 처리
 
 | 항목 | 내용 |
 |------|------|
-| ID | SWE-REQ-0005 |
+| ID | [SWE-REQ-0005](SWE-1-requirements.md#SWE-REQ-0005) |
 | 제목 | 0 나누기 예외 처리 |
 | 내용 | 나눗셈 수행 시 제수가 0이면 오류 메시지(예: `"Error: Division by zero"`)를 표준 출력에 출력하고 연산을 중단한다. 프로그램은 비정상 종료되지 않으며 반복 루프를 유지한다. |
 | 입력 | `a: double`, `b: double` (b == 0) |
@@ -124,11 +129,12 @@
 | 사후 조건 | 프로그램 정상 동작 유지, exit code 변경 없음 |
 | 예외 | 없음 (이 요구사항 자체가 예외 처리 명세) |
 
-### SWE-REQ-0006 — CLI 사용자 인터페이스
+<a id="SWE-REQ-0006"></a>
+### [SWE-REQ-0006](SWE-1-requirements.md#SWE-REQ-0006) — CLI 사용자 인터페이스
 
 | 항목 | 내용 |
 |------|------|
-| ID | SWE-REQ-0006 |
+| ID | [SWE-REQ-0006](SWE-1-requirements.md#SWE-REQ-0006) |
 | 제목 | CLI 사용자 인터페이스 |
 | 내용 | 표준 입력(stdin)을 통해 `<피연산자A> <연산자> <피연산자B>` 형식의 연산식을 입력받는다. 결과는 표준 출력(stdout)으로 출력한다. |
 | 입력 | 문자열 (stdin) |
@@ -137,24 +143,26 @@
 | 사후 조건 | 입력 파싱 완료, 해당 연산 수행 |
 | 예외 | 잘못된 형식 입력 시 오류 메시지 출력 |
 
-### SWE-REQ-0007 — 반복 입력 루프
+<a id="SWE-REQ-0007"></a>
+### [SWE-REQ-0007](SWE-1-requirements.md#SWE-REQ-0007) — 반복 입력 루프
 
 | 항목 | 내용 |
 |------|------|
-| ID | SWE-REQ-0007 |
+| ID | [SWE-REQ-0007](SWE-1-requirements.md#SWE-REQ-0007) |
 | 제목 | 반복 입력 루프 |
-| 내용 | 프로그램은 종료 명령(SWE-REQ-0008) 수신 전까지 연산식 입력 대기 → 연산 수행 → 결과 출력 사이클을 반복한다. |
+| 내용 | 프로그램은 종료 명령([SWE-REQ-0008](SWE-1-requirements.md#SWE-REQ-0008)) 수신 전까지 연산식 입력 대기 → 연산 수행 → 결과 출력 사이클을 반복한다. |
 | 입력 | 반복적인 사용자 입력 |
 | 출력 | 각 입력에 대응하는 결과 |
 | 사전 조건 | 프로그램 정상 시작 |
 | 사후 조건 | 종료 명령까지 루프 지속 |
 | 예외 | EOF(표준 입력 종료) 시 루프 종료 허용 |
 
-### SWE-REQ-0008 — 종료 명령 처리
+<a id="SWE-REQ-0008"></a>
+### [SWE-REQ-0008](SWE-1-requirements.md#SWE-REQ-0008) — 종료 명령 처리
 
 | 항목 | 내용 |
 |------|------|
-| ID | SWE-REQ-0008 |
+| ID | [SWE-REQ-0008](SWE-1-requirements.md#SWE-REQ-0008) |
 | 제목 | 종료 명령 처리 |
 | 내용 | 사용자가 `q` 또는 `quit`을 입력하면 반복 루프를 즉시 종료하고 프로그램을 정상 종료(exit code 0)한다. |
 | 입력 | `"q"` 또는 `"quit"` 문자열 (대소문자 구분 없음 권장) |
@@ -169,9 +177,9 @@
 
 | 분류 | 요구사항 수 | ID 범위 |
 |------|-----------|--------|
-| 기능 요구사항 | 8 | SWE-REQ-0001 ~ SWE-REQ-0008 |
-| 비기능 요구사항 | 2 | SWE-REQ-0009 ~ SWE-REQ-0010 |
-| **합계** | **10** | SWE-REQ-0001 ~ SWE-REQ-0010 |
+| 기능 요구사항 | 8 | [SWE-REQ-0001](SWE-1-requirements.md#SWE-REQ-0001) ~ [SWE-REQ-0008](SWE-1-requirements.md#SWE-REQ-0008) |
+| 비기능 요구사항 | 2 | [SWE-REQ-0009](SWE-1-requirements.md#SWE-REQ-0009) ~ [SWE-REQ-0010](SWE-1-requirements.md#SWE-REQ-0010) |
+| **합계** | **10** | [SWE-REQ-0001](SWE-1-requirements.md#SWE-REQ-0001) ~ [SWE-REQ-0010](SWE-1-requirements.md#SWE-REQ-0010) |
 | Approved | 10 | 전체 |
 | Draft | 0 | — |
 

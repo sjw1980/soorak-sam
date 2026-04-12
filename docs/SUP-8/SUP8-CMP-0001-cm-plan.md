@@ -2,13 +2,13 @@
 
 | 항목 | 내용 |
 |------|------|
-| 문서 ID | SUP8-CMP-0001 |
+| 문서 ID | [SUP8-CMP-0001](SUP8-CMP-0001-cm-plan.md) |
 | 프로젝트명 | CLI 계산기 소프트웨어 — ASPICE SWE-1~SWE-6 |
 | 버전 | v1.0 / 2026-04-11 |
 | 상태 | Draft |
 | 작성자 | ASPICE SUP-8 전문가 |
 | 승인자 | — |
-| 참조 문서 | MAN3-PP-0001, SUP1-QAR-0001 |
+| 참조 문서 | [MAN3-PP-0001](../MAN-3/MAN3-PP-0001-project-plan.md), [SUP1-QAR-0001](../SUP-1/SUP1-QAR-0001-qa-audit-report.md) |
 
 ---
 

@@ -2,7 +2,7 @@
 
 | 항목        | 내용                                                  |
 | ----------- | ----------------------------------------------------- |
-| 문서 ID     | SUP1-QAR-0001                                         |
+| 문서 ID     | [SUP1-QAR-0001](SUP1-QAR-0001-qa-audit-report.md)                                         |
 | 프로젝트명  | CLI 계산기 소프트웨어 — ASPICE SWE-1~SWE-6            |
 | 버전        | v1.3 / 2026-04-12                                     |
 | 상태        | Draft                                                 |
@@ -18,7 +18,7 @@
 | 항목               | 내용                                                                                                                                                                                      |
 | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 검토 대상 프로세스 | MAN-3, SPL-2, SWE-1, SWE-2, SWE-3                                                                                                                                                         |
-| 검토 대상 산출물   | MAN3-PP-0001, SPL2-BUILD-0001, SPL2-FEAT-0001, SPL2-REL-0001, SPL2-TRACE-0001, SWE1-REQ-SPEC-0001, SWE1-TRACE-0001, SWE2-ARCH-0001, SWE2-TRACE-0001, SWE3-UNIT-SPEC-0001, SWE3-TRACE-0001 |
+| 검토 대상 산출물   | [MAN3-PP-0001](../MAN-3/MAN3-PP-0001-project-plan.md), [SPL2-BUILD-0001](../SPL-2/SPL2-BUILD-0001-build-environment.md), [SPL2-FEAT-0001](../SPL-2/SPL2-FEAT-0001-feature-model.md), [SPL2-REL-0001](../SPL-2/SPL2-REL-0001-release-note.md), [SPL2-TRACE-0001](../SPL-2/SPL2-TRACE-0001-traceability-review.md), [SWE1-REQ-SPEC-0001](../SWE-1/SWE-1-requirements.md), [SWE1-TRACE-0001](../SWE-1/SWE1-TRACE-0001-traceability-review.md), [SWE2-ARCH-0001](../SWE-2/SWE2-ARCH-0001-software-architecture.md), [SWE2-TRACE-0001](../SWE-2/SWE2-TRACE-0001-traceability-review.md), [SWE3-UNIT-SPEC-0001](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md), [SWE3-TRACE-0001](../SWE-3/SWE3-TRACE-0001-traceability-review.md) |
 | 검토 기준          | ASPICE PAM 3.1 SWE/SPL/MAN-3 프로세스 기준, 공통 ID 체계 및 버전 형식 규칙                                                                                                                |
 | 검토 방법          | 문서 검토 (Document Review), 교차 검증 (Cross-Reference Check)                                                                                                                            |
 | QA 담당자          | ASPICE SUP-1 전문가                                                                                                                                                                       |
@@ -30,27 +30,27 @@
 
 | 산출물 ID           | 파일 경로                                          | 버전              | 상태     | 승인자 | 비고                   |
 | ------------------- | -------------------------------------------------- | ----------------- | -------- | ------ | ---------------------- |
-| MAN3-PP-0001        | docs/MAN-3/MAN3-PP-0001-project-plan.md            | v1.0 / 2026-04-05 | Draft    | —      | 프로젝트 관리자 미지정 |
-| SPL2-BUILD-0001     | docs/SPL-2/SPL2-BUILD-0001-build-environment.md    | v1.0 / 2026-04-05 | Draft    | —      |                        |
-| SPL2-FEAT-0001      | docs/SPL-2/SPL2-FEAT-0001-feature-model.md         | v1.0 / 2026-04-05 | Draft    | —      |                        |
-| SPL2-REL-0001       | docs/SPL-2/SPL2-REL-0001-release-note.md           | v1.0 / 2026-04-05 | Draft    | —      |                        |
-| SPL2-TRACE-0001     | docs/SPL-2/SPL2-TRACE-0001-traceability-review.md  | v1.0 / 2026-04-05 | Draft    | —      |                        |
-| SWE1-REQ-SPEC-0001  | docs/SWE-1/SWE-1-requirements.md                   | v1.0 / 2026-04-05 | Approved | —      | 파일명 ID 체계 불일치  |
-| SWE1-TRACE-0001     | docs/SWE-1/SWE1-TRACE-0001-traceability-review.md  | v1.0 / 2026-04-05 | Approved | —      |                        |
-| SWE2-ARCH-0001      | docs/SWE-2/SWE2-ARCH-0001-software-architecture.md | v1.0 / 2026-04-11 | Draft    | —      |                        |
-| SWE2-TRACE-0001     | docs/SWE-2/SWE2-TRACE-0001-traceability-review.md  | v1.0 / 2026-04-11 | Draft    | —      |                        |
-| SWE3-UNIT-SPEC-0001 | docs/SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md      | v1.0 / 2026-04-11 | Draft    | —      |                        |
-| SWE3-TRACE-0001     | docs/SWE-3/SWE3-TRACE-0001-traceability-review.md  | v1.0 / 2026-04-11 | Draft    | —      |                        |
+| [MAN3-PP-0001](../MAN-3/MAN3-PP-0001-project-plan.md)        | docs/MAN-3/[MAN3-PP-0001](../MAN-3/MAN3-PP-0001-project-plan.md)-project-plan.md            | v1.0 / 2026-04-05 | Draft    | —      | 프로젝트 관리자 미지정 |
+| [SPL2-BUILD-0001](../SPL-2/SPL2-BUILD-0001-build-environment.md)     | docs/SPL-2/[SPL2-BUILD-0001](../SPL-2/SPL2-BUILD-0001-build-environment.md)-build-environment.md    | v1.0 / 2026-04-05 | Draft    | —      |                        |
+| [SPL2-FEAT-0001](../SPL-2/SPL2-FEAT-0001-feature-model.md)      | docs/SPL-2/[SPL2-FEAT-0001](../SPL-2/SPL2-FEAT-0001-feature-model.md)-feature-model.md         | v1.0 / 2026-04-05 | Draft    | —      |                        |
+| [SPL2-REL-0001](../SPL-2/SPL2-REL-0001-release-note.md)       | docs/SPL-2/[SPL2-REL-0001](../SPL-2/SPL2-REL-0001-release-note.md)-release-note.md           | v1.0 / 2026-04-05 | Draft    | —      |                        |
+| [SPL2-TRACE-0001](../SPL-2/SPL2-TRACE-0001-traceability-review.md)     | docs/SPL-2/[SPL2-TRACE-0001](../SPL-2/SPL2-TRACE-0001-traceability-review.md)-traceability-review.md  | v1.0 / 2026-04-05 | Draft    | —      |                        |
+| [SWE1-REQ-SPEC-0001](../SWE-1/SWE-1-requirements.md)  | docs/SWE-1/SWE-1-requirements.md                   | v1.0 / 2026-04-05 | Approved | —      | 파일명 ID 체계 불일치  |
+| [SWE1-TRACE-0001](../SWE-1/SWE1-TRACE-0001-traceability-review.md)     | docs/SWE-1/[SWE1-TRACE-0001](../SWE-1/SWE1-TRACE-0001-traceability-review.md)-traceability-review.md  | v1.0 / 2026-04-05 | Approved | —      |                        |
+| [SWE2-ARCH-0001](../SWE-2/SWE2-ARCH-0001-software-architecture.md)      | docs/SWE-2/[SWE2-ARCH-0001](../SWE-2/SWE2-ARCH-0001-software-architecture.md)-software-architecture.md | v1.0 / 2026-04-11 | Draft    | —      |                        |
+| [SWE2-TRACE-0001](../SWE-2/SWE2-TRACE-0001-traceability-review.md)     | docs/SWE-2/[SWE2-TRACE-0001](../SWE-2/SWE2-TRACE-0001-traceability-review.md)-traceability-review.md  | v1.0 / 2026-04-11 | Draft    | —      |                        |
+| [SWE3-UNIT-SPEC-0001](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md) | docs/SWE-3/[SWE3-UNIT-SPEC-0001](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md)-unit-design.md      | v1.0 / 2026-04-11 | Draft    | —      |                        |
+| [SWE3-TRACE-0001](../SWE-3/SWE3-TRACE-0001-traceability-review.md)     | docs/SWE-3/[SWE3-TRACE-0001](../SWE-3/SWE3-TRACE-0001-traceability-review.md)-traceability-review.md  | v1.0 / 2026-04-11 | Draft    | —      |                        |
 
 **미존재 산출물 (docs/ 내 해당 디렉터리 없음)**:
 
 | 프로세스 | 기대 산출물                            | 참조 출처              | 미존재 여부                                                              |
 | -------- | -------------------------------------- | ---------------------- | ------------------------------------------------------------------------ |
-| SWE-4    | 단위 TC 명세, 테스트 결과              | MAN3-WBS-0005~0006     | ✅ 작성 완료 (SWE4-TC-SPEC-0001)                                         |
-| SWE-5    | 통합 TC 명세, 테스트 결과              | MAN3-WBS-0007~0008     | ✅ 작성 완료 (SWE5-ITC-SPEC-0001)                                        |
-| SWE-6    | 적격성 TC 명세, 테스트 결과            | MAN3-WBS-0009~0010     | ✅ 작성 완료 (SWE6-QTC-SPEC-0001)                                        |
-| SUP-8    | 형상 항목 목록, 베이스라인 정의        | SPL2-REL-0001 §1 참조  | ✅ 작성 완료 (SUP8-CMP-0001, SUP8-CI-LIST-0001)                          |
-| src/     | Calculator.cpp/h, InputParser.cpp/h 등 | SWE3-UNIT-SPEC-0001 §2 | ✅ 작성 완료 (Calculator, InputParser, AppController, types.h, main.cpp) |
+| SWE-4    | 단위 TC 명세, 테스트 결과              | [MAN3-WBS-0005](../MAN-3/MAN3-PP-0001-project-plan.md#MAN3-WBS-0005)~0006     | ✅ 작성 완료 ([SWE4-TC-SPEC-0001](../SWE-4/SWE4-TC-SPEC-0001-unit-test.md))                                         |
+| SWE-5    | 통합 TC 명세, 테스트 결과              | [MAN3-WBS-0007](../MAN-3/MAN3-PP-0001-project-plan.md#MAN3-WBS-0007)~0008     | ✅ 작성 완료 ([SWE5-ITC-SPEC-0001](../SWE-5/SWE5-ITC-SPEC-0001-integration-test.md))                                        |
+| SWE-6    | 적격성 TC 명세, 테스트 결과            | [MAN3-WBS-0009](../MAN-3/MAN3-PP-0001-project-plan.md#MAN3-WBS-0009)~0010     | ✅ 작성 완료 ([SWE6-QTC-SPEC-0001](../SWE-6/SWE6-QTC-SPEC-0001-qualification-test.md))                                        |
+| SUP-8    | 형상 항목 목록, 베이스라인 정의        | [SPL2-REL-0001](../SPL-2/SPL2-REL-0001-release-note.md) §1 참조  | ✅ 작성 완료 ([SUP8-CMP-0001](../SUP-8/SUP8-CMP-0001-cm-plan.md), [SUP8-CI-LIST-0001](../SUP-8/SUP8-CI-LIST-0001-ci-baseline.md))                          |
+| src/     | Calculator.cpp/h, InputParser.cpp/h 등 | [SWE3-UNIT-SPEC-0001](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md) §2 | ✅ 작성 완료 (Calculator, InputParser, AppController, types.h, main.cpp) |
 
 ---
 
@@ -59,12 +59,12 @@
 | ID           | 대상 프로세스 / 산출물            | 위반 기준                                                                                                                                   | 객관적 증거                                                                                                                                                                          | 심각도 | 상태         | 담당자                    | 버전 | 날짜       | SUP-9 연결 PR    |
 | ------------ | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------ | ------------ | ------------------------- | ---- | ---------- | ---------------- |
 | SUP1-NC-0001 | 전체 산출물 (11개)                | ASPICE GP 2.1.4 — 산출물은 지정된 승인자에 의해 검토·승인되어야 함                                                                          | 전체 산출물 헤더 "승인자: —" 기재 확인                                                                                                                                               | High   | Open         | 각 산출물 담당 에이전트   | v1.0 | 2026-04-11 | **SUP9-PR-0003** |
-| SUP1-NC-0002 | SWE-4, SWE-5, SWE-6 프로세스      | ASPICE SWE-4 BP1~BP4, SWE-5 BP1~BP5, SWE-6 BP1~BP5 — 단위·통합·적격성 검증 산출물 작성 필수                                                 | docs/ 하위 SWE-4/, SWE-5/, SWE-6/ 디렉터리 및 산출물 부재 확인. MAN3-WBS-0005~0010 전 항목 Open 상태                                                                                 | High   | **Resolved** | ASPICE SWE-4/5/6 전문가   | v1.1 | 2026-04-12 | **SUP9-PR-0002** |
-| SUP1-NC-0003 | MAN3-WBS-0004 / src/ 소스코드     | ASPICE SWE-3 BP5 — 소프트웨어 단위 구현 산출물은 설계 명세와 일치해야 함. WBS Closed 선언 시 해당 산출물이 존재해야 함                      | MAN3-PP-0001 WBS-0004 상태 "Closed" 이나 src/에 `Calculator.cpp/h`, `InputParser.cpp/h`, `AppController.cpp/h`, `types.h` 등 실제 구현 파일 미존재. `src/main.c` 만 임시 파일로 존재 | High   | **Resolved** | ASPICE SWE-3 전문가       | v1.1 | 2026-04-12 | **SUP9-PR-0001** |
-| SUP1-NC-0004 | SWE1-TRACE-0001 vs SWE2-ARCH-0001 | ASPICE SUP-1 BP3 — 산출물 간 상태 정보는 일관성을 유지해야 함                                                                               | SWE1-TRACE-0001 §2.1에서 SWE-COMP-0001~0002 상태를 "Approved"로 기재하였으나, SWE2-ARCH-0001 §2.1에서 동일 컴포넌트의 상태는 "Draft"로 기재됨 — 불일치                               | Medium | Open         | ASPICE SWE-1/SWE-2 전문가 | v1.0 | 2026-04-11 | **SUP9-PR-0005** |
-| SUP1-NC-0005 | SUP-8 형상 관리                   | ASPICE SUP-8 BP1 — 형상 항목(CI)이 식별·등록되어야 함. SPL2-REL-0001이 SUP8-BL-0001, SUP8-CI-XXXX를 참조하는 경우 해당 산출물이 존재해야 함 | docs/에 SUP-8 디렉터리 및 형상 관리 계획·형상 항목 목록·베이스라인 정의 산출물 전무 확인. SPL2-REL-0001 §1 및 SPL2-TRACE-0001 §1.3에서 SUP8-BL-0001, SUP8-CI-XXXX 참조               | Medium | **Resolved** | ASPICE SUP-8 전문가       | v1.1 | 2026-04-11 | —                |
-| SUP1-NC-0006 | SWE1-REQ-SPEC-0001 파일명         | 공통 ID 체계 규칙 — 파일명은 `<문서ID>-<설명>.md` 형식을 따라야 함 (예: SWE1-REQ-SPEC-0001-requirements.md)                                 | 파일명 `SWE-1-requirements.md` — 문서 내부 ID `SWE1-REQ-SPEC-0001`과 불일치. 타 산출물(SWE2-ARCH-0001, SWE3-UNIT-SPEC-0001 등)은 파일명이 문서 ID와 일치함                           | Low    | Open         | ASPICE SWE-1 전문가       | v1.0 | 2026-04-11 | **SUP9-PR-0006** |
-| SUP1-NC-0007 | MAN3-PP-0001                      | ASPICE MAN-3 BP1 — 프로젝트 계획서에 프로젝트 관리자(담당자)가 지정되어야 함                                                                | MAN3-PP-0001 헤더 "프로젝트 관리자: —" 기재 확인                                                                                                                                     | Medium | Open         | ASPICE MAN-3 전문가       | v1.0 | 2026-04-11 | **SUP9-PR-0004** |
+| SUP1-NC-0002 | SWE-4, SWE-5, SWE-6 프로세스      | ASPICE SWE-4 BP1~BP4, SWE-5 BP1~BP5, SWE-6 BP1~BP5 — 단위·통합·적격성 검증 산출물 작성 필수                                                 | docs/ 하위 SWE-4/, SWE-5/, SWE-6/ 디렉터리 및 산출물 부재 확인. [MAN3-WBS-0005](../MAN-3/MAN3-PP-0001-project-plan.md#MAN3-WBS-0005)~0010 전 항목 Open 상태                                                                                 | High   | **Resolved** | ASPICE SWE-4/5/6 전문가   | v1.1 | 2026-04-12 | **SUP9-PR-0002** |
+| SUP1-NC-0003 | [MAN3-WBS-0004](../MAN-3/MAN3-PP-0001-project-plan.md#MAN3-WBS-0004) / src/ 소스코드     | ASPICE SWE-3 BP5 — 소프트웨어 단위 구현 산출물은 설계 명세와 일치해야 함. WBS Closed 선언 시 해당 산출물이 존재해야 함                      | [MAN3-PP-0001](../MAN-3/MAN3-PP-0001-project-plan.md) WBS-0004 상태 "Closed" 이나 src/에 `Calculator.cpp/h`, `InputParser.cpp/h`, `AppController.cpp/h`, `types.h` 등 실제 구현 파일 미존재. `src/main.c` 만 임시 파일로 존재 | High   | **Resolved** | ASPICE SWE-3 전문가       | v1.1 | 2026-04-12 | **SUP9-PR-0001** |
+| SUP1-NC-0004 | [SWE1-TRACE-0001](../SWE-1/SWE1-TRACE-0001-traceability-review.md) vs [SWE2-ARCH-0001](../SWE-2/SWE2-ARCH-0001-software-architecture.md) | ASPICE SUP-1 BP3 — 산출물 간 상태 정보는 일관성을 유지해야 함                                                                               | [SWE1-TRACE-0001](../SWE-1/SWE1-TRACE-0001-traceability-review.md) §2.1에서 [SWE-COMP-0001](../SWE-2/SWE2-ARCH-0001-software-architecture.md#SWE-COMP-0001)~0002 상태를 "Approved"로 기재하였으나, [SWE2-ARCH-0001](../SWE-2/SWE2-ARCH-0001-software-architecture.md) §2.1에서 동일 컴포넌트의 상태는 "Draft"로 기재됨 — 불일치                               | Medium | Open         | ASPICE SWE-1/SWE-2 전문가 | v1.0 | 2026-04-11 | **SUP9-PR-0005** |
+| SUP1-NC-0005 | SUP-8 형상 관리                   | ASPICE SUP-8 BP1 — 형상 항목(CI)이 식별·등록되어야 함. [SPL2-REL-0001](../SPL-2/SPL2-REL-0001-release-note.md)이 SUP8-BL-0001, SUP8-CI-XXXX를 참조하는 경우 해당 산출물이 존재해야 함 | docs/에 SUP-8 디렉터리 및 형상 관리 계획·형상 항목 목록·베이스라인 정의 산출물 전무 확인. [SPL2-REL-0001](../SPL-2/SPL2-REL-0001-release-note.md) §1 및 [SPL2-TRACE-0001](../SPL-2/SPL2-TRACE-0001-traceability-review.md) §1.3에서 SUP8-BL-0001, SUP8-CI-XXXX 참조               | Medium | **Resolved** | ASPICE SUP-8 전문가       | v1.1 | 2026-04-11 | —                |
+| SUP1-NC-0006 | [SWE1-REQ-SPEC-0001](../SWE-1/SWE-1-requirements.md) 파일명         | 공통 ID 체계 규칙 — 파일명은 `<문서ID>-<설명>.md` 형식을 따라야 함 (예: [SWE1-REQ-SPEC-0001](../SWE-1/SWE-1-requirements.md)-requirements.md)                                 | 파일명 `SWE-1-requirements.md` — 문서 내부 ID `SWE1-REQ-SPEC-0001`과 불일치. 타 산출물([SWE2-ARCH-0001](../SWE-2/SWE2-ARCH-0001-software-architecture.md), [SWE3-UNIT-SPEC-0001](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md) 등)은 파일명이 문서 ID와 일치함                           | Low    | Open         | ASPICE SWE-1 전문가       | v1.0 | 2026-04-11 | **SUP9-PR-0006** |
+| SUP1-NC-0007 | [MAN3-PP-0001](../MAN-3/MAN3-PP-0001-project-plan.md)                      | ASPICE MAN-3 BP1 — 프로젝트 계획서에 프로젝트 관리자(담당자)가 지정되어야 함                                                                | [MAN3-PP-0001](../MAN-3/MAN3-PP-0001-project-plan.md) 헤더 "프로젝트 관리자: —" 기재 확인                                                                                                                                     | Medium | Open         | ASPICE MAN-3 전문가       | v1.0 | 2026-04-11 | **SUP9-PR-0004** |
 
 ---
 
@@ -73,12 +73,12 @@
 | NC ID        | 시정 조치 내용                                                                                                                                                                                                                        | 담당자                    | 기한                      | 완료일     | 재검토 결과                                                                                            | 상태         |
 | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- | ------------------------- | ---------- | ------------------------------------------------------------------------------------------------------ | ------------ |
 | SUP1-NC-0001 | 전체 산출물 승인자 지정 후 헤더 갱신. 승인 절차(검토→승인→상태 Approved 전환) 수행                                                                                                                                                    | 각 프로세스 담당 에이전트 | SWE-4~6 완료 전           | —          | —                                                                                                      | Open         |
-| SUP1-NC-0002 | SWE-4 → SWE-5 → SWE-6 순서로 산출물 작성 및 테스트 수행. MAN3-WBS-0005~0010 일정 확정 후 착수                                                                                                                                         | ASPICE SWE-4/5/6 전문가   | —                         | 2026-04-12 | SWE4-TC-SPEC-0001, SWE5-ITC-SPEC-0001, SWE6-QTC-SPEC-0001 작성 완료 사확. 23/23, 13/13, 17/17 All Pass | **Resolved** |
-| SUP1-NC-0003 | SWE-3 상세 설계(SWE3-UNIT-SPEC-0001) 기준으로 `Calculator.cpp/h`, `InputParser.cpp/h`, `AppController.cpp/h`, `types.h` 구현 파일 작성 및 `src/calc_lib/`, `src/cli/` 디렉터리 구조 구성. MAN3-WBS-0004 실제 완료 확인 후 상태 재검토 | ASPICE SWE-3 전문가       | SWE-4 착수 전             | 2026-04-12 | src/에 Calculator.cpp/h, InputParser.cpp/h, AppController.cpp/h, types.h, main.cpp 전체 존재 확인      | **Resolved** |
-| SUP1-NC-0004 | SWE1-TRACE-0001 §2.1의 SWE-COMP-0001~0002 상태를 "Draft"로 수정하여 SWE2-ARCH-0001과 일치시키거나, SWE2-ARCH-0001을 먼저 Approved 처리 후 SWE1-TRACE를 갱신                                                                           | ASPICE SWE-2 전문가       | SWE-2 산출물 승인 시      | —          | —                                                                                                      | Open         |
-| SUP1-NC-0005 | SUP-8 전문가 에이전트 수행 — 형상 항목(CI) 식별, 형상 관리 계획 수립, 베이스라인 정의                                                                                                                                                 | ASPICE SUP-8 전문가       | SWE-6 완료 전             | 2026-04-11 | SUP8-CMP-0001, SUP8-CI-LIST-0001 작성 완료 — CI 31개 식별, BL-0001 정의, CR 3건 등록 확인              | **Resolved** |
+| SUP1-NC-0002 | SWE-4 → SWE-5 → SWE-6 순서로 산출물 작성 및 테스트 수행. [MAN3-WBS-0005](../MAN-3/MAN3-PP-0001-project-plan.md#MAN3-WBS-0005)~0010 일정 확정 후 착수                                                                                                                                         | ASPICE SWE-4/5/6 전문가   | —                         | 2026-04-12 | [SWE4-TC-SPEC-0001](../SWE-4/SWE4-TC-SPEC-0001-unit-test.md), [SWE5-ITC-SPEC-0001](../SWE-5/SWE5-ITC-SPEC-0001-integration-test.md), [SWE6-QTC-SPEC-0001](../SWE-6/SWE6-QTC-SPEC-0001-qualification-test.md) 작성 완료 사확. 23/23, 13/13, 17/17 All Pass | **Resolved** |
+| SUP1-NC-0003 | SWE-3 상세 설계([SWE3-UNIT-SPEC-0001](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md)) 기준으로 `Calculator.cpp/h`, `InputParser.cpp/h`, `AppController.cpp/h`, `types.h` 구현 파일 작성 및 `src/calc_lib/`, `src/cli/` 디렉터리 구조 구성. [MAN3-WBS-0004](../MAN-3/MAN3-PP-0001-project-plan.md#MAN3-WBS-0004) 실제 완료 확인 후 상태 재검토 | ASPICE SWE-3 전문가       | SWE-4 착수 전             | 2026-04-12 | src/에 Calculator.cpp/h, InputParser.cpp/h, AppController.cpp/h, types.h, main.cpp 전체 존재 확인      | **Resolved** |
+| SUP1-NC-0004 | [SWE1-TRACE-0001](../SWE-1/SWE1-TRACE-0001-traceability-review.md) §2.1의 [SWE-COMP-0001](../SWE-2/SWE2-ARCH-0001-software-architecture.md#SWE-COMP-0001)~0002 상태를 "Draft"로 수정하여 [SWE2-ARCH-0001](../SWE-2/SWE2-ARCH-0001-software-architecture.md)과 일치시키거나, [SWE2-ARCH-0001](../SWE-2/SWE2-ARCH-0001-software-architecture.md)을 먼저 Approved 처리 후 SWE1-TRACE를 갱신                                                                           | ASPICE SWE-2 전문가       | SWE-2 산출물 승인 시      | —          | —                                                                                                      | Open         |
+| SUP1-NC-0005 | SUP-8 전문가 에이전트 수행 — 형상 항목(CI) 식별, 형상 관리 계획 수립, 베이스라인 정의                                                                                                                                                 | ASPICE SUP-8 전문가       | SWE-6 완료 전             | 2026-04-11 | [SUP8-CMP-0001](../SUP-8/SUP8-CMP-0001-cm-plan.md), [SUP8-CI-LIST-0001](../SUP-8/SUP8-CI-LIST-0001-ci-baseline.md) 작성 완료 — CI 31개 식별, BL-0001 정의, CR 3건 등록 확인              | **Resolved** |
 | SUP1-NC-0006 | `docs/SWE-1/SWE-1-requirements.md` 파일명을 `SWE1-REQ-SPEC-0001-requirements.md`로 변경하고, 참조하는 모든 산출물의 링크/참조 경로 갱신                                                                                               | ASPICE SWE-1 전문가       | 다음 SWE-1 산출물 갱신 시 | —          | —                                                                                                      | Open         |
-| SUP1-NC-0007 | MAN3-PP-0001 §1 프로젝트 관리자 지정 및 헤더 갱신                                                                                                                                                                                     | ASPICE MAN-3 전문가       | 즉시                      | —          | —                                                                                                      | Open         |
+| SUP1-NC-0007 | [MAN3-PP-0001](../MAN-3/MAN3-PP-0001-project-plan.md) §1 프로젝트 관리자 지정 및 헤더 갱신                                                                                                                                                                                     | ASPICE MAN-3 전문가       | 즉시                      | —          | —                                                                                                      | Open         |
 
 ---
 
@@ -88,11 +88,11 @@
 
 | 검토 항목                  | 결과         | 증거 / 비고                     |
 | -------------------------- | ------------ | ------------------------------- |
-| 프로젝트 목표 및 범위 정의 | ☑ 적합       | MAN3-PP-0001 §1.1~1.2 정의 완료 |
-| WBS 작성 및 ID 부여        | ☑ 적합       | MAN3-WBS-0001~0010 정의         |
-| 마일스톤 정의              | ☑ 적합       | MAN3-MS-0001~0004 정의          |
-| 리스크 목록 작성           | ☑ 적합       | MAN3-RSK-0001~0004 정의         |
-| 이슈 목록 작성             | ☑ 적합       | MAN3-ISS-0001 정의              |
+| 프로젝트 목표 및 범위 정의 | ☑ 적합       | [MAN3-PP-0001](../MAN-3/MAN3-PP-0001-project-plan.md) §1.1~1.2 정의 완료 |
+| WBS 작성 및 ID 부여        | ☑ 적합       | [MAN3-WBS-0001](../MAN-3/MAN3-PP-0001-project-plan.md#MAN3-WBS-0001)~0010 정의         |
+| 마일스톤 정의              | ☑ 적합       | [MAN3-MS-0001](../MAN-3/MAN3-PP-0001-project-plan.md#MAN3-MS-0001)~0004 정의          |
+| 리스크 목록 작성           | ☑ 적합       | [MAN3-RSK-0001](../MAN-3/MAN3-PP-0001-project-plan.md#MAN3-RSK-0001)~0004 정의         |
+| 이슈 목록 작성             | ☑ 적합       | [MAN3-ISS-0001](../MAN-3/MAN3-PP-0001-project-plan.md#MAN3-ISS-0001) 정의              |
 | 프로젝트 관리자 지정       | ☒ **부적합** | → **SUP1-NC-0007**              |
 | 승인자 지정                | ☒ **부적합** | → **SUP1-NC-0001**              |
 | 진행 현황 모니터링 기록    | ☑ 적합       | §7 계획 대비 실적 표 작성       |
@@ -101,11 +101,11 @@
 
 | 검토 항목                                    | 결과         | 증거 / 비고                                 |
 | -------------------------------------------- | ------------ | ------------------------------------------- |
-| 요구사항 식별 및 ID 부여                     | ☑ 적합       | SWE-REQ-0001~0010 정의                      |
+| 요구사항 식별 및 ID 부여                     | ☑ 적합       | [SWE-REQ-0001](../SWE-1/SWE-1-requirements.md#SWE-REQ-0001)~0010 정의                      |
 | 기능/비기능 분류                             | ☑ 적합       | §2.1, §2.2 분류 완료                        |
 | 검증 방법 명시                               | ☑ 적합       | 각 요구사항에 SWE-TC/SWE-QTC 검증 방법 명시 |
 | 요구사항 상세 명세 (입/출력, 사전/사후 조건) | ☑ 적합       | §3 상세 명세 작성                           |
-| 상위 목표 추적성 매핑                        | ☑ 적합       | SWE1-TRACE-0001 §1 완료                     |
+| 상위 목표 추적성 매핑                        | ☑ 적합       | [SWE1-TRACE-0001](../SWE-1/SWE1-TRACE-0001-traceability-review.md) §1 완료                     |
 | SWE-4/SWE-6 TC 추적성 매핑                   | ☑ (예정)     | TC 미작성으로 Open 상태 — 정상              |
 | 파일명 ID 체계 준수                          | ☒ **부적합** | → **SUP1-NC-0006**                          |
 | 승인자 지정                                  | ☒ **부적합** | → **SUP1-NC-0001**                          |
@@ -114,12 +114,12 @@
 
 | 검토 항목                     | 결과         | 증거 / 비고                       |
 | ----------------------------- | ------------ | --------------------------------- |
-| 컴포넌트 분해 및 ID 부여      | ☑ 적합       | SWE-COMP-0001~0003 정의           |
-| 컴포넌트 책임 명세            | ☑ 적합       | SWE2-ARCH-0001 §2.2 상세 설명     |
-| 인터페이스 정의 및 ID 부여    | ☑ 적합       | SWE-IF-0001~0003 정의             |
-| 정적 구조 다이어그램          | ☑ 적합       | SWE2-ARCH-0001 §4.1               |
-| 동적 행위 다이어그램 (시퀀스) | ☑ 적합       | SWE2-ARCH-0001 §5.1~5.3           |
-| SWE-1 → SWE-2 추적성          | ☑ 적합       | SWE2-TRACE-0001 §1.1 (10/10 커버) |
+| 컴포넌트 분해 및 ID 부여      | ☑ 적합       | [SWE-COMP-0001](../SWE-2/SWE2-ARCH-0001-software-architecture.md#SWE-COMP-0001)~0003 정의           |
+| 컴포넌트 책임 명세            | ☑ 적합       | [SWE2-ARCH-0001](../SWE-2/SWE2-ARCH-0001-software-architecture.md) §2.2 상세 설명     |
+| 인터페이스 정의 및 ID 부여    | ☑ 적합       | [SWE-IF-0001](../SWE-2/SWE2-ARCH-0001-software-architecture.md#SWE-IF-0001)~0003 정의             |
+| 정적 구조 다이어그램          | ☑ 적합       | [SWE2-ARCH-0001](../SWE-2/SWE2-ARCH-0001-software-architecture.md) §4.1               |
+| 동적 행위 다이어그램 (시퀀스) | ☑ 적합       | [SWE2-ARCH-0001](../SWE-2/SWE2-ARCH-0001-software-architecture.md) §5.1~5.3           |
+| SWE-1 → SWE-2 추적성          | ☑ 적합       | [SWE2-TRACE-0001](../SWE-2/SWE2-TRACE-0001-traceability-review.md) §1.1 (10/10 커버) |
 | 컴포넌트 상태 일관성          | ☒ **부적합** | → **SUP1-NC-0004**                |
 | 승인자 지정                   | ☒ **부적합** | → **SUP1-NC-0001**                |
 
@@ -127,11 +127,11 @@
 
 | 검토 항목                                       | 결과         | 증거 / 비고                                                                                                            |
 | ----------------------------------------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------- |
-| 단위 식별 및 ID 부여                            | ☑ 적합       | SWE-UNIT-0001~0004 정의                                                                                                |
-| 컴포넌트 ↔ 단위 매핑                            | ☑ 적합       | SWE3-TRACE-0001 §1.1                                                                                                   |
-| 함수 인터페이스 명세 (시그니처, 사전/사후 조건) | ☑ 적합       | SWE3-UNIT-SPEC-0001 §4 상세 명세                                                                                       |
+| 단위 식별 및 ID 부여                            | ☑ 적합       | [SWE-UNIT-0001](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0001)~0004 정의                                                                                                |
+| 컴포넌트 ↔ 단위 매핑                            | ☑ 적합       | [SWE3-TRACE-0001](../SWE-3/SWE3-TRACE-0001-traceability-review.md) §1.1                                                                                                   |
+| 함수 인터페이스 명세 (시그니처, 사전/사후 조건) | ☑ 적합       | [SWE3-UNIT-SPEC-0001](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md) §4 상세 명세                                                                                       |
 | 내부 로직 알고리즘 명세                         | ☑ 적합       | pseudo-code 및 판정 표 작성                                                                                            |
-| SWE-2 → SWE-3 추적성                            | ☑ 적합       | SWE3-TRACE-0001 §2 (10/10 커버)                                                                                        |
+| SWE-2 → SWE-3 추적성                            | ☑ 적합       | [SWE3-TRACE-0001](../SWE-3/SWE3-TRACE-0001-traceability-review.md) §2 (10/10 커버)                                                                                        |
 | 구현 소스 파일 존재 여부 (WBS-0004 Closed)      | ☑ **적합**   | src/에 Calculator.cpp/h, InputParser.cpp/h, AppController.cpp/h, types.h, main.cpp 전체 존재 확인 (→ NC-0003 Resolved) |
 | 승인자 지정                                     | ☒ **부적합** | → **SUP1-NC-0001**                                                                                                     |
 
@@ -139,15 +139,15 @@
 
 | 검토 항목                           | 결과         | 증거 / 비고                                                   |
 | ----------------------------------- | ------------ | ------------------------------------------------------------- |
-| 피처 모델 정의 및 ID 부여           | ☑ 적합       | SPL2-FEAT-0001~0012 정의                                      |
+| 피처 모델 정의 및 ID 부여           | ☑ 적합       | [SPL2-FEAT-0001](../SPL-2/SPL2-FEAT-0001-feature-model.md)~0012 정의                                      |
 | 공통/가변 피처 분류                 | ☑ 적합       | 공통 8개, 가변 4개 명확히 분류                                |
-| 빌드 환경 정의 (툴체인, OS, 플래그) | ☑ 적합       | SPL2-BUILD-0001 §1 완료                                       |
-| 빌드 활동 순서 및 산출물 명세       | ☑ 적합       | SPL2-BUILD-0001 §2 BUILD-0001~0010                            |
+| 빌드 환경 정의 (툴체인, OS, 플래그) | ☑ 적합       | [SPL2-BUILD-0001](../SPL-2/SPL2-BUILD-0001-build-environment.md) §1 완료                                       |
+| 빌드 활동 순서 및 산출물 명세       | ☑ 적합       | [SPL2-BUILD-0001](../SPL-2/SPL2-BUILD-0001-build-environment.md) §2 BUILD-0001~0010                            |
 | 실제 CMakeLists.txt 존재            | ☑ 적합       | 루트 CMakeLists.txt 생성 및 빌드 검증 완료                    |
-| 출시 노트 구조 적합성               | ☑ 적합       | SPL2-REL-0001 §1~6 구조 완비                                  |
+| 출시 노트 구조 적합성               | ☑ 적합       | [SPL2-REL-0001](../SPL-2/SPL2-REL-0001-release-note.md) §1~6 구조 완비                                  |
 | 출시 노트 CR/PR/DEF 참조            | ☑ (예정)     | SWE-4~6 완료 후 갱신 예정 — 정상                              |
-| SWE-REQ ↔ SPL2-FEAT 추적성          | ☑ 적합       | SPL2-TRACE-0001 §1.1 (8/8 커버)                               |
-| SUP-8 형상 관리 산출물 존재         | ☑ **적합**   | SUP8-CMP-0001, SUP8-CI-LIST-0001 작성 완료 (NC-0005 Resolved) |
+| SWE-REQ ↔ SPL2-FEAT 추적성          | ☑ 적합       | [SPL2-TRACE-0001](../SPL-2/SPL2-TRACE-0001-traceability-review.md) §1.1 (8/8 커버)                               |
+| SUP-8 형상 관리 산출물 존재         | ☑ **적합**   | [SUP8-CMP-0001](../SUP-8/SUP8-CMP-0001-cm-plan.md), [SUP8-CI-LIST-0001](../SUP-8/SUP8-CI-LIST-0001-ci-baseline.md) 작성 완료 (NC-0005 Resolved) |
 | 승인자 지정                         | ☒ **부적합** | → **SUP1-NC-0001**                                            |
 
 ---
@@ -191,12 +191,12 @@
 
 | #   | 체크 항목                              | 결과         | 비고                                                            |
 | --- | -------------------------------------- | ------------ | --------------------------------------------------------------- |
-| 6   | 상위 목표 → SWE-1 요구사항 추적성 100% | ☑ 적합       | SWE1-TRACE-0001 §1 (10/10)                                      |
-| 7   | SWE-1 → SWE-2 아키텍처 추적성 100%     | ☑ 적합       | SWE2-TRACE-0001 §1.1 (10/10)                                    |
-| 8   | SWE-2 → SWE-3 단위 추적성 100%         | ☑ 적합       | SWE3-TRACE-0001 §2 (10/10)                                      |
-| 9   | SWE-REQ → SPL2-FEAT 추적성 100%        | ☑ 적합       | SPL2-TRACE-0001 §1.1 (8/8 기능 요구사항)                        |
-| 10  | SWE-REQ → SWE-4 TC 추적성              | ☑ 적합       | SWE4-TC-SPEC-0001 §5 매핑표 — REQ-0001~0010 TC 전체 매핑 완료   |
-| 11  | SWE-REQ → SWE-6 QTC 추적성             | ☑ 적합       | SWE6-QTC-SPEC-0001 §6 매핑표 — REQ-0001~0010 QTC 전체 매핑 완료 |
+| 6   | 상위 목표 → SWE-1 요구사항 추적성 100% | ☑ 적합       | [SWE1-TRACE-0001](../SWE-1/SWE1-TRACE-0001-traceability-review.md) §1 (10/10)                                      |
+| 7   | SWE-1 → SWE-2 아키텍처 추적성 100%     | ☑ 적합       | [SWE2-TRACE-0001](../SWE-2/SWE2-TRACE-0001-traceability-review.md) §1.1 (10/10)                                    |
+| 8   | SWE-2 → SWE-3 단위 추적성 100%         | ☑ 적합       | [SWE3-TRACE-0001](../SWE-3/SWE3-TRACE-0001-traceability-review.md) §2 (10/10)                                      |
+| 9   | SWE-REQ → SPL2-FEAT 추적성 100%        | ☑ 적합       | [SPL2-TRACE-0001](../SPL-2/SPL2-TRACE-0001-traceability-review.md) §1.1 (8/8 기능 요구사항)                        |
+| 10  | SWE-REQ → SWE-4 TC 추적성              | ☑ 적합       | [SWE4-TC-SPEC-0001](../SWE-4/SWE4-TC-SPEC-0001-unit-test.md) §5 매핑표 — REQ-0001~0010 TC 전체 매핑 완료   |
+| 11  | SWE-REQ → SWE-6 QTC 추적성             | ☑ 적합       | [SWE6-QTC-SPEC-0001](../SWE-6/SWE6-QTC-SPEC-0001-qualification-test.md) §6 매핑표 — REQ-0001~0010 QTC 전체 매핑 완료 |
 | 12  | 산출물 간 상태 정보 일관성             | ☒ **부적합** | → SUP1-NC-0004 (SWE-COMP 상태 불일치)                           |
 
 ### 7.3 프로세스 수행 완전성
@@ -206,11 +206,11 @@
 | 13  | SWE-1 프로세스 산출물 완비                                | ☑ 적합       | 요구사항 명세 + 추적성 매핑 완료                                                  |
 | 14  | SWE-2 프로세스 산출물 완비                                | ☑ 적합       | 아키텍처 + 추적성 매핑 완료                                                       |
 | 15  | SWE-3 프로세스 산출물 완비                                | ☑ 적합       | 소스코드 Calculator/InputParser/AppController 전체 구현 확인 (→ NC-0003 Resolved) |
-| 16  | SWE-4 프로세스 산출물 완비                                | ☑ 적합       | SWE4-TC-SPEC-0001 작성 완료, 23/23 Pass (→ NC-0002 Resolved)                      |
-| 17  | SWE-5 프로세스 산출물 완비                                | ☑ 적합       | SWE5-ITC-SPEC-0001 작성 완료, 13/13 Pass (→ NC-0002 Resolved)                     |
-| 18  | SWE-6 프로세스 산출물 완비                                | ☑ 적합       | SWE6-QTC-SPEC-0001 작성 완료, 17/17 Pass (→ NC-0002 Resolved)                     |
+| 16  | SWE-4 프로세스 산출물 완비                                | ☑ 적합       | [SWE4-TC-SPEC-0001](../SWE-4/SWE4-TC-SPEC-0001-unit-test.md) 작성 완료, 23/23 Pass (→ NC-0002 Resolved)                      |
+| 17  | SWE-5 프로세스 산출물 완비                                | ☑ 적합       | [SWE5-ITC-SPEC-0001](../SWE-5/SWE5-ITC-SPEC-0001-integration-test.md) 작성 완료, 13/13 Pass (→ NC-0002 Resolved)                     |
+| 18  | SWE-6 프로세스 산출물 완비                                | ☑ 적합       | [SWE6-QTC-SPEC-0001](../SWE-6/SWE6-QTC-SPEC-0001-qualification-test.md) 작성 완료, 17/17 Pass (→ NC-0002 Resolved)                     |
 | 19  | SPL-2 프로세스 산출물 완비 (빌드 환경 + 피처 + 출시 노트) | ☑ 적합       | 3개 산출물 모두 작성됨                                                            |
-| 20  | SUP-8 형상 관리 산출물 존재                               | ☑ **적합**   | SUP8-CMP-0001, SUP8-CI-LIST-0001 작성 완료 (NC-0005 Resolved)                     |
+| 20  | SUP-8 형상 관리 산출물 존재                               | ☑ **적합**   | [SUP8-CMP-0001](../SUP-8/SUP8-CMP-0001-cm-plan.md), [SUP8-CI-LIST-0001](../SUP-8/SUP8-CI-LIST-0001-ci-baseline.md) 작성 완료 (NC-0005 Resolved)                     |
 | 21  | MAN-3 프로젝트 계획서 담당자 지정                         | ☒ **부적합** | → SUP1-NC-0007                                                                    |
 | 22  | 실제 빌드 환경 구성 및 동작 검증                          | ☑ 적합       | CMakeLists.txt 생성 후 빌드 성공 확인 (2026-04-11)                                |
 
@@ -229,9 +229,9 @@
 
 | 우선순위                | NC ID        | 조치 내용                                                                                | 권고 기한                                 |
 | ----------------------- | ------------ | ---------------------------------------------------------------------------------------- | ----------------------------------------- |
-| **즉시**                | SUP1-NC-0007 | MAN3-PP-0001 프로젝트 관리자 지정                                                        | 즉시                                      |
+| **즉시**                | SUP1-NC-0007 | [MAN3-PP-0001](../MAN-3/MAN3-PP-0001-project-plan.md) 프로젝트 관리자 지정                                                        | 즉시                                      |
 | ⚠ 해소 또는 ~~즉시~~ ✅ | SUP1-NC-0003 | SWE-3 구현 파일 작성 (Calculator, InputParser, AppController, types.h) — SWE-4 착수 전제 | ~~SWE-4 착수 전~~ **2026-04-12 Resolved** |
-| **단기**                | SUP1-NC-0004 | SWE1-TRACE-0001 내 컴포넌트 상태 불일치 수정                                             | SWE-2 산출물 승인 시                      |
+| **단기**                | SUP1-NC-0004 | [SWE1-TRACE-0001](../SWE-1/SWE1-TRACE-0001-traceability-review.md) 내 컴포넌트 상태 불일치 수정                                             | SWE-2 산출물 승인 시                      |
 | **단기**                | SUP1-NC-0006 | SWE-1 요구사항 파일명 변경                                                               | 다음 산출물 갱신 시                       |
 | ~~중기~~ ✅             | SUP1-NC-0002 | SWE-4 → SWE-5 → SWE-6 순서로 산출물 작성                                                 | ~~순차 진행~~ **2026-04-12 Resolved**     |
 | ~~중기~~ ✅             | SUP1-NC-0005 | SUP-8 형상 관리 산출물 작성                                                              | ~~SWE-6 완료 전~~ **2026-04-11 완료**     |
@@ -244,6 +244,6 @@
 | 버전 | 날짜       | 변경 내용                                                                                                                                                                 | 작성자              |
 | ---- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- |
 | v1.0 | 2026-04-11 | 최초 작성 — docs/ 전체 산출물 1차 QA 감사 수행 (NC 7건 식별)                                                                                                              | ASPICE SUP-1 전문가 |
-| v1.1 | 2026-04-11 | NC-0005 상태 Resolved 반영 — SUP8-CMP-0001, SUP8-CI-LIST-0001 작성 완료 확인                                                                                              | ASPICE SUP-8 전문가 |
-| v1.2 | 2026-04-11 | SUP-9 문제 보고서 ID 교차 참조 추가 — NC 항목별 SUP9-PR-XXXX 연결 (SUP9-PRM-0001 작성 완료 반영)                                                                          | ASPICE SUP-9 전문가 |
+| v1.1 | 2026-04-11 | NC-0005 상태 Resolved 반영 — [SUP8-CMP-0001](../SUP-8/SUP8-CMP-0001-cm-plan.md), [SUP8-CI-LIST-0001](../SUP-8/SUP8-CI-LIST-0001-ci-baseline.md) 작성 완료 확인                                                                                              | ASPICE SUP-8 전문가 |
+| v1.2 | 2026-04-11 | SUP-9 문제 보고서 ID 교차 참조 추가 — NC 항목별 SUP9-PR-XXXX 연결 ([SUP9-PRM-0001](../SUP-9/SUP9-PRM-0001-problem-resolution.md) 작성 완료 반영)                                                                          | ASPICE SUP-9 전문가 |
 | v1.3 | 2026-04-12 | NC-0002 및 NC-0003 Resolved 반영 — SWE-4/5/6 산출물 작성 완료(23/23, 13/13, 17/17 All Pass), src/ 소스코드 구현 파일 존재 확인, §2 미존재 산출물표 및 QA 상태 보고서 갱신 | ASPICE MAN-3 전문가 |

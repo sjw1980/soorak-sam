@@ -2,7 +2,7 @@
 
 | 항목 | 내용 |
 |------|------|
-| 문서 ID | SPL2-BUILD-0001 |
+| 문서 ID | [SPL2-BUILD-0001](SPL2-BUILD-0001-build-environment.md) |
 | 프로젝트명 | CLI 계산기 소프트웨어 — ASPICE SWE-1~SWE-6 |
 | 버전 | v1.0 / 2026-04-05 |
 | 상태 | Draft |
@@ -65,7 +65,7 @@
 
 | 순서 | ID | 빌드 단계명 | 도구 / 명령 | 입력 | 산출물 | 공통 여부 | 비고 |
 |------|-----|-----------|-----------|------|--------|---------|------|
-| 1 | SPL2-BUILD-0001 | CMake 구성 (Configure) | `cmake -S . -B build -DCMAKE_BUILD_TYPE=<타입>` | `CMakeLists.txt`, 소스 | `build/Makefile`, `build/CMakeCache.txt` | 공통 | 최초 1회 또는 CMakeLists 변경 시 |
+| 1 | [SPL2-BUILD-0001](SPL2-BUILD-0001-build-environment.md) | CMake 구성 (Configure) | `cmake -S . -B build -DCMAKE_BUILD_TYPE=<타입>` | `CMakeLists.txt`, 소스 | `build/Makefile`, `build/CMakeCache.txt` | 공통 | 최초 1회 또는 CMakeLists 변경 시 |
 | 2 | SPL2-BUILD-0002 | calc_lib 정적 라이브러리 빌드 | `cmake --build build --target calc_lib` | `src/calc_lib/*.cpp`, `include/*.h` | `build/libcalc_lib.a` | 공통 | CLI 빌드의 선행 조건 |
 | 3 | SPL2-BUILD-0003 | CLI 실행 파일 빌드 | `cmake --build build --target calculator` | `src/cli/main.cpp`, `libcalc_lib.a` | `build/calculator` | 공통 | 릴리스 배포 대상 |
 | 4 | SPL2-BUILD-0004 | 전체 빌드 (All Targets) | `cmake --build build` | 전체 소스 | `libcalc_lib.a`, `calculator`, `calculator_test` | 공통 | 개발 /CI 환경 표준 명령 |
@@ -110,7 +110,7 @@
 | SPL2-BUILD-0008, 0009 | SWE-4 (단위 테스트) | 커버리지 데이터 — 문장/분기 커버리지 100% 달성 증거 |
 | SPL2-BUILD-0003 | SWE-5 (통합 테스트) | CLI 실행 파일 — SWE-5 통합 테스트 대상 |
 | SPL2-BUILD-0004 | SWE-6 (적격성 테스트) | 전체 빌드 — SWE-6 적격성 테스트 대상 바이너리 |
-| SPL2-BUILD-0010 | SPL2-REL-0001 (출시 노트) | Release 바이너리 — 릴리스 패키지 대상 |
+| SPL2-BUILD-0010 | [SPL2-REL-0001](SPL2-REL-0001-release-note.md) (출시 노트) | Release 바이너리 — 릴리스 패키지 대상 |
 
 ---
 

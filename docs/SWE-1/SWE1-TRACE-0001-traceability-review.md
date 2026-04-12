@@ -2,32 +2,32 @@
 
 | 항목 | 내용 |
 |------|------|
-| 문서 ID | SWE1-TRACE-0001 |
+| 문서 ID | [SWE1-TRACE-0001](SWE1-TRACE-0001-traceability-review.md) |
 | 프로젝트명 | CLI 계산기 소프트웨어 — ASPICE SWE-1~SWE-6 |
 | 버전 | v1.0 / 2026-04-05 |
 | 상태 | Approved |
 | 작성자 | ASPICE SWE-1 전문가 |
 | 승인자 | — |
-| 참조 문서 | SWE1-REQ-SPEC-0001, MAN3-PP-0001 |
+| 참조 문서 | [SWE1-REQ-SPEC-0001](SWE-1-requirements.md), [MAN3-PP-0001](../MAN-3/MAN3-PP-0001-project-plan.md) |
 
 ---
 
 ## 1. 상위 목표 → SW 요구사항 추적성 매핑 (Forward Traceability)
 
-> **상위 목표 출처**: MAN3-PP-0001 §1.1 프로젝트 개요 및 프로젝트 사양서
+> **상위 목표 출처**: [MAN3-PP-0001](../MAN-3/MAN3-PP-0001-project-plan.md) §1.1 프로젝트 개요 및 프로젝트 사양서
 
 | 상위 목표 ID | 상위 목표 내용 요약 | SW 요구사항 ID | SW 요구사항 제목 | 우선순위 | 상태 | 비고 |
 |------------|----------------|-------------|--------------|--------|------|------|
-| PROJ-GOAL-001 | 4칙 연산 기능 제공 (덧셈) | SWE-REQ-0001 | 덧셈 연산 | High | Approved | — |
-| PROJ-GOAL-001 | 4칙 연산 기능 제공 (뺄셈) | SWE-REQ-0002 | 뺄셈 연산 | High | Approved | — |
-| PROJ-GOAL-001 | 4칙 연산 기능 제공 (곱셈) | SWE-REQ-0003 | 곱셈 연산 | High | Approved | — |
-| PROJ-GOAL-001 | 4칙 연산 기능 제공 (나눗셈) | SWE-REQ-0004 | 나눗셈 연산 | High | Approved | — |
-| PROJ-GOAL-002 | 예외 상황 안전 처리 (0 나누기) | SWE-REQ-0005 | 0 나누기 예외 처리 | High | Approved | MAN3-RSK-0002 대응 |
-| PROJ-GOAL-003 | CLI 기반 사용자 인터페이스 | SWE-REQ-0006 | CLI 사용자 인터페이스 | High | Approved | — |
-| PROJ-GOAL-003 | 반복 입력 처리 | SWE-REQ-0007 | 반복 입력 루프 | High | Approved | — |
-| PROJ-GOAL-003 | 사용자 주도 종료 | SWE-REQ-0008 | 종료 명령 처리 | High | Approved | — |
-| PROJ-GOAL-004 | C++17 표준 준수 | SWE-REQ-0009 | C++17 표준 준수 | Medium | Approved | SPL2-BUILD-0001 연계 |
-| PROJ-GOAL-004 | 커버리지 100% 달성 | SWE-REQ-0010 | 단위 테스트 커버리지 | High | Approved | MAN3-RSK-0001 대응 |
+| PROJ-GOAL-001 | 4칙 연산 기능 제공 (덧셈) | [SWE-REQ-0001](SWE-1-requirements.md#SWE-REQ-0001) | 덧셈 연산 | High | Approved | — |
+| PROJ-GOAL-001 | 4칙 연산 기능 제공 (뺄셈) | [SWE-REQ-0002](SWE-1-requirements.md#SWE-REQ-0002) | 뺄셈 연산 | High | Approved | — |
+| PROJ-GOAL-001 | 4칙 연산 기능 제공 (곱셈) | [SWE-REQ-0003](SWE-1-requirements.md#SWE-REQ-0003) | 곱셈 연산 | High | Approved | — |
+| PROJ-GOAL-001 | 4칙 연산 기능 제공 (나눗셈) | [SWE-REQ-0004](SWE-1-requirements.md#SWE-REQ-0004) | 나눗셈 연산 | High | Approved | — |
+| PROJ-GOAL-002 | 예외 상황 안전 처리 (0 나누기) | [SWE-REQ-0005](SWE-1-requirements.md#SWE-REQ-0005) | 0 나누기 예외 처리 | High | Approved | [MAN3-RSK-0002](../MAN-3/MAN3-PP-0001-project-plan.md#MAN3-RSK-0002) 대응 |
+| PROJ-GOAL-003 | CLI 기반 사용자 인터페이스 | [SWE-REQ-0006](SWE-1-requirements.md#SWE-REQ-0006) | CLI 사용자 인터페이스 | High | Approved | — |
+| PROJ-GOAL-003 | 반복 입력 처리 | [SWE-REQ-0007](SWE-1-requirements.md#SWE-REQ-0007) | 반복 입력 루프 | High | Approved | — |
+| PROJ-GOAL-003 | 사용자 주도 종료 | [SWE-REQ-0008](SWE-1-requirements.md#SWE-REQ-0008) | 종료 명령 처리 | High | Approved | — |
+| PROJ-GOAL-004 | C++17 표준 준수 | [SWE-REQ-0009](SWE-1-requirements.md#SWE-REQ-0009) | C++17 표준 준수 | Medium | Approved | [SPL2-BUILD-0001](../SPL-2/SPL2-BUILD-0001-build-environment.md) 연계 |
+| PROJ-GOAL-004 | 커버리지 100% 달성 | [SWE-REQ-0010](SWE-1-requirements.md#SWE-REQ-0010) | 단위 테스트 커버리지 | High | Approved | [MAN3-RSK-0001](../MAN-3/MAN3-PP-0001-project-plan.md#MAN3-RSK-0001) 대응 |
 
 ---
 
@@ -37,16 +37,16 @@
 
 | SW 요구사항 ID | 요구사항 제목 | 연관 컴포넌트 ID | 컴포넌트명 | 상태 | 비고 |
 |-------------|------------|--------------|---------|------|------|
-| SWE-REQ-0001 | 덧셈 연산 | SWE-COMP-0001 | calc_lib | Approved | SWE-2 산출물 연계 |
-| SWE-REQ-0002 | 뺄셈 연산 | SWE-COMP-0001 | calc_lib | Approved | SWE-2 산출물 연계 |
-| SWE-REQ-0003 | 곱셈 연산 | SWE-COMP-0001 | calc_lib | Approved | SWE-2 산출물 연계 |
-| SWE-REQ-0004 | 나눗셈 연산 | SWE-COMP-0001 | calc_lib | Approved | SWE-2 산출물 연계 |
-| SWE-REQ-0005 | 0 나누기 예외 처리 | SWE-COMP-0001 | calc_lib | Approved | SWE-2 산출물 연계 |
-| SWE-REQ-0006 | CLI 사용자 인터페이스 | SWE-COMP-0002 | cli | Approved | SWE-2 산출물 연계 |
-| SWE-REQ-0007 | 반복 입력 루프 | SWE-COMP-0002 | cli | Approved | SWE-2 산출물 연계 |
-| SWE-REQ-0008 | 종료 명령 처리 | SWE-COMP-0002 | cli | Approved | SWE-2 산출물 연계 |
-| SWE-REQ-0009 | C++17 표준 준수 | SPL2-BUILD-0001 | 빌드 환경 | Approved | SPL-2 산출물 연계 |
-| SWE-REQ-0010 | 단위 테스트 커버리지 | SWE-COMP-0001, 0002 | calc_lib, cli | Open | SWE-4 완료 후 검증 |
+| [SWE-REQ-0001](SWE-1-requirements.md#SWE-REQ-0001) | 덧셈 연산 | [SWE-COMP-0001](../SWE-2/SWE2-ARCH-0001-software-architecture.md#SWE-COMP-0001) | calc_lib | Approved | SWE-2 산출물 연계 |
+| [SWE-REQ-0002](SWE-1-requirements.md#SWE-REQ-0002) | 뺄셈 연산 | [SWE-COMP-0001](../SWE-2/SWE2-ARCH-0001-software-architecture.md#SWE-COMP-0001) | calc_lib | Approved | SWE-2 산출물 연계 |
+| [SWE-REQ-0003](SWE-1-requirements.md#SWE-REQ-0003) | 곱셈 연산 | [SWE-COMP-0001](../SWE-2/SWE2-ARCH-0001-software-architecture.md#SWE-COMP-0001) | calc_lib | Approved | SWE-2 산출물 연계 |
+| [SWE-REQ-0004](SWE-1-requirements.md#SWE-REQ-0004) | 나눗셈 연산 | [SWE-COMP-0001](../SWE-2/SWE2-ARCH-0001-software-architecture.md#SWE-COMP-0001) | calc_lib | Approved | SWE-2 산출물 연계 |
+| [SWE-REQ-0005](SWE-1-requirements.md#SWE-REQ-0005) | 0 나누기 예외 처리 | [SWE-COMP-0001](../SWE-2/SWE2-ARCH-0001-software-architecture.md#SWE-COMP-0001) | calc_lib | Approved | SWE-2 산출물 연계 |
+| [SWE-REQ-0006](SWE-1-requirements.md#SWE-REQ-0006) | CLI 사용자 인터페이스 | [SWE-COMP-0002](../SWE-2/SWE2-ARCH-0001-software-architecture.md#SWE-COMP-0002) | cli | Approved | SWE-2 산출물 연계 |
+| [SWE-REQ-0007](SWE-1-requirements.md#SWE-REQ-0007) | 반복 입력 루프 | [SWE-COMP-0002](../SWE-2/SWE2-ARCH-0001-software-architecture.md#SWE-COMP-0002) | cli | Approved | SWE-2 산출물 연계 |
+| [SWE-REQ-0008](SWE-1-requirements.md#SWE-REQ-0008) | 종료 명령 처리 | [SWE-COMP-0002](../SWE-2/SWE2-ARCH-0001-software-architecture.md#SWE-COMP-0002) | cli | Approved | SWE-2 산출물 연계 |
+| [SWE-REQ-0009](SWE-1-requirements.md#SWE-REQ-0009) | C++17 표준 준수 | [SPL2-BUILD-0001](../SPL-2/SPL2-BUILD-0001-build-environment.md) | 빌드 환경 | Approved | SPL-2 산출물 연계 |
+| [SWE-REQ-0010](SWE-1-requirements.md#SWE-REQ-0010) | 단위 테스트 커버리지 | [SWE-COMP-0001](../SWE-2/SWE2-ARCH-0001-software-architecture.md#SWE-COMP-0001), 0002 | calc_lib, cli | Open | SWE-4 완료 후 검증 |
 
 ### 2.2 SW 요구사항 → SWE-4 단위 테스트 케이스 (예정)
 
@@ -54,29 +54,29 @@
 
 | SW 요구사항 ID | 요구사항 제목 | 단위 TC ID (예정) | 상태 | 비고 |
 |-------------|------------|----------------|------|------|
-| SWE-REQ-0001 | 덧셈 연산 | SWE-TC-0001 (예정) | Open | SWE-4 수행 후 갱신 |
-| SWE-REQ-0002 | 뺄셈 연산 | SWE-TC-0002 (예정) | Open | SWE-4 수행 후 갱신 |
-| SWE-REQ-0003 | 곱셈 연산 | SWE-TC-0003 (예정) | Open | SWE-4 수행 후 갱신 |
-| SWE-REQ-0004 | 나눗셈 연산 | SWE-TC-0004 (예정) | Open | SWE-4 수행 후 갱신 |
-| SWE-REQ-0005 | 0 나누기 예외 처리 | SWE-TC-0005 (예정) | Open | SWE-4 수행 후 갱신, MAN3-RSK-0002 |
-| SWE-REQ-0006 | CLI 사용자 인터페이스 | SWE-TC-0006 (예정) | Open | SWE-4 수행 후 갱신 |
-| SWE-REQ-0007 | 반복 입력 루프 | SWE-TC-0007 (예정) | Open | SWE-4 수행 후 갱신 |
-| SWE-REQ-0008 | 종료 명령 처리 | SWE-TC-0008 (예정) | Open | SWE-4 수행 후 갱신 |
+| [SWE-REQ-0001](SWE-1-requirements.md#SWE-REQ-0001) | 덧셈 연산 | [SWE-TC-0001](../SWE-4/SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0001) (예정) | Open | SWE-4 수행 후 갱신 |
+| [SWE-REQ-0002](SWE-1-requirements.md#SWE-REQ-0002) | 뺄셈 연산 | [SWE-TC-0002](../SWE-4/SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0002) (예정) | Open | SWE-4 수행 후 갱신 |
+| [SWE-REQ-0003](SWE-1-requirements.md#SWE-REQ-0003) | 곱셈 연산 | [SWE-TC-0003](../SWE-4/SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0003) (예정) | Open | SWE-4 수행 후 갱신 |
+| [SWE-REQ-0004](SWE-1-requirements.md#SWE-REQ-0004) | 나눗셈 연산 | [SWE-TC-0004](../SWE-4/SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0004) (예정) | Open | SWE-4 수행 후 갱신 |
+| [SWE-REQ-0005](SWE-1-requirements.md#SWE-REQ-0005) | 0 나누기 예외 처리 | [SWE-TC-0005](../SWE-4/SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0005) (예정) | Open | SWE-4 수행 후 갱신, [MAN3-RSK-0002](../MAN-3/MAN3-PP-0001-project-plan.md#MAN3-RSK-0002) |
+| [SWE-REQ-0006](SWE-1-requirements.md#SWE-REQ-0006) | CLI 사용자 인터페이스 | [SWE-TC-0006](../SWE-4/SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0006) (예정) | Open | SWE-4 수행 후 갱신 |
+| [SWE-REQ-0007](SWE-1-requirements.md#SWE-REQ-0007) | 반복 입력 루프 | [SWE-TC-0007](../SWE-4/SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0007) (예정) | Open | SWE-4 수행 후 갱신 |
+| [SWE-REQ-0008](SWE-1-requirements.md#SWE-REQ-0008) | 종료 명령 처리 | [SWE-TC-0008](../SWE-4/SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0008) (예정) | Open | SWE-4 수행 후 갱신 |
 
 ### 2.3 SW 요구사항 → SWE-6 적격성 테스트 케이스 (예정)
 
-> **주**: SWE-6 전문가 에이전트 수행 후 갱신한다. (MAN3-RSK-0004 대응)
+> **주**: SWE-6 전문가 에이전트 수행 후 갱신한다. ([MAN3-RSK-0004](../MAN-3/MAN3-PP-0001-project-plan.md#MAN3-RSK-0004) 대응)
 
 | SW 요구사항 ID | 요구사항 제목 | 적격성 TC ID (예정) | 상태 | 비고 |
 |-------------|------------|-----------------|------|------|
-| SWE-REQ-0001 | 덧셈 연산 | SWE-QTC-0001 (예정) | Open | SWE-6 수행 후 갱신 |
-| SWE-REQ-0002 | 뺄셈 연산 | SWE-QTC-0002 (예정) | Open | SWE-6 수행 후 갱신 |
-| SWE-REQ-0003 | 곱셈 연산 | SWE-QTC-0003 (예정) | Open | SWE-6 수행 후 갱신 |
-| SWE-REQ-0004 | 나눗셈 연산 | SWE-QTC-0004 (예정) | Open | SWE-6 수행 후 갱신 |
-| SWE-REQ-0005 | 0 나누기 예외 처리 | SWE-QTC-0005 (예정) | Open | SWE-6 수행 후 갱신 |
-| SWE-REQ-0006 | CLI 사용자 인터페이스 | SWE-QTC-0006 (예정) | Open | SWE-6 수행 후 갱신 |
-| SWE-REQ-0007 | 반복 입력 루프 | SWE-QTC-0007 (예정) | Open | SWE-6 수행 후 갱신 |
-| SWE-REQ-0008 | 종료 명령 처리 | SWE-QTC-0008 (예정) | Open | SWE-6 수행 후 갱신 |
+| [SWE-REQ-0001](SWE-1-requirements.md#SWE-REQ-0001) | 덧셈 연산 | [SWE-QTC-0001](../SWE-6/SWE6-QTC-SPEC-0001-qualification-test.md#SWE-QTC-0001) (예정) | Open | SWE-6 수행 후 갱신 |
+| [SWE-REQ-0002](SWE-1-requirements.md#SWE-REQ-0002) | 뺄셈 연산 | [SWE-QTC-0002](../SWE-6/SWE6-QTC-SPEC-0001-qualification-test.md#SWE-QTC-0002) (예정) | Open | SWE-6 수행 후 갱신 |
+| [SWE-REQ-0003](SWE-1-requirements.md#SWE-REQ-0003) | 곱셈 연산 | [SWE-QTC-0003](../SWE-6/SWE6-QTC-SPEC-0001-qualification-test.md#SWE-QTC-0003) (예정) | Open | SWE-6 수행 후 갱신 |
+| [SWE-REQ-0004](SWE-1-requirements.md#SWE-REQ-0004) | 나눗셈 연산 | [SWE-QTC-0004](../SWE-6/SWE6-QTC-SPEC-0001-qualification-test.md#SWE-QTC-0004) (예정) | Open | SWE-6 수행 후 갱신 |
+| [SWE-REQ-0005](SWE-1-requirements.md#SWE-REQ-0005) | 0 나누기 예외 처리 | [SWE-QTC-0005](../SWE-6/SWE6-QTC-SPEC-0001-qualification-test.md#SWE-QTC-0005) (예정) | Open | SWE-6 수행 후 갱신 |
+| [SWE-REQ-0006](SWE-1-requirements.md#SWE-REQ-0006) | CLI 사용자 인터페이스 | [SWE-QTC-0006](../SWE-6/SWE6-QTC-SPEC-0001-qualification-test.md#SWE-QTC-0006) (예정) | Open | SWE-6 수행 후 갱신 |
+| [SWE-REQ-0007](SWE-1-requirements.md#SWE-REQ-0007) | 반복 입력 루프 | [SWE-QTC-0007](../SWE-6/SWE6-QTC-SPEC-0001-qualification-test.md#SWE-QTC-0007) (예정) | Open | SWE-6 수행 후 갱신 |
+| [SWE-REQ-0008](SWE-1-requirements.md#SWE-REQ-0008) | 종료 명령 처리 | [SWE-QTC-0008](../SWE-6/SWE6-QTC-SPEC-0001-qualification-test.md#SWE-QTC-0008) (예정) | Open | SWE-6 수행 후 갱신 |
 
 ---
 
@@ -95,7 +95,7 @@
 
 | 번호 | 체크 항목 | 결과 | 비고 |
 |------|---------|------|------|
-| 1 | 모든 요구사항에 고유 ID(`SWE-REQ-XXXX`)가 부여됨 | ☑ | SWE-REQ-0001~0010 부여 완료 |
+| 1 | 모든 요구사항에 고유 ID(`SWE-REQ-XXXX`)가 부여됨 | ☑ | [SWE-REQ-0001](SWE-1-requirements.md#SWE-REQ-0001)~0010 부여 완료 |
 | 2 | 요구사항 내용이 단일 사실을 기술하며 명확하고 모호하지 않음 | ☑ | 각 요구사항 1개 기능 기술 |
 | 3 | 요구사항이 검증 가능한 형태로 작성됨 (테스트 케이스 도출 가능) | ☑ | 입력/출력/사전후 조건 명시 |
 | 4 | 상위 목표와의 Forward 추적성이 확보됨 | ☑ | §1 매핑표 완료 |
@@ -103,8 +103,8 @@
 | 6 | SWE-4 단위 TC와의 추적성 항목이 준비됨 (예정 포함) | ☑ | §2.2 예정 TC 매핑 작성 |
 | 7 | SWE-6 적격성 TC와의 추적성 항목이 준비됨 (예정 포함) | ☑ | §2.3 예정 TC 매핑 작성 |
 | 8 | 기능 요구사항과 비기능 요구사항이 구분됨 | ☑ | §2.1/2.2 분리 기술 |
-| 9 | 0 나누기 예외 처리 요구사항이 명시적으로 포함됨 | ☑ | SWE-REQ-0005 (MAN3-RSK-0002 대응) |
-| 10 | 커버리지 달성 요구사항이 명시적으로 포함됨 | ☑ | SWE-REQ-0010 (MAN3-RSK-0001 대응) |
+| 9 | 0 나누기 예외 처리 요구사항이 명시적으로 포함됨 | ☑ | [SWE-REQ-0005](SWE-1-requirements.md#SWE-REQ-0005) ([MAN3-RSK-0002](../MAN-3/MAN3-PP-0001-project-plan.md#MAN3-RSK-0002) 대응) |
+| 10 | 커버리지 달성 요구사항이 명시적으로 포함됨 | ☑ | [SWE-REQ-0010](SWE-1-requirements.md#SWE-REQ-0010) ([MAN3-RSK-0001](../MAN-3/MAN3-PP-0001-project-plan.md#MAN3-RSK-0001) 대응) |
 | 11 | 버전 및 변경 이력이 기록됨 | ☑ | v1.0 / 2026-04-05 |
 | 12 | 요구사항 상태가 명시됨 (Approved/Draft) | ☑ | 전체 Approved |
 

@@ -2,7 +2,7 @@
 
 | 항목            | 내용                                       |
 | --------------- | ------------------------------------------ |
-| 문서 ID         | MAN3-PP-0001                               |
+| 문서 ID         | [MAN3-PP-0001](MAN3-PP-0001-project-plan.md)                               |
 | 프로젝트명      | CLI 계산기 소프트웨어 — ASPICE SWE-1~SWE-6 |
 | 버전            | v1.1 / 2026-04-12                          |
 | 상태            | Draft                                      |
@@ -41,16 +41,16 @@ C++ CLI 기반 4칙 연산 계산기 소프트웨어를 ASPICE PAM 3.1 SWE-1~SWE
 
 | ID            | 작업명                                  | 상위 항목     | 담당 에이전트       | 계획 시작  | 계획 완료  | 실제 완료  | 진행률 | 상태   |
 | ------------- | --------------------------------------- | ------------- | ------------------- | ---------- | ---------- | ---------- | ------ | ------ |
-| MAN3-WBS-0001 | SWE-1 소프트웨어 요구사항 분석          | —             | ASPICE SWE-1 전문가 | 2026-04-05 | 2026-04-05 | 2026-04-05 | 100%   | Closed |
-| MAN3-WBS-0002 | SWE-2 소프트웨어 아키텍처 설계          | —             | ASPICE SWE-2 전문가 | 2026-04-05 | 2026-04-05 | 2026-04-05 | 100%   | Closed |
-| MAN3-WBS-0003 | SWE-3 소프트웨어 상세 설계              | —             | ASPICE SWE-3 전문가 | 2026-04-05 | 2026-04-05 | 2026-04-05 | 100%   | Closed |
-| MAN3-WBS-0004 | SWE-3 소스코드 구현                     | MAN3-WBS-0003 | ASPICE SWE-3 전문가 | 2026-04-05 | 2026-04-05 | 2026-04-05 | 100%   | Closed |
-| MAN3-WBS-0005 | SWE-4 단위 테스트 케이스 작성           | —             | ASPICE SWE-4 전문가 | 2026-04-11 | 2026-04-11 | 2026-04-11 | 100%   | Closed |
-| MAN3-WBS-0006 | SWE-4 단위 테스트 실행 및 커버리지 분석 | MAN3-WBS-0005 | ASPICE SWE-4 전문가 | 2026-04-11 | 2026-04-11 | 2026-04-11 | 100%   | Closed |
-| MAN3-WBS-0007 | SWE-5 통합 테스트 케이스 작성           | —             | ASPICE SWE-5 전문가 | 2026-04-11 | 2026-04-11 | 2026-04-11 | 100%   | Closed |
-| MAN3-WBS-0008 | SWE-5 통합 테스트 실행                  | MAN3-WBS-0007 | ASPICE SWE-5 전문가 | 2026-04-11 | 2026-04-11 | 2026-04-11 | 100%   | Closed |
-| MAN3-WBS-0009 | SWE-6 적격성 테스트 케이스 작성         | —             | ASPICE SWE-6 전문가 | 2026-04-11 | 2026-04-11 | 2026-04-11 | 100%   | Closed |
-| MAN3-WBS-0010 | SWE-6 적격성 테스트 실행 및 릴리스 판정 | MAN3-WBS-0009 | ASPICE SWE-6 전문가 | 2026-04-11 | 2026-04-11 | 2026-04-11 | 100%   | Closed |
+| <a id="MAN3-WBS-0001"></a>[MAN3-WBS-0001](MAN3-PP-0001-project-plan.md#MAN3-WBS-0001) | SWE-1 소프트웨어 요구사항 분석          | —             | ASPICE SWE-1 전문가 | 2026-04-05 | 2026-04-05 | 2026-04-05 | 100%   | Closed |
+| <a id="MAN3-WBS-0002"></a>[MAN3-WBS-0002](MAN3-PP-0001-project-plan.md#MAN3-WBS-0002) | SWE-2 소프트웨어 아키텍처 설계          | —             | ASPICE SWE-2 전문가 | 2026-04-05 | 2026-04-05 | 2026-04-05 | 100%   | Closed |
+| <a id="MAN3-WBS-0003"></a>[MAN3-WBS-0003](MAN3-PP-0001-project-plan.md#MAN3-WBS-0003) | SWE-3 소프트웨어 상세 설계              | —             | ASPICE SWE-3 전문가 | 2026-04-05 | 2026-04-05 | 2026-04-05 | 100%   | Closed |
+| <a id="MAN3-WBS-0004"></a>[MAN3-WBS-0004](MAN3-PP-0001-project-plan.md#MAN3-WBS-0004) | SWE-3 소스코드 구현                     | [MAN3-WBS-0003](MAN3-PP-0001-project-plan.md#MAN3-WBS-0003) | ASPICE SWE-3 전문가 | 2026-04-05 | 2026-04-05 | 2026-04-05 | 100%   | Closed |
+| <a id="MAN3-WBS-0005"></a>[MAN3-WBS-0005](MAN3-PP-0001-project-plan.md#MAN3-WBS-0005) | SWE-4 단위 테스트 케이스 작성           | —             | ASPICE SWE-4 전문가 | 2026-04-11 | 2026-04-11 | 2026-04-11 | 100%   | Closed |
+| <a id="MAN3-WBS-0006"></a>[MAN3-WBS-0006](MAN3-PP-0001-project-plan.md#MAN3-WBS-0006) | SWE-4 단위 테스트 실행 및 커버리지 분석 | [MAN3-WBS-0005](MAN3-PP-0001-project-plan.md#MAN3-WBS-0005) | ASPICE SWE-4 전문가 | 2026-04-11 | 2026-04-11 | 2026-04-11 | 100%   | Closed |
+| <a id="MAN3-WBS-0007"></a>[MAN3-WBS-0007](MAN3-PP-0001-project-plan.md#MAN3-WBS-0007) | SWE-5 통합 테스트 케이스 작성           | —             | ASPICE SWE-5 전문가 | 2026-04-11 | 2026-04-11 | 2026-04-11 | 100%   | Closed |
+| <a id="MAN3-WBS-0008"></a>[MAN3-WBS-0008](MAN3-PP-0001-project-plan.md#MAN3-WBS-0008) | SWE-5 통합 테스트 실행                  | [MAN3-WBS-0007](MAN3-PP-0001-project-plan.md#MAN3-WBS-0007) | ASPICE SWE-5 전문가 | 2026-04-11 | 2026-04-11 | 2026-04-11 | 100%   | Closed |
+| <a id="MAN3-WBS-0009"></a>[MAN3-WBS-0009](MAN3-PP-0001-project-plan.md#MAN3-WBS-0009) | SWE-6 적격성 테스트 케이스 작성         | —             | ASPICE SWE-6 전문가 | 2026-04-11 | 2026-04-11 | 2026-04-11 | 100%   | Closed |
+| <a id="MAN3-WBS-0010"></a>[MAN3-WBS-0010](MAN3-PP-0001-project-plan.md#MAN3-WBS-0010) | SWE-6 적격성 테스트 실행 및 릴리스 판정 | [MAN3-WBS-0009](MAN3-PP-0001-project-plan.md#MAN3-WBS-0009) | ASPICE SWE-6 전문가 | 2026-04-11 | 2026-04-11 | 2026-04-11 | 100%   | Closed |
 
 ---
 
@@ -58,10 +58,10 @@ C++ CLI 기반 4칙 연산 계산기 소프트웨어를 ASPICE PAM 3.1 SWE-1~SWE
 
 | ID           | 마일스톤명                             | 계획 날짜  | 실제 달성일 | 달성 기준                                                                       | 상태   | 비고                                                                |
 | ------------ | -------------------------------------- | ---------- | ----------- | ------------------------------------------------------------------------------- | ------ | ------------------------------------------------------------------- |
-| MAN3-MS-0001 | SWE-1/2/3 산출물 완료                  | 2026-04-05 | 2026-04-05  | SWE-1 요구사항, SWE-2 아키텍처, SWE-3 상세 설계 Draft 완성 + 소스코드 구현 완료 | Closed | ✔ 달성                                                              |
-| MAN3-MS-0002 | SWE-4 단위 검증 완료                   | 2026-04-11 | 2026-04-11  | 모든 단위 TC Pass + 문장/분기 커버리지 100%                                     | Closed | ✔ 달성 — 23/23 Pass, Calculator.cpp 구문 100%, InputParser.cpp 100% |
-| MAN3-MS-0003 | SWE-5 통합 테스트 완료                 | 2026-04-11 | 2026-04-11  | 모든 통합 ITC Pass + 결함 0건 미해결                                            | Closed | ✔ 달성 — 13/13 Pass, 미해결 결함 0건                                |
-| MAN3-MS-0004 | SWE-6 적격성 테스트 완료 / 릴리스 판정 | 2026-04-11 | 2026-04-11  | 모든 QTC Pass + 요구사항 추적성 100% 확보                                       | Closed | ✔ 달성 — 17/17 Pass, SWE-REQ-0001~0010 100% 매핑                    |
+| <a id="MAN3-MS-0001"></a>[MAN3-MS-0001](MAN3-PP-0001-project-plan.md#MAN3-MS-0001) | SWE-1/2/3 산출물 완료                  | 2026-04-05 | 2026-04-05  | SWE-1 요구사항, SWE-2 아키텍처, SWE-3 상세 설계 Draft 완성 + 소스코드 구현 완료 | Closed | ✔ 달성                                                              |
+| <a id="MAN3-MS-0002"></a>[MAN3-MS-0002](MAN3-PP-0001-project-plan.md#MAN3-MS-0002) | SWE-4 단위 검증 완료                   | 2026-04-11 | 2026-04-11  | 모든 단위 TC Pass + 문장/분기 커버리지 100%                                     | Closed | ✔ 달성 — 23/23 Pass, Calculator.cpp 구문 100%, InputParser.cpp 100% |
+| <a id="MAN3-MS-0003"></a>[MAN3-MS-0003](MAN3-PP-0001-project-plan.md#MAN3-MS-0003) | SWE-5 통합 테스트 완료                 | 2026-04-11 | 2026-04-11  | 모든 통합 ITC Pass + 결함 0건 미해결                                            | Closed | ✔ 달성 — 13/13 Pass, 미해결 결함 0건                                |
+| <a id="MAN3-MS-0004"></a>[MAN3-MS-0004](MAN3-PP-0001-project-plan.md#MAN3-MS-0004) | SWE-6 적격성 테스트 완료 / 릴리스 판정 | 2026-04-11 | 2026-04-11  | 모든 QTC Pass + 요구사항 추적성 100% 확보                                       | Closed | ✔ 달성 — 17/17 Pass, [SWE-REQ-0001](../SWE-1/SWE-1-requirements.md#SWE-REQ-0001)~0010 100% 매핑                    |
 
 ---
 
@@ -86,10 +86,10 @@ C++ CLI 기반 4칙 연산 계산기 소프트웨어를 ASPICE PAM 3.1 SWE-1~SWE
 
 | ID            | 리스크 내용                                  | 발생 가능성 | 영향도 | 위험도 | 대응 계획                                                        | 담당자     | 상태   | 날짜       |
 | ------------- | -------------------------------------------- | ----------- | ------ | ------ | ---------------------------------------------------------------- | ---------- | ------ | ---------- |
-| MAN3-RSK-0001 | 단위 커버리지 목표(100%) 미달성              | Medium      | High   | High   | SWE-4 단계에서 미달성 분기 식별 후 테스트 케이스 보완            | SWE-4 담당 | Closed | 2026-04-11 |
-| MAN3-RSK-0002 | calc::divide 0 나누기 예외 미검증            | Low         | High   | Medium | SWE-4 TC에 b=0 경계값 테스트 필수 포함 (SWE-TC-0005 포함 완료)   | SWE-4 담당 | Closed | 2026-04-11 |
-| MAN3-RSK-0003 | SWE-5 통합 시 cli↔calc_lib 인터페이스 불일치 | Low         | Medium | Medium | SWE-IF-0001~0004 기준으로 통합 검증 완료 (SWE5-ITC-SPEC-0001 §4) | SWE-5 담당 | Closed | 2026-04-11 |
-| MAN3-RSK-0004 | SWE-6 요구사항 추적성 누락                   | Low         | High   | Medium | SWE-REQ-0001~0010 전체 QTC 매핑 완료 (SWE6-QTC-SPEC-0001 §6)     | SWE-6 담당 | Closed | 2026-04-11 |
+| <a id="MAN3-RSK-0001"></a>[MAN3-RSK-0001](MAN3-PP-0001-project-plan.md#MAN3-RSK-0001) | 단위 커버리지 목표(100%) 미달성              | Medium      | High   | High   | SWE-4 단계에서 미달성 분기 식별 후 테스트 케이스 보완            | SWE-4 담당 | Closed | 2026-04-11 |
+| <a id="MAN3-RSK-0002"></a>[MAN3-RSK-0002](MAN3-PP-0001-project-plan.md#MAN3-RSK-0002) | calc::divide 0 나누기 예외 미검증            | Low         | High   | Medium | SWE-4 TC에 b=0 경계값 테스트 필수 포함 ([SWE-TC-0005](../SWE-4/SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0005) 포함 완료)   | SWE-4 담당 | Closed | 2026-04-11 |
+| <a id="MAN3-RSK-0003"></a>[MAN3-RSK-0003](MAN3-PP-0001-project-plan.md#MAN3-RSK-0003) | SWE-5 통합 시 cli↔calc_lib 인터페이스 불일치 | Low         | Medium | Medium | [SWE-IF-0001](../SWE-2/SWE2-ARCH-0001-software-architecture.md#SWE-IF-0001)~0004 기준으로 통합 검증 완료 ([SWE5-ITC-SPEC-0001](../SWE-5/SWE5-ITC-SPEC-0001-integration-test.md) §4) | SWE-5 담당 | Closed | 2026-04-11 |
+| <a id="MAN3-RSK-0004"></a>[MAN3-RSK-0004](MAN3-PP-0001-project-plan.md#MAN3-RSK-0004) | SWE-6 요구사항 추적성 누락                   | Low         | High   | Medium | [SWE-REQ-0001](../SWE-1/SWE-1-requirements.md#SWE-REQ-0001)~0010 전체 QTC 매핑 완료 ([SWE6-QTC-SPEC-0001](../SWE-6/SWE6-QTC-SPEC-0001-qualification-test.md) §6)     | SWE-6 담당 | Closed | 2026-04-11 |
 
 ---
 
@@ -97,7 +97,7 @@ C++ CLI 기반 4칙 연산 계산기 소프트웨어를 ASPICE PAM 3.1 SWE-1~SWE
 
 | ID            | 이슈 내용                                         | 심각도 | 영향 항목         | 담당자         | 발생일     | 해결 기한  | 상태   |
 | ------------- | ------------------------------------------------- | ------ | ----------------- | -------------- | ---------- | ---------- | ------ |
-| MAN3-ISS-0001 | SWE-4/5/6 산출물 미작성 (담당 에이전트 배정 대기) | Medium | MAN3-MS-0002~0004 | SWE-4/5/6 담당 | 2026-04-05 | 2026-04-11 | Closed |
+| <a id="MAN3-ISS-0001"></a>[MAN3-ISS-0001](MAN3-PP-0001-project-plan.md#MAN3-ISS-0001) | SWE-4/5/6 산출물 미작성 (담당 에이전트 배정 대기) | Medium | [MAN3-MS-0002](MAN3-PP-0001-project-plan.md#MAN3-MS-0002)~0004 | SWE-4/5/6 담당 | 2026-04-05 | 2026-04-11 | Closed |
 
 ---
 
@@ -128,16 +128,16 @@ C++ CLI 기반 4칙 연산 계산기 소프트웨어를 ASPICE PAM 3.1 SWE-1~SWE
 
 | WBS ID        | 마일스톤 ID  | 연계 산출물 ID / 경로                                               | 상태   | 비고                                 |
 | ------------- | ------------ | ------------------------------------------------------------------- | ------ | ------------------------------------ |
-| MAN3-WBS-0001 | MAN3-MS-0001 | `docs/SWE-1/SWE-1-requirements.md`                                  | Closed |                                      |
-| MAN3-WBS-0002 | MAN3-MS-0001 | `docs/SWE-2/SWE-2-architecture.md`                                  | Closed |                                      |
-| MAN3-WBS-0003 | MAN3-MS-0001 | `docs/SWE-3/SWE-3-detailed-design.md`                               | Closed |                                      |
-| MAN3-WBS-0004 | MAN3-MS-0001 | `src/calculator.cpp`, `include/calculator.hpp`, `main.cpp`          | Closed |                                      |
-| MAN3-WBS-0005 | MAN3-MS-0002 | `docs/SWE-4/SWE4-TC-SPEC-0001-unit-test.md`                         | Closed | SWE-TC-0001~0023 (23건)              |
-| MAN3-WBS-0006 | MAN3-MS-0002 | `tests/unit/test_calculator.cpp`, `tests/unit/test_inputparser.cpp` | Closed | 23/23 Pass, 커버리지 100%            |
-| MAN3-WBS-0007 | MAN3-MS-0003 | `docs/SWE-5/SWE5-ITC-SPEC-0001-integration-test.md`                 | Closed | SWE-ITC-0001~0013 (13건)             |
-| MAN3-WBS-0008 | MAN3-MS-0003 | `tests/integration/test_integration.cpp`                            | Closed | 13/13 Pass, 미해결 결함 0건          |
-| MAN3-WBS-0009 | MAN3-MS-0004 | `docs/SWE-6/SWE6-QTC-SPEC-0001-qualification-test.md`               | Closed | SWE-QTC-0001~0017 (17건)             |
-| MAN3-WBS-0010 | MAN3-MS-0004 | `docs/SWE-6/SWE6-QTC-SPEC-0001-qualification-test.md` §7            | Closed | 17/17 Pass, 릴리스 기준 전 항목 달성 |
+| [MAN3-WBS-0001](MAN3-PP-0001-project-plan.md#MAN3-WBS-0001) | [MAN3-MS-0001](MAN3-PP-0001-project-plan.md#MAN3-MS-0001) | `docs/SWE-1/SWE-1-requirements.md`                                  | Closed |                                      |
+| [MAN3-WBS-0002](MAN3-PP-0001-project-plan.md#MAN3-WBS-0002) | [MAN3-MS-0001](MAN3-PP-0001-project-plan.md#MAN3-MS-0001) | `docs/SWE-2/SWE-2-architecture.md`                                  | Closed |                                      |
+| [MAN3-WBS-0003](MAN3-PP-0001-project-plan.md#MAN3-WBS-0003) | [MAN3-MS-0001](MAN3-PP-0001-project-plan.md#MAN3-MS-0001) | `docs/SWE-3/SWE-3-detailed-design.md`                               | Closed |                                      |
+| [MAN3-WBS-0004](MAN3-PP-0001-project-plan.md#MAN3-WBS-0004) | [MAN3-MS-0001](MAN3-PP-0001-project-plan.md#MAN3-MS-0001) | `src/calculator.cpp`, `include/calculator.hpp`, `main.cpp`          | Closed |                                      |
+| [MAN3-WBS-0005](MAN3-PP-0001-project-plan.md#MAN3-WBS-0005) | [MAN3-MS-0002](MAN3-PP-0001-project-plan.md#MAN3-MS-0002) | `docs/SWE-4/SWE4-TC-SPEC-0001-unit-test.md`                         | Closed | [SWE-TC-0001](../SWE-4/SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0001)~0023 (23건)              |
+| [MAN3-WBS-0006](MAN3-PP-0001-project-plan.md#MAN3-WBS-0006) | [MAN3-MS-0002](MAN3-PP-0001-project-plan.md#MAN3-MS-0002) | `tests/unit/test_calculator.cpp`, `tests/unit/test_inputparser.cpp` | Closed | 23/23 Pass, 커버리지 100%            |
+| [MAN3-WBS-0007](MAN3-PP-0001-project-plan.md#MAN3-WBS-0007) | [MAN3-MS-0003](MAN3-PP-0001-project-plan.md#MAN3-MS-0003) | `docs/SWE-5/SWE5-ITC-SPEC-0001-integration-test.md`                 | Closed | [SWE-ITC-0001](../SWE-5/SWE5-ITC-SPEC-0001-integration-test.md#SWE-ITC-0001)~0013 (13건)             |
+| [MAN3-WBS-0008](MAN3-PP-0001-project-plan.md#MAN3-WBS-0008) | [MAN3-MS-0003](MAN3-PP-0001-project-plan.md#MAN3-MS-0003) | `tests/integration/test_integration.cpp`                            | Closed | 13/13 Pass, 미해결 결함 0건          |
+| [MAN3-WBS-0009](MAN3-PP-0001-project-plan.md#MAN3-WBS-0009) | [MAN3-MS-0004](MAN3-PP-0001-project-plan.md#MAN3-MS-0004) | `docs/SWE-6/SWE6-QTC-SPEC-0001-qualification-test.md`               | Closed | [SWE-QTC-0001](../SWE-6/SWE6-QTC-SPEC-0001-qualification-test.md#SWE-QTC-0001)~0017 (17건)             |
+| [MAN3-WBS-0010](MAN3-PP-0001-project-plan.md#MAN3-WBS-0010) | [MAN3-MS-0004](MAN3-PP-0001-project-plan.md#MAN3-MS-0004) | `docs/SWE-6/SWE6-QTC-SPEC-0001-qualification-test.md` §7            | Closed | 17/17 Pass, 릴리스 기준 전 항목 달성 |
 
 ---
 

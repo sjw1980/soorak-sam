@@ -2,13 +2,13 @@
 
 | 항목       | 내용                                                                        |
 | ---------- | --------------------------------------------------------------------------- |
-| 문서 ID    | SWE4-TRACE-0001                                                             |
+| 문서 ID    | [SWE4-TRACE-0001](SWE4-TRACE-0001-traceability-review.md)                                                             |
 | 프로젝트명 | CLI 계산기 소프트웨어 — ASPICE SWE-1~SWE-6                                  |
 | 버전       | v1.0 / 2026-04-12                                                           |
 | 상태       | Draft                                                                       |
 | 작성자     | ASPICE MAN-3 전문가                                                         |
 | 승인자     | —                                                                           |
-| 참조 문서  | SWE4-TC-SPEC-0001, SWE3-UNIT-SPEC-0001, SWE3-TRACE-0001, SWE1-REQ-SPEC-0001 |
+| 참조 문서  | [SWE4-TC-SPEC-0001](SWE4-TC-SPEC-0001-unit-test.md), [SWE3-UNIT-SPEC-0001](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md), [SWE3-TRACE-0001](../SWE-3/SWE3-TRACE-0001-traceability-review.md), [SWE1-REQ-SPEC-0001](../SWE-1/SWE-1-requirements.md) |
 
 ---
 
@@ -26,10 +26,10 @@ SW 요구사항(SWE-REQ) ↔ SWE-3 단위 설계(SWE-UNIT) ↔ SWE-4 단위 TC(S
 
 | SWE-UNIT ID   | 단위명            | 검증 방식         | 매핑 TC ID              | TC 수 | 커버리지 달성                                   |
 | ------------- | ----------------- | ----------------- | ----------------------- | ----- | ----------------------------------------------- |
-| SWE-UNIT-0001 | Calculator        | 단위 테스트       | SWE-TC-0001~0008        | 8     | ✅ 문장 100% / 분기 100%                        |
-| SWE-UNIT-0002 | InputParser       | 단위 테스트       | SWE-TC-0009~0023        | 15    | ✅ 문장 100% / 분기 100%                        |
-| SWE-UNIT-0003 | AppController     | SWE-5 통합 테스트 | — (stdin 의존성)        | 0     | ✅ SWE-ITC-0001~0013으로 E2E 검증               |
-| SWE-UNIT-0004 | Types (공통 타입) | 간접 검증         | SWE-TC-0001~0023 (전체) | —     | ✅ 모든 TC에서 OperationResult/ParsedInput 사용 |
+| [SWE-UNIT-0001](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0001) | Calculator        | 단위 테스트       | [SWE-TC-0001](SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0001)~0008        | 8     | ✅ 문장 100% / 분기 100%                        |
+| [SWE-UNIT-0002](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0002) | InputParser       | 단위 테스트       | [SWE-TC-0009](SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0009)~0023        | 15    | ✅ 문장 100% / 분기 100%                        |
+| [SWE-UNIT-0003](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0003) | AppController     | SWE-5 통합 테스트 | — (stdin 의존성)        | 0     | ✅ [SWE-ITC-0001](../SWE-5/SWE5-ITC-SPEC-0001-integration-test.md#SWE-ITC-0001)~0013으로 E2E 검증               |
+| [SWE-UNIT-0004](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0004) | Types (공통 타입) | 간접 검증         | [SWE-TC-0001](SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0001)~0023 (전체) | —     | ✅ 모든 TC에서 OperationResult/ParsedInput 사용 |
 
 > **AppController 제외 사유**: AppController는 `stdin`/`stdout`에 직접 의존하며 내부적으로 Calculator, InputParser를 호출한다. 구성 단위(Calculator, InputParser)는 독립 TC로 완전 검증되므로 AppController는 SWE-5 통합 테스트(SWE-ITC)에서 E2E로 검증한다.
 
@@ -38,7 +38,7 @@ SW 요구사항(SWE-REQ) ↔ SWE-3 단위 설계(SWE-UNIT) ↔ SWE-4 단위 TC(S
 | 확인 항목                     | 결과                                       |
 | ----------------------------- | ------------------------------------------ |
 | TC 없는 단위 (의도적 제외 외) | 없음                                       |
-| 미매핑 TC                     | 없음 — SWE-TC-0001~0023 모두 단위에 연결됨 |
+| 미매핑 TC                     | 없음 — [SWE-TC-0001](SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0001)~0023 모두 단위에 연결됨 |
 
 ---
 
@@ -46,23 +46,23 @@ SW 요구사항(SWE-REQ) ↔ SWE-3 단위 설계(SWE-UNIT) ↔ SWE-4 단위 TC(S
 
 | SWE-REQ ID   | 요구사항 요약      | 단위 ID                      | 매핑 TC ID                         | TC 결과             |
 | ------------ | ------------------ | ---------------------------- | ---------------------------------- | ------------------- |
-| SWE-REQ-0001 | 덧셈 연산          | SWE-UNIT-0001                | SWE-TC-0001, SWE-TC-0006           | ✅ Pass             |
-| SWE-REQ-0002 | 뺄셈 연산          | SWE-UNIT-0001                | SWE-TC-0002                        | ✅ Pass             |
-| SWE-REQ-0003 | 곱셈 연산          | SWE-UNIT-0001                | SWE-TC-0003                        | ✅ Pass             |
-| SWE-REQ-0004 | 나눗셈 연산        | SWE-UNIT-0001                | SWE-TC-0004, SWE-TC-0007           | ✅ Pass             |
-| SWE-REQ-0005 | 0 나누기 예외 처리 | SWE-UNIT-0001                | SWE-TC-0005, SWE-TC-0014           | ✅ Pass             |
-| SWE-REQ-0006 | CLI 유효 입력 파싱 | SWE-UNIT-0002                | SWE-TC-0013, SWE-TC-0019~0021      | ✅ Pass             |
-| SWE-REQ-0007 | 잘못된 입력 처리   | SWE-UNIT-0002                | SWE-TC-0015~0018, SWE-TC-0022~0023 | ✅ Pass             |
-| SWE-REQ-0008 | 종료 명령 처리     | SWE-UNIT-0002                | SWE-TC-0009~0012                   | ✅ Pass             |
-| SWE-REQ-0009 | C++17 표준 준수    | SWE-UNIT-0001, SWE-UNIT-0002 | SWE-TC-0008, SWE-TC-0017           | ✅ Pass             |
-| SWE-REQ-0010 | 단위 커버리지 100% | SWE-UNIT-0001, SWE-UNIT-0002 | SWE-TC-0001~0023 (전체)            | ✅ Pass (gcov 100%) |
+| [SWE-REQ-0001](../SWE-1/SWE-1-requirements.md#SWE-REQ-0001) | 덧셈 연산          | [SWE-UNIT-0001](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0001)                | [SWE-TC-0001](SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0001), [SWE-TC-0006](SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0006)           | ✅ Pass             |
+| [SWE-REQ-0002](../SWE-1/SWE-1-requirements.md#SWE-REQ-0002) | 뺄셈 연산          | [SWE-UNIT-0001](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0001)                | [SWE-TC-0002](SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0002)                        | ✅ Pass             |
+| [SWE-REQ-0003](../SWE-1/SWE-1-requirements.md#SWE-REQ-0003) | 곱셈 연산          | [SWE-UNIT-0001](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0001)                | [SWE-TC-0003](SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0003)                        | ✅ Pass             |
+| [SWE-REQ-0004](../SWE-1/SWE-1-requirements.md#SWE-REQ-0004) | 나눗셈 연산        | [SWE-UNIT-0001](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0001)                | [SWE-TC-0004](SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0004), [SWE-TC-0007](SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0007)           | ✅ Pass             |
+| [SWE-REQ-0005](../SWE-1/SWE-1-requirements.md#SWE-REQ-0005) | 0 나누기 예외 처리 | [SWE-UNIT-0001](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0001)                | [SWE-TC-0005](SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0005), [SWE-TC-0014](SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0014)           | ✅ Pass             |
+| [SWE-REQ-0006](../SWE-1/SWE-1-requirements.md#SWE-REQ-0006) | CLI 유효 입력 파싱 | [SWE-UNIT-0002](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0002)                | [SWE-TC-0013](SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0013), [SWE-TC-0019](SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0019)~0021      | ✅ Pass             |
+| [SWE-REQ-0007](../SWE-1/SWE-1-requirements.md#SWE-REQ-0007) | 잘못된 입력 처리   | [SWE-UNIT-0002](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0002)                | [SWE-TC-0015](SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0015)~0018, [SWE-TC-0022](SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0022)~0023 | ✅ Pass             |
+| [SWE-REQ-0008](../SWE-1/SWE-1-requirements.md#SWE-REQ-0008) | 종료 명령 처리     | [SWE-UNIT-0002](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0002)                | [SWE-TC-0009](SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0009)~0012                   | ✅ Pass             |
+| [SWE-REQ-0009](../SWE-1/SWE-1-requirements.md#SWE-REQ-0009) | C++17 표준 준수    | [SWE-UNIT-0001](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0001), [SWE-UNIT-0002](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0002) | [SWE-TC-0008](SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0008), [SWE-TC-0017](SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0017)           | ✅ Pass             |
+| [SWE-REQ-0010](../SWE-1/SWE-1-requirements.md#SWE-REQ-0010) | 단위 커버리지 100% | [SWE-UNIT-0001](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0001), [SWE-UNIT-0002](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0002) | [SWE-TC-0001](SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0001)~0023 (전체)            | ✅ Pass (gcov 100%) |
 
 ### 3.1 미검증 요구사항 확인
 
 | 확인 항목                                       | 결과                                                      |
 | ----------------------------------------------- | --------------------------------------------------------- |
-| SWE-4 TC 미매핑 요구사항                        | 없음 — SWE-REQ-0001~0010 전체 매핑 완료                   |
-| SWE-REQ-0006 / 0007 / 0008 (AppController 경유) | SWE-UNIT-0002 TC로 파싱 레이어 검증; E2E는 SWE-5에서 확인 |
+| SWE-4 TC 미매핑 요구사항                        | 없음 — [SWE-REQ-0001](../SWE-1/SWE-1-requirements.md#SWE-REQ-0001)~0010 전체 매핑 완료                   |
+| [SWE-REQ-0006](../SWE-1/SWE-1-requirements.md#SWE-REQ-0006) / 0007 / 0008 (AppController 경유) | [SWE-UNIT-0002](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0002) TC로 파싱 레이어 검증; E2E는 SWE-5에서 확인 |
 
 ---
 
@@ -70,29 +70,29 @@ SW 요구사항(SWE-REQ) ↔ SWE-3 단위 설계(SWE-UNIT) ↔ SWE-4 단위 TC(S
 
 | TC ID       | 테스트명                      | 대상 단위 ID  | 매핑 SWE-REQ ID            | TC 결과 |
 | ----------- | ----------------------------- | ------------- | -------------------------- | ------- |
-| SWE-TC-0001 | 덧셈 정상 동작                | SWE-UNIT-0001 | SWE-REQ-0001               | Pass    |
-| SWE-TC-0002 | 뺄셈 정상 동작                | SWE-UNIT-0001 | SWE-REQ-0002               | Pass    |
-| SWE-TC-0003 | 곱셈 정상 동작                | SWE-UNIT-0001 | SWE-REQ-0003               | Pass    |
-| SWE-TC-0004 | 나눗셈 정상 동작              | SWE-UNIT-0001 | SWE-REQ-0004               | Pass    |
-| SWE-TC-0005 | 0 나누기 예외 처리            | SWE-UNIT-0001 | SWE-REQ-0005               | Pass    |
-| SWE-TC-0006 | 음수 피연산자 정상 동작       | SWE-UNIT-0001 | SWE-REQ-0001               | Pass    |
-| SWE-TC-0007 | 소수 피연산자 정상 동작       | SWE-UNIT-0001 | SWE-REQ-0004               | Pass    |
-| SWE-TC-0008 | 알 수 없는 연산자             | SWE-UNIT-0001 | SWE-REQ-0009               | Pass    |
-| SWE-TC-0009 | "q" → QUIT                    | SWE-UNIT-0002 | SWE-REQ-0008               | Pass    |
-| SWE-TC-0010 | "Q" → QUIT (대소문자 무관)    | SWE-UNIT-0002 | SWE-REQ-0008               | Pass    |
-| SWE-TC-0011 | "quit" → QUIT                 | SWE-UNIT-0002 | SWE-REQ-0008               | Pass    |
-| SWE-TC-0012 | "QUIT" → QUIT (대소문자 무관) | SWE-UNIT-0002 | SWE-REQ-0008               | Pass    |
-| SWE-TC-0013 | 유효한 정수 덧셈 파싱         | SWE-UNIT-0002 | SWE-REQ-0006               | Pass    |
-| SWE-TC-0014 | 나누기 0 입력 파싱            | SWE-UNIT-0002 | SWE-REQ-0005               | Pass    |
-| SWE-TC-0015 | 빈 입력 → INVALID             | SWE-UNIT-0002 | SWE-REQ-0007               | Pass    |
-| SWE-TC-0016 | 문자열만 입력 → INVALID       | SWE-UNIT-0002 | SWE-REQ-0007               | Pass    |
-| SWE-TC-0017 | 알 수 없는 연산자 → INVALID   | SWE-UNIT-0002 | SWE-REQ-0007, SWE-REQ-0009 | Pass    |
-| SWE-TC-0018 | 토큰 초과 입력 → INVALID      | SWE-UNIT-0002 | SWE-REQ-0007               | Pass    |
-| SWE-TC-0019 | 앞뒤 공백 입력 → 정상 파싱    | SWE-UNIT-0002 | SWE-REQ-0006               | Pass    |
-| SWE-TC-0020 | 소수 피연산자 파싱            | SWE-UNIT-0002 | SWE-REQ-0006               | Pass    |
-| SWE-TC-0021 | 음수 피연산자 파싱            | SWE-UNIT-0002 | SWE-REQ-0006               | Pass    |
-| SWE-TC-0022 | 숫자만 입력 → INVALID         | SWE-UNIT-0002 | SWE-REQ-0007               | Pass    |
-| SWE-TC-0023 | 공백만 입력 → INVALID         | SWE-UNIT-0002 | SWE-REQ-0007               | Pass    |
+| [SWE-TC-0001](SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0001) | 덧셈 정상 동작                | [SWE-UNIT-0001](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0001) | [SWE-REQ-0001](../SWE-1/SWE-1-requirements.md#SWE-REQ-0001)               | Pass    |
+| [SWE-TC-0002](SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0002) | 뺄셈 정상 동작                | [SWE-UNIT-0001](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0001) | [SWE-REQ-0002](../SWE-1/SWE-1-requirements.md#SWE-REQ-0002)               | Pass    |
+| [SWE-TC-0003](SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0003) | 곱셈 정상 동작                | [SWE-UNIT-0001](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0001) | [SWE-REQ-0003](../SWE-1/SWE-1-requirements.md#SWE-REQ-0003)               | Pass    |
+| [SWE-TC-0004](SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0004) | 나눗셈 정상 동작              | [SWE-UNIT-0001](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0001) | [SWE-REQ-0004](../SWE-1/SWE-1-requirements.md#SWE-REQ-0004)               | Pass    |
+| [SWE-TC-0005](SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0005) | 0 나누기 예외 처리            | [SWE-UNIT-0001](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0001) | [SWE-REQ-0005](../SWE-1/SWE-1-requirements.md#SWE-REQ-0005)               | Pass    |
+| [SWE-TC-0006](SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0006) | 음수 피연산자 정상 동작       | [SWE-UNIT-0001](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0001) | [SWE-REQ-0001](../SWE-1/SWE-1-requirements.md#SWE-REQ-0001)               | Pass    |
+| [SWE-TC-0007](SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0007) | 소수 피연산자 정상 동작       | [SWE-UNIT-0001](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0001) | [SWE-REQ-0004](../SWE-1/SWE-1-requirements.md#SWE-REQ-0004)               | Pass    |
+| [SWE-TC-0008](SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0008) | 알 수 없는 연산자             | [SWE-UNIT-0001](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0001) | [SWE-REQ-0009](../SWE-1/SWE-1-requirements.md#SWE-REQ-0009)               | Pass    |
+| [SWE-TC-0009](SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0009) | "q" → QUIT                    | [SWE-UNIT-0002](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0002) | [SWE-REQ-0008](../SWE-1/SWE-1-requirements.md#SWE-REQ-0008)               | Pass    |
+| [SWE-TC-0010](SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0010) | "Q" → QUIT (대소문자 무관)    | [SWE-UNIT-0002](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0002) | [SWE-REQ-0008](../SWE-1/SWE-1-requirements.md#SWE-REQ-0008)               | Pass    |
+| [SWE-TC-0011](SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0011) | "quit" → QUIT                 | [SWE-UNIT-0002](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0002) | [SWE-REQ-0008](../SWE-1/SWE-1-requirements.md#SWE-REQ-0008)               | Pass    |
+| [SWE-TC-0012](SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0012) | "QUIT" → QUIT (대소문자 무관) | [SWE-UNIT-0002](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0002) | [SWE-REQ-0008](../SWE-1/SWE-1-requirements.md#SWE-REQ-0008)               | Pass    |
+| [SWE-TC-0013](SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0013) | 유효한 정수 덧셈 파싱         | [SWE-UNIT-0002](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0002) | [SWE-REQ-0006](../SWE-1/SWE-1-requirements.md#SWE-REQ-0006)               | Pass    |
+| [SWE-TC-0014](SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0014) | 나누기 0 입력 파싱            | [SWE-UNIT-0002](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0002) | [SWE-REQ-0005](../SWE-1/SWE-1-requirements.md#SWE-REQ-0005)               | Pass    |
+| [SWE-TC-0015](SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0015) | 빈 입력 → INVALID             | [SWE-UNIT-0002](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0002) | [SWE-REQ-0007](../SWE-1/SWE-1-requirements.md#SWE-REQ-0007)               | Pass    |
+| [SWE-TC-0016](SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0016) | 문자열만 입력 → INVALID       | [SWE-UNIT-0002](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0002) | [SWE-REQ-0007](../SWE-1/SWE-1-requirements.md#SWE-REQ-0007)               | Pass    |
+| [SWE-TC-0017](SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0017) | 알 수 없는 연산자 → INVALID   | [SWE-UNIT-0002](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0002) | [SWE-REQ-0007](../SWE-1/SWE-1-requirements.md#SWE-REQ-0007), [SWE-REQ-0009](../SWE-1/SWE-1-requirements.md#SWE-REQ-0009) | Pass    |
+| [SWE-TC-0018](SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0018) | 토큰 초과 입력 → INVALID      | [SWE-UNIT-0002](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0002) | [SWE-REQ-0007](../SWE-1/SWE-1-requirements.md#SWE-REQ-0007)               | Pass    |
+| [SWE-TC-0019](SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0019) | 앞뒤 공백 입력 → 정상 파싱    | [SWE-UNIT-0002](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0002) | [SWE-REQ-0006](../SWE-1/SWE-1-requirements.md#SWE-REQ-0006)               | Pass    |
+| [SWE-TC-0020](SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0020) | 소수 피연산자 파싱            | [SWE-UNIT-0002](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0002) | [SWE-REQ-0006](../SWE-1/SWE-1-requirements.md#SWE-REQ-0006)               | Pass    |
+| [SWE-TC-0021](SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0021) | 음수 피연산자 파싱            | [SWE-UNIT-0002](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0002) | [SWE-REQ-0006](../SWE-1/SWE-1-requirements.md#SWE-REQ-0006)               | Pass    |
+| [SWE-TC-0022](SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0022) | 숫자만 입력 → INVALID         | [SWE-UNIT-0002](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0002) | [SWE-REQ-0007](../SWE-1/SWE-1-requirements.md#SWE-REQ-0007)               | Pass    |
+| [SWE-TC-0023](SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0023) | 공백만 입력 → INVALID         | [SWE-UNIT-0002](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0002) | [SWE-REQ-0007](../SWE-1/SWE-1-requirements.md#SWE-REQ-0007)               | Pass    |
 
 ---
 
@@ -100,10 +100,10 @@ SW 요구사항(SWE-REQ) ↔ SWE-3 단위 설계(SWE-UNIT) ↔ SWE-4 단위 TC(S
 
 | 단위 ID       | 단위명        | 테스트 파일                       | TC 수  | 문장 커버리지 | 분기 커버리지 | 비고                          |
 | ------------- | ------------- | --------------------------------- | ------ | ------------- | ------------- | ----------------------------- |
-| SWE-UNIT-0001 | Calculator    | `tests/unit/test_calculator.cpp`  | 8      | 100%          | 100%          | `calculate()` 모든 분기 검증  |
-| SWE-UNIT-0002 | InputParser   | `tests/unit/test_inputparser.cpp` | 15     | 100%          | 100%          | `parse()` 전체 입력 유형 검증 |
-| SWE-UNIT-0003 | AppController | —                                 | 0      | SWE-5 위임    | SWE-5 위임    | E2E 13/13 ITC Pass            |
-| SWE-UNIT-0004 | Types         | — (간접)                          | —      | N/A           | N/A           | 헤더 전용, 별도 TC 불필요     |
+| [SWE-UNIT-0001](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0001) | Calculator    | `tests/unit/test_calculator.cpp`  | 8      | 100%          | 100%          | `calculate()` 모든 분기 검증  |
+| [SWE-UNIT-0002](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0002) | InputParser   | `tests/unit/test_inputparser.cpp` | 15     | 100%          | 100%          | `parse()` 전체 입력 유형 검증 |
+| [SWE-UNIT-0003](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0003) | AppController | —                                 | 0      | SWE-5 위임    | SWE-5 위임    | E2E 13/13 ITC Pass            |
+| [SWE-UNIT-0004](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0004) | Types         | — (간접)                          | —      | N/A           | N/A           | 헤더 전용, 별도 TC 불필요     |
 | **전체**      | —             | —                                 | **23** | **100%**      | **100%**      | gcov 2026-04-11 확인          |
 
 ---
@@ -113,11 +113,11 @@ SW 요구사항(SWE-REQ) ↔ SWE-3 단위 설계(SWE-UNIT) ↔ SWE-4 단위 TC(S
 | 구분            | 항목                   | 사유                   | 조치                       |
 | --------------- | ---------------------- | ---------------------- | -------------------------- |
 | 미검증 요구사항 | 없음                   | —                      | —                          |
-| 미매핑 단위     | SWE-UNIT-0003 (의도적) | stdin 의존 → SWE-5 E2E | SWE5-ITC-SPEC-0001 §3 참조 |
+| 미매핑 단위     | [SWE-UNIT-0003](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0003) (의도적) | stdin 의존 → SWE-5 E2E | [SWE5-ITC-SPEC-0001](../SWE-5/SWE5-ITC-SPEC-0001-integration-test.md) §3 참조 |
 | 미실행 TC       | 없음                   | —                      | —                          |
 
-> **결론**: SWE-4 단위 테스트 추적성 검토 결과, SWE-UNIT-0003 제외 이유가 문서화된 상태에서  
-> SWE-REQ-0001~0010 전체가 직접 또는 간접으로 단위 TC에 매핑되며,  
+> **결론**: SWE-4 단위 테스트 추적성 검토 결과, [SWE-UNIT-0003](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0003) 제외 이유가 문서화된 상태에서  
+> [SWE-REQ-0001](../SWE-1/SWE-1-requirements.md#SWE-REQ-0001)~0010 전체가 직접 또는 간접으로 단위 TC에 매핑되며,  
 > 실행된 23개 TC 모두 Pass, 문장·분기 커버리지 100% 달성되었음.
 
 ---
@@ -126,15 +126,15 @@ SW 요구사항(SWE-REQ) ↔ SWE-3 단위 설계(SWE-UNIT) ↔ SWE-4 단위 TC(S
 
 | #   | 체크 항목                                            | 결과   | 비고                                              |
 | --- | ---------------------------------------------------- | ------ | ------------------------------------------------- |
-| 1   | 모든 TC에 고유 ID(`SWE-TC-XXXX`) 부여됨              | ☑ 적합 | SWE-TC-0001~0023                                  |
+| 1   | 모든 TC에 고유 ID(`SWE-TC-XXXX`) 부여됨              | ☑ 적합 | [SWE-TC-0001](SWE4-TC-SPEC-0001-unit-test.md#SWE-TC-0001)~0023                                  |
 | 2   | 모든 TC가 SWE-3 단위(SWE-UNIT)에 매핑됨              | ☑ 적합 | §4 역방향 추적성 참조                             |
 | 3   | 모든 TC가 SW 요구사항(SWE-REQ)에 연결됨              | ☑ 적합 | §3 전방향 추적성 참조                             |
-| 4   | 미할당 단위의 제외 사유가 명시됨                     | ☑ 적합 | SWE-UNIT-0003/0004 제외 이유 §2.1 기술            |
+| 4   | 미할당 단위의 제외 사유가 명시됨                     | ☑ 적합 | [SWE-UNIT-0003](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md#SWE-UNIT-0003)/0004 제외 이유 §2.1 기술            |
 | 5   | 단위 테스트 미포함 단위에 대한 대안 검증 방법 정의됨 | ☑ 적합 | AppController → SWE-5 ITC                         |
 | 6   | 문장 커버리지 100% 달성 확인됨                       | ☑ 적합 | gcov 2026-04-11 분석 결과                         |
 | 7   | 분기 커버리지 100% 달성 확인됨                       | ☑ 적합 | gcov 2026-04-11 분석 결과                         |
 | 8   | 미검증 요구사항 없음 확인됨                          | ☑ 적합 | §3.1 확인                                         |
-| 9   | SWE-3 단위 설계 기준과의 일치성 확인됨               | ☑ 적합 | SWE3-UNIT-SPEC-0001 §2 함수 정의와 TC 입출력 일치 |
+| 9   | SWE-3 단위 설계 기준과의 일치성 확인됨               | ☑ 적합 | [SWE3-UNIT-SPEC-0001](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md) §2 함수 정의와 TC 입출력 일치 |
 | 10  | 버전 및 변경 이력 기록됨                             | ☑ 적합 | §8 변경 이력                                      |
 
 ---

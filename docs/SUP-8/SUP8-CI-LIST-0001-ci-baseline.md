@@ -2,13 +2,13 @@
 
 | 항목 | 내용 |
 |------|------|
-| 문서 ID | SUP8-CI-LIST-0001 |
+| 문서 ID | [SUP8-CI-LIST-0001](SUP8-CI-LIST-0001-ci-baseline.md) |
 | 프로젝트명 | CLI 계산기 소프트웨어 — ASPICE SWE-1~SWE-6 |
 | 버전 | v1.0 / 2026-04-11 |
 | 상태 | Draft |
 | 작성자 | ASPICE SUP-8 전문가 |
 | 승인자 | — |
-| 참조 문서 | SUP8-CMP-0001, MAN3-PP-0001, SUP1-QAR-0001 |
+| 참조 문서 | [SUP8-CMP-0001](SUP8-CMP-0001-cm-plan.md), [MAN3-PP-0001](../MAN-3/MAN3-PP-0001-project-plan.md), [SUP1-QAR-0001](../SUP-1/SUP1-QAR-0001-qa-audit-report.md) |
 
 ---
 
@@ -18,39 +18,39 @@
 
 | CI ID | CI명 | 문서 ID | 유형 | 버전 | 날짜 | 상태 | 보관 위치 | 담당자 |
 |-------|------|--------|------|------|------|------|---------|--------|
-| SUP8-CI-0001 | 프로젝트 계획서 | MAN3-PP-0001 | PLAN | v1.0 | 2026-04-05 | Draft | docs/MAN-3/MAN3-PP-0001-project-plan.md | ASPICE MAN-3 전문가 |
-| SUP8-CI-0002 | 형상 관리 계획서 | SUP8-CMP-0001 | PLAN | v1.0 | 2026-04-11 | Draft | docs/SUP-8/SUP8-CMP-0001-cm-plan.md | ASPICE SUP-8 전문가 |
-| SUP8-CI-0003 | QA 감사 보고서 | SUP1-QAR-0001 | PLAN | v1.0 | 2026-04-11 | Draft | docs/SUP-1/SUP1-QAR-0001-qa-audit-report.md | ASPICE SUP-1 전문가 |
+| SUP8-CI-0001 | 프로젝트 계획서 | [MAN3-PP-0001](../MAN-3/MAN3-PP-0001-project-plan.md) | PLAN | v1.0 | 2026-04-05 | Draft | docs/MAN-3/[MAN3-PP-0001](../MAN-3/MAN3-PP-0001-project-plan.md)-project-plan.md | ASPICE MAN-3 전문가 |
+| SUP8-CI-0002 | 형상 관리 계획서 | [SUP8-CMP-0001](SUP8-CMP-0001-cm-plan.md) | PLAN | v1.0 | 2026-04-11 | Draft | docs/SUP-8/[SUP8-CMP-0001](SUP8-CMP-0001-cm-plan.md)-cm-plan.md | ASPICE SUP-8 전문가 |
+| SUP8-CI-0003 | QA 감사 보고서 | [SUP1-QAR-0001](../SUP-1/SUP1-QAR-0001-qa-audit-report.md) | PLAN | v1.0 | 2026-04-11 | Draft | docs/SUP-1/[SUP1-QAR-0001](../SUP-1/SUP1-QAR-0001-qa-audit-report.md)-qa-audit-report.md | ASPICE SUP-1 전문가 |
 
 ### 1.2 SW 요구사항 산출물 (DOC / SWE-1)
 
 | CI ID | CI명 | 문서 ID | 유형 | 버전 | 날짜 | 상태 | 보관 위치 | 담당자 |
 |-------|------|--------|------|------|------|------|---------|--------|
-| SUP8-CI-0004 | SW 요구사항 명세서 | SWE1-REQ-SPEC-0001 | DOC | v1.0 | 2026-04-05 | Approved | docs/SWE-1/SWE-1-requirements.md | ASPICE SWE-1 전문가 |
-| SUP8-CI-0005 | SWE-1 추적성 매핑표·리뷰 체크리스트 | SWE1-TRACE-0001 | DOC | v1.0 | 2026-04-05 | Approved | docs/SWE-1/SWE1-TRACE-0001-traceability-review.md | ASPICE SWE-1 전문가 |
+| SUP8-CI-0004 | SW 요구사항 명세서 | [SWE1-REQ-SPEC-0001](../SWE-1/SWE-1-requirements.md) | DOC | v1.0 | 2026-04-05 | Approved | docs/SWE-1/SWE-1-requirements.md | ASPICE SWE-1 전문가 |
+| SUP8-CI-0005 | SWE-1 추적성 매핑표·리뷰 체크리스트 | [SWE1-TRACE-0001](../SWE-1/SWE1-TRACE-0001-traceability-review.md) | DOC | v1.0 | 2026-04-05 | Approved | docs/SWE-1/[SWE1-TRACE-0001](../SWE-1/SWE1-TRACE-0001-traceability-review.md)-traceability-review.md | ASPICE SWE-1 전문가 |
 
 ### 1.3 SW 아키텍처 산출물 (DOC / SWE-2)
 
 | CI ID | CI명 | 문서 ID | 유형 | 버전 | 날짜 | 상태 | 보관 위치 | 담당자 |
 |-------|------|--------|------|------|------|------|---------|--------|
-| SUP8-CI-0006 | SW 아키텍처 설계서 | SWE2-ARCH-0001 | DOC | v1.0 | 2026-04-11 | Draft | docs/SWE-2/SWE2-ARCH-0001-software-architecture.md | ASPICE SWE-2 전문가 |
-| SUP8-CI-0007 | SWE-2 추적성 매핑표·리뷰 체크리스트 | SWE2-TRACE-0001 | DOC | v1.0 | 2026-04-11 | Draft | docs/SWE-2/SWE2-TRACE-0001-traceability-review.md | ASPICE SWE-2 전문가 |
+| SUP8-CI-0006 | SW 아키텍처 설계서 | [SWE2-ARCH-0001](../SWE-2/SWE2-ARCH-0001-software-architecture.md) | DOC | v1.0 | 2026-04-11 | Draft | docs/SWE-2/[SWE2-ARCH-0001](../SWE-2/SWE2-ARCH-0001-software-architecture.md)-software-architecture.md | ASPICE SWE-2 전문가 |
+| SUP8-CI-0007 | SWE-2 추적성 매핑표·리뷰 체크리스트 | [SWE2-TRACE-0001](../SWE-2/SWE2-TRACE-0001-traceability-review.md) | DOC | v1.0 | 2026-04-11 | Draft | docs/SWE-2/[SWE2-TRACE-0001](../SWE-2/SWE2-TRACE-0001-traceability-review.md)-traceability-review.md | ASPICE SWE-2 전문가 |
 
 ### 1.4 SW 상세 설계 산출물 (DOC / SWE-3)
 
 | CI ID | CI명 | 문서 ID | 유형 | 버전 | 날짜 | 상태 | 보관 위치 | 담당자 |
 |-------|------|--------|------|------|------|------|---------|--------|
-| SUP8-CI-0008 | SW 단위 상세 설계 명세서 | SWE3-UNIT-SPEC-0001 | DOC | v1.0 | 2026-04-11 | Draft | docs/SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md | ASPICE SWE-3 전문가 |
-| SUP8-CI-0009 | SWE-3 추적성 매핑표·리뷰 체크리스트 | SWE3-TRACE-0001 | DOC | v1.0 | 2026-04-11 | Draft | docs/SWE-3/SWE3-TRACE-0001-traceability-review.md | ASPICE SWE-3 전문가 |
+| SUP8-CI-0008 | SW 단위 상세 설계 명세서 | [SWE3-UNIT-SPEC-0001](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md) | DOC | v1.0 | 2026-04-11 | Draft | docs/SWE-3/[SWE3-UNIT-SPEC-0001](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md)-unit-design.md | ASPICE SWE-3 전문가 |
+| SUP8-CI-0009 | SWE-3 추적성 매핑표·리뷰 체크리스트 | [SWE3-TRACE-0001](../SWE-3/SWE3-TRACE-0001-traceability-review.md) | DOC | v1.0 | 2026-04-11 | Draft | docs/SWE-3/[SWE3-TRACE-0001](../SWE-3/SWE3-TRACE-0001-traceability-review.md)-traceability-review.md | ASPICE SWE-3 전문가 |
 
 ### 1.5 SW 제품 빌드 산출물 (DOC+BUILD / SPL-2)
 
 | CI ID | CI명 | 문서 ID | 유형 | 버전 | 날짜 | 상태 | 보관 위치 | 담당자 |
 |-------|------|--------|------|------|------|------|---------|--------|
-| SUP8-CI-0010 | 빌드 환경 및 빌드 활동 정의서 | SPL2-BUILD-0001 | DOC | v1.0 | 2026-04-05 | Draft | docs/SPL-2/SPL2-BUILD-0001-build-environment.md | ASPICE SPL-2 전문가 |
-| SUP8-CI-0011 | 피처 모델 | SPL2-FEAT-0001 | DOC | v1.0 | 2026-04-05 | Draft | docs/SPL-2/SPL2-FEAT-0001-feature-model.md | ASPICE SPL-2 전문가 |
-| SUP8-CI-0012 | 출시 노트 | SPL2-REL-0001 | DOC | v1.0 | 2026-04-05 | Draft | docs/SPL-2/SPL2-REL-0001-release-note.md | ASPICE SPL-2 전문가 |
-| SUP8-CI-0013 | SPL-2 추적성 매핑표·리뷰 체크리스트 | SPL2-TRACE-0001 | DOC | v1.0 | 2026-04-05 | Draft | docs/SPL-2/SPL2-TRACE-0001-traceability-review.md | ASPICE SPL-2 전문가 |
+| SUP8-CI-0010 | 빌드 환경 및 빌드 활동 정의서 | [SPL2-BUILD-0001](../SPL-2/SPL2-BUILD-0001-build-environment.md) | DOC | v1.0 | 2026-04-05 | Draft | docs/SPL-2/[SPL2-BUILD-0001](../SPL-2/SPL2-BUILD-0001-build-environment.md)-build-environment.md | ASPICE SPL-2 전문가 |
+| SUP8-CI-0011 | 피처 모델 | [SPL2-FEAT-0001](../SPL-2/SPL2-FEAT-0001-feature-model.md) | DOC | v1.0 | 2026-04-05 | Draft | docs/SPL-2/[SPL2-FEAT-0001](../SPL-2/SPL2-FEAT-0001-feature-model.md)-feature-model.md | ASPICE SPL-2 전문가 |
+| SUP8-CI-0012 | 출시 노트 | [SPL2-REL-0001](../SPL-2/SPL2-REL-0001-release-note.md) | DOC | v1.0 | 2026-04-05 | Draft | docs/SPL-2/[SPL2-REL-0001](../SPL-2/SPL2-REL-0001-release-note.md)-release-note.md | ASPICE SPL-2 전문가 |
+| SUP8-CI-0013 | SPL-2 추적성 매핑표·리뷰 체크리스트 | [SPL2-TRACE-0001](../SPL-2/SPL2-TRACE-0001-traceability-review.md) | DOC | v1.0 | 2026-04-05 | Draft | docs/SPL-2/[SPL2-TRACE-0001](../SPL-2/SPL2-TRACE-0001-traceability-review.md)-traceability-review.md | ASPICE SPL-2 전문가 |
 | SUP8-CI-0014 | 루트 빌드 스크립트 | CMakeLists.txt | BUILD | v1.0 | 2026-04-11 | Draft | CMakeLists.txt | ASPICE SPL-2 전문가 |
 
 ### 1.6 소스코드 (SRC)
@@ -71,12 +71,12 @@
 
 | CI ID | CI명 | 문서 ID | 유형 | 버전 | 날짜 | 상태 | 보관 위치 | 담당자 |
 |-------|------|--------|------|------|------|------|---------|--------|
-| SUP8-CI-0024 | SWE-4 단위 TC 명세 | SWE4-TC-SPEC-0001 (예정) | TEST | — | — | 미작성 | docs/SWE-4/ (예정) | ASPICE SWE-4 전문가 |
+| SUP8-CI-0024 | SWE-4 단위 TC 명세 | [SWE4-TC-SPEC-0001](../SWE-4/SWE4-TC-SPEC-0001-unit-test.md) (예정) | TEST | — | — | 미작성 | docs/SWE-4/ (예정) | ASPICE SWE-4 전문가 |
 | SUP8-CI-0025 | SWE-4 단위 테스트 소스 | calculator_test.cpp (예정) | SRC | — | — | 미작성 | tests/ (예정) | ASPICE SWE-4 전문가 |
 | SUP8-CI-0026 | SWE-4 테스트 결과·커버리지 보고서 | SWE4-RESULT-0001 (예정) | TEST | — | — | 미작성 | docs/SWE-4/ (예정) | ASPICE SWE-4 전문가 |
-| SUP8-CI-0027 | SWE-5 통합 TC 명세 | SWE5-ITC-SPEC-0001 (예정) | TEST | — | — | 미작성 | docs/SWE-5/ (예정) | ASPICE SWE-5 전문가 |
+| SUP8-CI-0027 | SWE-5 통합 TC 명세 | [SWE5-ITC-SPEC-0001](../SWE-5/SWE5-ITC-SPEC-0001-integration-test.md) (예정) | TEST | — | — | 미작성 | docs/SWE-5/ (예정) | ASPICE SWE-5 전문가 |
 | SUP8-CI-0028 | SWE-5 통합 테스트 결과 | SWE5-RESULT-0001 (예정) | TEST | — | — | 미작성 | docs/SWE-5/ (예정) | ASPICE SWE-5 전문가 |
-| SUP8-CI-0029 | SWE-6 적격성 TC 명세 | SWE6-QTC-SPEC-0001 (예정) | TEST | — | — | 미작성 | docs/SWE-6/ (예정) | ASPICE SWE-6 전문가 |
+| SUP8-CI-0029 | SWE-6 적격성 TC 명세 | [SWE6-QTC-SPEC-0001](../SWE-6/SWE6-QTC-SPEC-0001-qualification-test.md) (예정) | TEST | — | — | 미작성 | docs/SWE-6/ (예정) | ASPICE SWE-6 전문가 |
 | SUP8-CI-0030 | SWE-6 적격성 테스트 결과 | SWE6-RESULT-0001 (예정) | TEST | — | — | 미작성 | docs/SWE-6/ (예정) | ASPICE SWE-6 전문가 |
 
 ---
@@ -98,19 +98,19 @@
 
 | 산출물 ID | CI ID | CI명 | 버전 | 베이스라인 ID | 상태 | 비고 |
 |---------|-------|------|------|------------|------|------|
-| MAN3-PP-0001 | SUP8-CI-0001 | 프로젝트 계획서 | v1.0 | SUP8-BL-0001 | Draft | 관리자 미지정 (SUP1-NC-0007) |
-| SUP8-CMP-0001 | SUP8-CI-0002 | 형상 관리 계획서 | v1.0 | SUP8-BL-0001 | Draft | 금일 최초 작성 |
-| SUP1-QAR-0001 | SUP8-CI-0003 | QA 감사 보고서 | v1.0 | SUP8-BL-0001 | Draft | |
-| SWE1-REQ-SPEC-0001 | SUP8-CI-0004 | SW 요구사항 명세서 | v1.0 | SUP8-BL-0001 | Approved | 파일명 불일치 (SUP1-NC-0006) |
-| SWE1-TRACE-0001 | SUP8-CI-0005 | SWE-1 추적성 매핑 | v1.0 | SUP8-BL-0001 | Approved | |
-| SWE2-ARCH-0001 | SUP8-CI-0006 | SW 아키텍처 설계서 | v1.0 | SUP8-BL-0001 | Draft | |
-| SWE2-TRACE-0001 | SUP8-CI-0007 | SWE-2 추적성 매핑 | v1.0 | SUP8-BL-0001 | Draft | |
-| SWE3-UNIT-SPEC-0001 | SUP8-CI-0008 | SW 단위 상세 설계 | v1.0 | SUP8-BL-0001 | Draft | |
-| SWE3-TRACE-0001 | SUP8-CI-0009 | SWE-3 추적성 매핑 | v1.0 | SUP8-BL-0001 | Draft | |
-| SPL2-BUILD-0001 | SUP8-CI-0010 | 빌드 환경 정의서 | v1.0 | SUP8-BL-0001 | Draft | |
-| SPL2-FEAT-0001 | SUP8-CI-0011 | 피처 모델 | v1.0 | SUP8-BL-0001 | Draft | |
-| SPL2-REL-0001 | SUP8-CI-0012 | 출시 노트 | v1.0 | SUP8-BL-0001 | Draft | SWE-4~6 완료 후 갱신 |
-| SPL2-TRACE-0001 | SUP8-CI-0013 | SPL-2 추적성 매핑 | v1.0 | SUP8-BL-0001 | Draft | |
+| [MAN3-PP-0001](../MAN-3/MAN3-PP-0001-project-plan.md) | SUP8-CI-0001 | 프로젝트 계획서 | v1.0 | SUP8-BL-0001 | Draft | 관리자 미지정 (SUP1-NC-0007) |
+| [SUP8-CMP-0001](SUP8-CMP-0001-cm-plan.md) | SUP8-CI-0002 | 형상 관리 계획서 | v1.0 | SUP8-BL-0001 | Draft | 금일 최초 작성 |
+| [SUP1-QAR-0001](../SUP-1/SUP1-QAR-0001-qa-audit-report.md) | SUP8-CI-0003 | QA 감사 보고서 | v1.0 | SUP8-BL-0001 | Draft | |
+| [SWE1-REQ-SPEC-0001](../SWE-1/SWE-1-requirements.md) | SUP8-CI-0004 | SW 요구사항 명세서 | v1.0 | SUP8-BL-0001 | Approved | 파일명 불일치 (SUP1-NC-0006) |
+| [SWE1-TRACE-0001](../SWE-1/SWE1-TRACE-0001-traceability-review.md) | SUP8-CI-0005 | SWE-1 추적성 매핑 | v1.0 | SUP8-BL-0001 | Approved | |
+| [SWE2-ARCH-0001](../SWE-2/SWE2-ARCH-0001-software-architecture.md) | SUP8-CI-0006 | SW 아키텍처 설계서 | v1.0 | SUP8-BL-0001 | Draft | |
+| [SWE2-TRACE-0001](../SWE-2/SWE2-TRACE-0001-traceability-review.md) | SUP8-CI-0007 | SWE-2 추적성 매핑 | v1.0 | SUP8-BL-0001 | Draft | |
+| [SWE3-UNIT-SPEC-0001](../SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md) | SUP8-CI-0008 | SW 단위 상세 설계 | v1.0 | SUP8-BL-0001 | Draft | |
+| [SWE3-TRACE-0001](../SWE-3/SWE3-TRACE-0001-traceability-review.md) | SUP8-CI-0009 | SWE-3 추적성 매핑 | v1.0 | SUP8-BL-0001 | Draft | |
+| [SPL2-BUILD-0001](../SPL-2/SPL2-BUILD-0001-build-environment.md) | SUP8-CI-0010 | 빌드 환경 정의서 | v1.0 | SUP8-BL-0001 | Draft | |
+| [SPL2-FEAT-0001](../SPL-2/SPL2-FEAT-0001-feature-model.md) | SUP8-CI-0011 | 피처 모델 | v1.0 | SUP8-BL-0001 | Draft | |
+| [SPL2-REL-0001](../SPL-2/SPL2-REL-0001-release-note.md) | SUP8-CI-0012 | 출시 노트 | v1.0 | SUP8-BL-0001 | Draft | SWE-4~6 완료 후 갱신 |
+| [SPL2-TRACE-0001](../SPL-2/SPL2-TRACE-0001-traceability-review.md) | SUP8-CI-0013 | SPL-2 추적성 매핑 | v1.0 | SUP8-BL-0001 | Draft | |
 | CMakeLists.txt | SUP8-CI-0014 | 빌드 스크립트 | v1.0 | SUP8-BL-0001 | Draft | 빌드 검증 완료 |
 | src/main.c | SUP8-CI-0015 | 임시 메인 소스 | v1.0 | SUP8-BL-0001 | Draft | placeholder |
 | SWE-3 구현 파일 6종 | SUP8-CI-0016~0023 | Calculator/InputParser/AppController/types | — | — (미등록) | 미작성 | SUP1-NC-0003 대응 |
@@ -171,13 +171,13 @@
 ## 5. 변경 요청 (CR) 목록
 
 > 현재 시점(2026-04-11)에서 등록된 공식 CR 없음.  
-> 아래 항목은 SUP1-QAR-0001에서 식별된 부적합 사항에 대한 시정 조치로 CR 등록 예정.
+> 아래 항목은 [SUP1-QAR-0001](../SUP-1/SUP1-QAR-0001-qa-audit-report.md)에서 식별된 부적합 사항에 대한 시정 조치로 CR 등록 예정.
 
 | ID | 제목 | 영향 CI ID | 요청 근거 | 요청 날짜 | CCB 결정 | 구현 상태 | 검증 상태 |
 |----|------|----------|---------|---------|---------|---------|---------|
 | SUP8-CR-0001 | SWE-3 구현 소스코드 작성 (Calculator, InputParser, AppController, types.h) | SUP8-CI-0016~0023 | SUP1-NC-0003 시정 조치 | 2026-04-11 | 승인 권고 | 미구현 | 미검증 |
-| SUP8-CR-0002 | SWE-1 요구사항 파일명 변경 (SWE-1-requirements.md → SWE1-REQ-SPEC-0001-requirements.md) | SUP8-CI-0004 | SUP1-NC-0006 시정 조치 | 2026-04-11 | 승인 권고 | 미구현 | 미검증 |
-| SUP8-CR-0003 | SWE1-TRACE-0001 내 컴포넌트 상태 "Approved" → "Draft" 수정 | SUP8-CI-0005 | SUP1-NC-0004 시정 조치 | 2026-04-11 | 승인 권고 | 미구현 | 미검증 |
+| SUP8-CR-0002 | SWE-1 요구사항 파일명 변경 (SWE-1-requirements.md → [SWE1-REQ-SPEC-0001](../SWE-1/SWE-1-requirements.md)-requirements.md) | SUP8-CI-0004 | SUP1-NC-0006 시정 조치 | 2026-04-11 | 승인 권고 | 미구현 | 미검증 |
+| SUP8-CR-0003 | [SWE1-TRACE-0001](../SWE-1/SWE1-TRACE-0001-traceability-review.md) 내 컴포넌트 상태 "Approved" → "Draft" 수정 | SUP8-CI-0005 | SUP1-NC-0004 시정 조치 | 2026-04-11 | 승인 권고 | 미구현 | 미검증 |
 
 ---
 
