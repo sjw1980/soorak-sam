@@ -1,4 +1,6 @@
-﻿20 SWE-REQ-0001와 SWE-TC-0001 등.. 각 ID에 대한 참조가 있게 되는데. 모든 ID에 대한 정의나 참조가 있을 때마가 Link를 만들어줘. MD 파일 렌더링할때 link를 타고 가면 볼수 있도록 말이지.
+﻿21 @file:aspice-sup10.agent.md include 폴더를 활용하고자 했었는데 실제 그렇게 되지 않았어. 코드를 변경하기 보다는 기존의 문서들을 변경해서 이슈를 해결하도록 해줘.
+
+20 SWE-REQ-0001와 SWE-TC-0001 등.. 각 ID에 대한 참조가 있게 되는데. 모든 ID에 대한 정의나 참조가 있을 때마가 Link를 만들어줘. MD 파일 렌더링할때 link를 타고 가면 볼수 있도록 말이지.
 
 19 Continue: "Continue to iterate?"
 
