@@ -1,4 +1,318 @@
-<!DOCTYPE html>
+#!/usr/bin/env python3
+"""
+traceability_sync.py
+====================
+ASPICE 추적성 문서(docs/) 파싱 → 변경 감지 → 시각화 HTML 자동 갱신
+
+사용법:
+    python3 scripts/traceability_sync.py           # 변경 시에만 HTML 갱신
+    python3 scripts/traceability_sync.py --force   # 강제 갱신
+    python3 scripts/traceability_sync.py --check   # 변경 여부만 확인 (exit 1 = 변경)
+"""
+
+import re
+import json
+import hashlib
+import sys
+from pathlib import Path
+from datetime import datetime
+from typing import Dict, List, Set, Tuple
+
+# ── 경로 설정 ──────────────────────────────────────────────────────────────────
+REPO_ROOT = Path(__file__).resolve().parent.parent
+DOCS_DIR  = REPO_ROOT / "docs"
+CACHE_FILE = REPO_ROOT / ".trace-cache.json"
+HTML_OUT   = DOCS_DIR / "traceability-visualization.html"
+
+# ── 유틸리티 ───────────────────────────────────────────────────────────────────
+
+def read_file(path: Path) -> str:
+    return path.read_text(encoding="utf-8") if path.exists() else ""
+
+def strip_md(text: str) -> str:
+    """마크다운 링크/HTML 태그 제거"""
+    text = re.sub(r'<[^>]+>', '', text)
+    text = re.sub(r'\[([^\]]+)\]\([^\)]+\)', r'\1', text)
+    return text.strip()
+
+def parse_row(line: str) -> List[str]:
+    """마크다운 테이블 한 행 → 셀 리스트 (양끝 빈 셀 제거)"""
+    if not line.strip().startswith('|'):
+        return []
+    cells = [c.strip() for c in line.split('|')]
+    while cells and not cells[0]:
+        cells.pop(0)
+    while cells and not cells[-1]:
+        cells.pop()
+    return cells
+
+def is_sep(cells: List[str]) -> bool:
+    """구분선 여부"""
+    return bool(cells) and all(re.match(r'^[-: ]+$', c) for c in cells if c)
+
+# ══════════════════════════════════════════════════════════════════════════════
+# 1. ID 추출
+# ══════════════════════════════════════════════════════════════════════════════
+
+def find_ids(path: Path, pattern: str) -> List[str]:
+    """파일에서 정규식 패턴으로 고유 ID 목록(정렬) 추출"""
+    return sorted(set(re.findall(pattern, read_file(path))))
+
+def extract_all_ids() -> Dict[str, List[str]]:
+    d = DOCS_DIR
+    return {
+        "goals": [],  # goal_req 관계에서 채움
+        "reqs":  find_ids(d / "SWE-1" / "SWE-1-requirements.md",                r"SWE-REQ-\d{4}"),
+        "comps": find_ids(d / "SWE-2" / "SWE2-ARCH-0001-software-architecture.md", r"SWE-COMP-\d{4}"),
+        "ifs":   find_ids(d / "SWE-2" / "SWE2-ARCH-0001-software-architecture.md", r"SWE-IF-\d{4}"),
+        "units": find_ids(d / "SWE-3" / "SWE3-UNIT-SPEC-0001-unit-design.md",   r"SWE-UNIT-\d{4}"),
+        "tcs":   find_ids(d / "SWE-4" / "SWE4-TC-SPEC-0001-unit-test.md",       r"SWE-TC-\d{4}"),
+        "itcs":  find_ids(d / "SWE-5" / "SWE5-ITC-SPEC-0001-integration-test.md", r"SWE-ITC-\d{4}"),
+        "qtcs":  find_ids(d / "SWE-6" / "SWE6-QTC-SPEC-0001-qualification-test.md", r"SWE-QTC-\d{4}"),
+    }
+
+# ══════════════════════════════════════════════════════════════════════════════
+# 2. 관계 추출 (마크다운 테이블 행 기반)
+# ══════════════════════════════════════════════════════════════════════════════
+
+def extract_rels(path: Path, src_pat: str, tgt_pat: str) -> Dict[str, List[str]]:
+    """
+    마크다운 테이블 행에서 (src_id → [tgt_id, ...]) 관계를 추출.
+    한 행에 src 여러 개, tgt 여러 개 모두 지원.
+    src_pat과 tgt_pat이 겹치지 않는다고 가정.
+    """
+    rels: Dict[str, Set[str]] = {}
+    for line in read_file(path).splitlines():
+        if not line.strip().startswith('|'):
+            continue
+        srcs = re.findall(src_pat, line)
+        tgts = re.findall(tgt_pat, line)
+        if srcs and tgts:
+            for s in srcs:
+                rels.setdefault(s, set()).update(tgts)
+    return {k: sorted(v) for k, v in sorted(rels.items())}
+
+def extract_all_rels() -> Dict[str, Dict[str, List[str]]]:
+    d = DOCS_DIR
+    swe1t = d / "SWE-1" / "SWE1-TRACE-0001-traceability-review.md"
+    swe3t = d / "SWE-3" / "SWE3-TRACE-0001-traceability-review.md"
+    swe4t = d / "SWE-4" / "SWE4-TRACE-0001-traceability-review.md"
+    swe5t = d / "SWE-5" / "SWE5-TRACE-0001-traceability-review.md"
+    swe6t = d / "SWE-6" / "SWE6-TRACE-0001-traceability-review.md"
+    return {
+        "goal_req":  extract_rels(swe1t, r"PROJ-GOAL-\d{3}", r"SWE-REQ-\d{4}"),
+        "req_comp":  extract_rels(swe3t, r"SWE-REQ-\d{4}",   r"SWE-COMP-\d{4}"),
+        "comp_unit": extract_rels(swe3t, r"SWE-COMP-\d{4}",  r"SWE-UNIT-\d{4}"),
+        "unit_tc":   extract_rels(swe4t, r"SWE-UNIT-\d{4}",  r"SWE-TC-\d{4}"),
+        "req_tc":    extract_rels(swe4t, r"SWE-REQ-\d{4}",   r"SWE-TC-\d{4}"),
+        "req_itc":   extract_rels(swe5t, r"SWE-REQ-\d{4}",   r"SWE-ITC-\d{4}"),
+        "req_qtc":   extract_rels(swe6t, r"SWE-REQ-\d{4}",   r"SWE-QTC-\d{4}"),
+    }
+
+# ══════════════════════════════════════════════════════════════════════════════
+# 3. 레이블 추출 (테이블 col 기반)
+# ══════════════════════════════════════════════════════════════════════════════
+
+def extract_labels(path: Path, id_pat: str,
+                   id_col: int = 0, lbl_col: int = 1,
+                   max_len: int = 40) -> Dict[str, str]:
+    """테이블에서 id_col의 ID → lbl_col의 텍스트 레이블 추출"""
+    labels: Dict[str, str] = {}
+    for line in read_file(path).splitlines():
+        cells = parse_row(line)
+        if len(cells) <= max(id_col, lbl_col) or is_sep(cells):
+            continue
+        ids = re.findall(id_pat, cells[id_col])
+        if not ids:
+            continue
+        lbl = strip_md(cells[lbl_col])
+        if not lbl or lbl.startswith('-') or len(lbl) < 2:
+            continue
+        for iid in ids:
+            if iid not in labels:
+                labels[iid] = lbl[:max_len]
+    return labels
+
+def extract_all_labels() -> Dict[str, Dict[str, str]]:
+    d = DOCS_DIR
+    # REQ 짧은 이름은 TRACE 파일에 있음 (전체 요구사항 문장보다 짧음)
+    req_lbl = extract_labels(d / "SWE-3" / "SWE3-TRACE-0001-traceability-review.md",
+                             r"SWE-REQ-\d{4}", 0, 1, 35)
+    # TRACE에 없으면 SWE-1 스펙에서 short fallback (처음 20자)
+    req_lbl2 = extract_labels(d / "SWE-1" / "SWE-1-requirements.md",
+                              r"SWE-REQ-\d{4}", 0, 1, 20)
+    for k, v in req_lbl2.items():
+        req_lbl.setdefault(k, v)
+
+    tc_lbl  = extract_labels(d / "SWE-4" / "SWE4-TC-SPEC-0001-unit-test.md",
+                             r"SWE-TC-\d{4}", 0, 1, 30)
+    itc_lbl = extract_labels(d / "SWE-5" / "SWE5-TRACE-0001-traceability-review.md",
+                             r"SWE-ITC-\d{4}", 0, 1, 30)
+    qtc_lbl = extract_labels(d / "SWE-6" / "SWE6-QTC-SPEC-0001-qualification-test.md",
+                             r"SWE-QTC-\d{4}", 0, 1, 30)
+    comp_lbl = extract_labels(d / "SWE-3" / "SWE3-TRACE-0001-traceability-review.md",
+                              r"SWE-COMP-\d{4}", 0, 1, 25)
+    unit_lbl = extract_labels(d / "SWE-3" / "SWE3-TRACE-0001-traceability-review.md",
+                              r"SWE-UNIT-\d{4}", 2, 3, 25)
+    goal_lbl = extract_labels(d / "SWE-1" / "SWE1-TRACE-0001-traceability-review.md",
+                              r"PROJ-GOAL-\d{3}", 0, 1, 20)
+    return {
+        "req": req_lbl, "tc": tc_lbl, "itc": itc_lbl,
+        "qtc": qtc_lbl, "comp": comp_lbl, "unit": unit_lbl, "goal": goal_lbl,
+    }
+
+# ══════════════════════════════════════════════════════════════════════════════
+# 4. 문서 메타
+# ══════════════════════════════════════════════════════════════════════════════
+
+def doc_meta(path: Path) -> Dict[str, str]:
+    text = read_file(path)
+    m_v = re.search(r'\|\s*버전\s*\|\s*(v[\d.]+\s*/\s*[\d-]+)', text)
+    m_s = re.search(r'\|\s*상태\s*\|\s*(\w+)', text)
+    return {
+        "version": m_v.group(1).strip() if m_v else "—",
+        "status":  m_s.group(1).strip() if m_s else "—",
+    }
+
+def extract_all_doc_meta() -> Dict[str, Dict[str, str]]:
+    d = DOCS_DIR
+    return {
+        "SWE-1": doc_meta(d / "SWE-1" / "SWE-1-requirements.md"),
+        "SWE-2": doc_meta(d / "SWE-2" / "SWE2-ARCH-0001-software-architecture.md"),
+        "SWE-3": doc_meta(d / "SWE-3" / "SWE3-UNIT-SPEC-0001-unit-design.md"),
+        "SWE-4": doc_meta(d / "SWE-4" / "SWE4-TC-SPEC-0001-unit-test.md"),
+        "SWE-5": doc_meta(d / "SWE-5" / "SWE5-ITC-SPEC-0001-integration-test.md"),
+        "SWE-6": doc_meta(d / "SWE-6" / "SWE6-QTC-SPEC-0001-qualification-test.md"),
+    }
+
+# ══════════════════════════════════════════════════════════════════════════════
+# 5. 전체 데이터 빌드
+# ══════════════════════════════════════════════════════════════════════════════
+
+def build_data() -> dict:
+    ids    = extract_all_ids()
+    rels   = extract_all_rels()
+    labels = extract_all_labels()
+    meta   = extract_all_doc_meta()
+
+    # GOAL ID 목록은 goal_req에서 수집
+    ids["goals"] = sorted(rels.get("goal_req", {}).keys())
+
+    return {
+        "gen_at":   datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "ids":      ids,
+        "rels":     rels,
+        "labels":   labels,
+        "doc_meta": meta,
+    }
+
+# ══════════════════════════════════════════════════════════════════════════════
+# 6. 변경 감지
+# ══════════════════════════════════════════════════════════════════════════════
+
+def content_hash(data: dict) -> str:
+    """ids + rels 기준 해시 (gen_at 제외)"""
+    stable = {"ids": data["ids"], "rels": data["rels"]}
+    s = json.dumps(stable, sort_keys=True, ensure_ascii=False)
+    return hashlib.sha256(s.encode()).hexdigest()[:16]
+
+def load_cache() -> dict:
+    if CACHE_FILE.exists():
+        try:
+            return json.loads(CACHE_FILE.read_text(encoding="utf-8"))
+        except Exception:
+            pass
+    return {}
+
+def save_cache(data: dict, chash: str) -> None:
+    obj = {k: data[k] for k in ("gen_at", "ids", "rels", "labels", "doc_meta")}
+    obj["hash"] = chash
+    CACHE_FILE.write_text(json.dumps(obj, ensure_ascii=False, indent=2),
+                          encoding="utf-8")
+
+def diff_summary(old: dict, new: dict) -> List[str]:
+    """캐시 vs 현재 데이터 변경 요약"""
+    lines = []
+    old_ids  = old.get("ids",  {})
+    new_ids  = new.get("ids",  {})
+    old_rels = old.get("rels", {})
+    new_rels = new.get("rels", {})
+
+    key_labels = {
+        "reqs":"SWE-REQ", "tcs":"SWE-TC", "itcs":"SWE-ITC",
+        "qtcs":"SWE-QTC", "comps":"SWE-COMP", "units":"SWE-UNIT",
+    }
+    for k, name in key_labels.items():
+        a = set(old_ids.get(k, []))
+        b = set(new_ids.get(k, []))
+        added   = sorted(b - a)
+        removed = sorted(a - b)
+        if added:   lines.append(f"  + {name} 추가: {', '.join(added)}")
+        if removed: lines.append(f"  - {name} 삭제: {', '.join(removed)}")
+
+    rel_labels = {
+        "goal_req":"GOAL→REQ", "req_comp":"REQ→COMP", "comp_unit":"COMP→UNIT",
+        "req_tc":"REQ→TC", "req_itc":"REQ→ITC", "req_qtc":"REQ→QTC",
+    }
+    for k, name in rel_labels.items():
+        if json.dumps(old_rels.get(k, {}), sort_keys=True) != \
+           json.dumps(new_rels.get(k, {}), sort_keys=True):
+            lines.append(f"  ~ {name} 관계 변경")
+    return lines
+
+# ══════════════════════════════════════════════════════════════════════════════
+# 7. JS 데이터 블록 생성
+# ══════════════════════════════════════════════════════════════════════════════
+
+def js(v) -> str:
+    return json.dumps(v, ensure_ascii=False)
+
+def build_data_block(data: dict) -> str:
+    ids    = data["ids"]
+    rels   = data["rels"]
+    labels = data["labels"]
+    gen_at = data["gen_at"]
+
+    reqs  = [{"id": i, "label": labels["req"].get(i, i), "status": "Approved"}
+             for i in ids["reqs"]]
+    tcs   = [{"id": i, "result": "Pass"} for i in ids["tcs"]]
+    itcs  = [{"id": i, "result": "Pass"} for i in ids["itcs"]]
+    qtcs  = [{"id": i, "result": "Pass"} for i in ids["qtcs"]]
+
+    goal_items = [{"id": g, "label": labels["goal"].get(g, g)}
+                  for g in ids.get("goals", [])]
+    comp_items = [{"id": c, "label": labels["comp"].get(c, c)}
+                  for c in ids["comps"]]
+    unit_items = [{"id": u, "label": labels["unit"].get(u, u)}
+                  for u in ids["units"]]
+
+    lines = [
+        f"// AUTO-GENERATED by scripts/traceability_sync.py — {gen_at}",
+        f"const GENERATED_AT = {js(gen_at)};",
+        f"const REQS        = {js(reqs)};",
+        f"const TCS         = {js(tcs)};",
+        f"const ITCS        = {js(itcs)};",
+        f"const QTCS        = {js(qtcs)};",
+        f"const GOAL_ITEMS  = {js(goal_items)};",
+        f"const COMP_ITEMS  = {js(comp_items)};",
+        f"const UNIT_ITEMS  = {js(unit_items)};",
+        f"const GOAL_REQ    = {js(rels.get('goal_req',  {}))};",
+        f"const REQ_COMP    = {js(rels.get('req_comp',  {}))};",
+        f"const COMP_UNIT   = {js(rels.get('comp_unit', {}))};",
+        f"const REQ_TC      = {js(rels.get('req_tc',    {}))};",
+        f"const REQ_ITC     = {js(rels.get('req_itc',   {}))};",
+        f"const REQ_QTC     = {js(rels.get('req_qtc',   {}))};",
+        f"const TC_LABELS   = {js(labels.get('tc',  {}))};",
+        f"const ITC_LABELS  = {js(labels.get('itc', {}))};",
+        f"const QTC_LABELS  = {js(labels.get('qtc', {}))};",
+    ]
+    return "\n".join(lines)
+
+# ══════════════════════════════════════════════════════════════════════════════
+# 8. HTML 생성
+# ══════════════════════════════════════════════════════════════════════════════
+
+HTML_TEMPLATE = r"""<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
@@ -121,24 +435,7 @@
 </div>
 
 <script>
-// AUTO-GENERATED by scripts/traceability_sync.py — 2026-04-12 12:27:26
-const GENERATED_AT = "2026-04-12 12:27:26";
-const REQS        = [{"id": "SWE-REQ-0001", "label": "덧셈 연산", "status": "Approved"}, {"id": "SWE-REQ-0002", "label": "뺄셈 연산", "status": "Approved"}, {"id": "SWE-REQ-0003", "label": "곱셈 연산", "status": "Approved"}, {"id": "SWE-REQ-0004", "label": "나눗셈 연산", "status": "Approved"}, {"id": "SWE-REQ-0005", "label": "0 나누기 예외 처리", "status": "Approved"}, {"id": "SWE-REQ-0006", "label": "CLI 사용자 인터페이스", "status": "Approved"}, {"id": "SWE-REQ-0007", "label": "반복 입력 루프", "status": "Approved"}, {"id": "SWE-REQ-0008", "label": "종료 명령 처리", "status": "Approved"}, {"id": "SWE-REQ-0009", "label": "C++17 준수", "status": "Approved"}, {"id": "SWE-REQ-0010", "label": "커버리지 100%", "status": "Approved"}];
-const TCS         = [{"id": "SWE-TC-0001", "result": "Pass"}, {"id": "SWE-TC-0002", "result": "Pass"}, {"id": "SWE-TC-0003", "result": "Pass"}, {"id": "SWE-TC-0004", "result": "Pass"}, {"id": "SWE-TC-0005", "result": "Pass"}, {"id": "SWE-TC-0006", "result": "Pass"}, {"id": "SWE-TC-0007", "result": "Pass"}, {"id": "SWE-TC-0008", "result": "Pass"}, {"id": "SWE-TC-0009", "result": "Pass"}, {"id": "SWE-TC-0010", "result": "Pass"}, {"id": "SWE-TC-0011", "result": "Pass"}, {"id": "SWE-TC-0012", "result": "Pass"}, {"id": "SWE-TC-0013", "result": "Pass"}, {"id": "SWE-TC-0014", "result": "Pass"}, {"id": "SWE-TC-0015", "result": "Pass"}, {"id": "SWE-TC-0016", "result": "Pass"}, {"id": "SWE-TC-0017", "result": "Pass"}, {"id": "SWE-TC-0018", "result": "Pass"}, {"id": "SWE-TC-0019", "result": "Pass"}, {"id": "SWE-TC-0020", "result": "Pass"}, {"id": "SWE-TC-0021", "result": "Pass"}, {"id": "SWE-TC-0022", "result": "Pass"}, {"id": "SWE-TC-0023", "result": "Pass"}];
-const ITCS        = [{"id": "SWE-ITC-0001", "result": "Pass"}, {"id": "SWE-ITC-0002", "result": "Pass"}, {"id": "SWE-ITC-0003", "result": "Pass"}, {"id": "SWE-ITC-0004", "result": "Pass"}, {"id": "SWE-ITC-0005", "result": "Pass"}, {"id": "SWE-ITC-0006", "result": "Pass"}, {"id": "SWE-ITC-0007", "result": "Pass"}, {"id": "SWE-ITC-0008", "result": "Pass"}, {"id": "SWE-ITC-0009", "result": "Pass"}, {"id": "SWE-ITC-0010", "result": "Pass"}, {"id": "SWE-ITC-0011", "result": "Pass"}, {"id": "SWE-ITC-0012", "result": "Pass"}, {"id": "SWE-ITC-0013", "result": "Pass"}];
-const QTCS        = [{"id": "SWE-QTC-0001", "result": "Pass"}, {"id": "SWE-QTC-0002", "result": "Pass"}, {"id": "SWE-QTC-0003", "result": "Pass"}, {"id": "SWE-QTC-0004", "result": "Pass"}, {"id": "SWE-QTC-0005", "result": "Pass"}, {"id": "SWE-QTC-0006", "result": "Pass"}, {"id": "SWE-QTC-0007", "result": "Pass"}, {"id": "SWE-QTC-0008", "result": "Pass"}, {"id": "SWE-QTC-0009", "result": "Pass"}, {"id": "SWE-QTC-0010", "result": "Pass"}, {"id": "SWE-QTC-0011", "result": "Pass"}, {"id": "SWE-QTC-0012", "result": "Pass"}, {"id": "SWE-QTC-0013", "result": "Pass"}, {"id": "SWE-QTC-0014", "result": "Pass"}, {"id": "SWE-QTC-0015", "result": "Pass"}, {"id": "SWE-QTC-0016", "result": "Pass"}, {"id": "SWE-QTC-0017", "result": "Pass"}];
-const GOAL_ITEMS  = [{"id": "PROJ-GOAL-001", "label": "4칙 연산 기능 제공 (덧셈)"}, {"id": "PROJ-GOAL-002", "label": "예외 상황 안전 처리 (0 나누기)"}, {"id": "PROJ-GOAL-003", "label": "CLI 기반 사용자 인터페이스"}, {"id": "PROJ-GOAL-004", "label": "C++17 표준 준수"}];
-const COMP_ITEMS  = [{"id": "SWE-COMP-0001", "label": "Calculator"}, {"id": "SWE-COMP-0002", "label": "InputParser"}, {"id": "SWE-COMP-0003", "label": "AppController"}];
-const UNIT_ITEMS  = [{"id": "SWE-UNIT-0001", "label": "Calculator"}, {"id": "SWE-UNIT-0002", "label": "InputParser"}, {"id": "SWE-UNIT-0003", "label": "AppController"}, {"id": "SWE-UNIT-0004", "label": "Types"}];
-const GOAL_REQ    = {"PROJ-GOAL-001": ["SWE-REQ-0001", "SWE-REQ-0002", "SWE-REQ-0003", "SWE-REQ-0004"], "PROJ-GOAL-002": ["SWE-REQ-0005"], "PROJ-GOAL-003": ["SWE-REQ-0006", "SWE-REQ-0007", "SWE-REQ-0008"], "PROJ-GOAL-004": ["SWE-REQ-0009", "SWE-REQ-0010"]};
-const REQ_COMP    = {"SWE-REQ-0001": ["SWE-COMP-0001"], "SWE-REQ-0002": ["SWE-COMP-0001"], "SWE-REQ-0003": ["SWE-COMP-0001"], "SWE-REQ-0004": ["SWE-COMP-0001"], "SWE-REQ-0005": ["SWE-COMP-0001"], "SWE-REQ-0006": ["SWE-COMP-0002", "SWE-COMP-0003"], "SWE-REQ-0007": ["SWE-COMP-0003"], "SWE-REQ-0008": ["SWE-COMP-0002", "SWE-COMP-0003"], "SWE-REQ-0009": ["SWE-COMP-0001"], "SWE-REQ-0010": ["SWE-COMP-0001", "SWE-COMP-0002"]};
-const COMP_UNIT   = {"SWE-COMP-0001": ["SWE-UNIT-0001", "SWE-UNIT-0002", "SWE-UNIT-0004"], "SWE-COMP-0002": ["SWE-UNIT-0001", "SWE-UNIT-0002", "SWE-UNIT-0003", "SWE-UNIT-0004"], "SWE-COMP-0003": ["SWE-UNIT-0002", "SWE-UNIT-0003"]};
-const REQ_TC      = {"SWE-REQ-0001": ["SWE-TC-0001", "SWE-TC-0006"], "SWE-REQ-0002": ["SWE-TC-0002"], "SWE-REQ-0003": ["SWE-TC-0003"], "SWE-REQ-0004": ["SWE-TC-0004", "SWE-TC-0007"], "SWE-REQ-0005": ["SWE-TC-0005", "SWE-TC-0014"], "SWE-REQ-0006": ["SWE-TC-0013", "SWE-TC-0019", "SWE-TC-0020", "SWE-TC-0021"], "SWE-REQ-0007": ["SWE-TC-0015", "SWE-TC-0016", "SWE-TC-0017", "SWE-TC-0018", "SWE-TC-0022", "SWE-TC-0023"], "SWE-REQ-0008": ["SWE-TC-0009", "SWE-TC-0010", "SWE-TC-0011", "SWE-TC-0012"], "SWE-REQ-0009": ["SWE-TC-0008", "SWE-TC-0017"], "SWE-REQ-0010": ["SWE-TC-0001"]};
-const REQ_ITC     = {"SWE-REQ-0001": ["SWE-ITC-0001", "SWE-ITC-0007", "SWE-ITC-0013"], "SWE-REQ-0002": ["SWE-ITC-0002"], "SWE-REQ-0003": ["SWE-ITC-0003"], "SWE-REQ-0004": ["SWE-ITC-0004", "SWE-ITC-0006", "SWE-ITC-0013"], "SWE-REQ-0005": ["SWE-ITC-0005"], "SWE-REQ-0006": ["SWE-ITC-0001", "SWE-ITC-0002", "SWE-ITC-0003", "SWE-ITC-0004", "SWE-ITC-0006", "SWE-ITC-0007", "SWE-ITC-0013"], "SWE-REQ-0007": ["SWE-ITC-0010", "SWE-ITC-0011", "SWE-ITC-0012", "SWE-ITC-0013"], "SWE-REQ-0008": ["SWE-ITC-0008", "SWE-ITC-0009"], "SWE-REQ-0009": ["SWE-ITC-0012"], "SWE-REQ-0010": ["SWE-ITC-0001", "SWE-ITC-0013"]};
-const REQ_QTC     = {"SWE-REQ-0001": ["SWE-QTC-0001", "SWE-QTC-0006"], "SWE-REQ-0002": ["SWE-QTC-0002"], "SWE-REQ-0003": ["SWE-QTC-0003"], "SWE-REQ-0004": ["SWE-QTC-0004", "SWE-QTC-0005"], "SWE-REQ-0005": ["SWE-QTC-0007", "SWE-QTC-0008"], "SWE-REQ-0006": ["SWE-QTC-0012", "SWE-QTC-0013"], "SWE-REQ-0007": ["SWE-QTC-0009", "SWE-QTC-0010", "SWE-QTC-0011", "SWE-QTC-0013"], "SWE-REQ-0008": ["SWE-QTC-0014", "SWE-QTC-0015"], "SWE-REQ-0009": ["SWE-QTC-0016"], "SWE-REQ-0010": ["SWE-QTC-0017"]};
-const TC_LABELS   = {"SWE-TC-0001": "덧셈 정상 동작", "SWE-TC-0002": "뺄셈 정상 동작", "SWE-TC-0003": "곱셈 정상 동작", "SWE-TC-0004": "나눗셈 정상 동작", "SWE-TC-0005": "0 나누기 예외 처리", "SWE-TC-0006": "음수 피연산자 정상 동작", "SWE-TC-0007": "소수 피연산자 정상 동작", "SWE-TC-0008": "알 수 없는 연산자", "SWE-TC-0009": "\"q\" → QUIT", "SWE-TC-0010": "\"Q\" → QUIT (대소문자 무관)", "SWE-TC-0011": "\"quit\" → QUIT", "SWE-TC-0012": "\"QUIT\" → QUIT (대소문자 무관)", "SWE-TC-0013": "유효한 정수 덧셈 파싱", "SWE-TC-0014": "나누기 0 입력 파싱", "SWE-TC-0015": "빈 입력 → INVALID", "SWE-TC-0016": "문자열만 입력 → INVALID", "SWE-TC-0017": "알 수 없는 연산자 → INVALID", "SWE-TC-0018": "토큰 초과 입력 → INVALID", "SWE-TC-0019": "앞뒤 공백 입력 → 정상 파싱", "SWE-TC-0020": "소수 피연산자 파싱", "SWE-TC-0021": "음수 피연산자 파싱", "SWE-TC-0022": "숫자만 입력 → INVALID", "SWE-TC-0023": "공백만 입력 → INVALID"};
-const ITC_LABELS  = {"SWE-ITC-0001": "덧셈 연산 E2E", "SWE-ITC-0002": "뺄셈 연산 E2E", "SWE-ITC-0003": "곱셈 연산 E2E", "SWE-ITC-0004": "나눗셈 연산 E2E", "SWE-ITC-0005": "0 나누기 오류 E2E", "SWE-ITC-0006": "소수 연산 E2E", "SWE-ITC-0007": "음수 피연산자 E2E", "SWE-ITC-0008": "q 입력 → 정상 종료", "SWE-ITC-0009": "quit 입력 → 정상 종료", "SWE-ITC-0010": "잘못된 입력 오류 처리", "SWE-ITC-0011": "빈 입력 오류 처리", "SWE-ITC-0012": "알 수 없는 연산자 처리", "SWE-ITC-0013": "다중 연산 후 종료"};
-const QTC_LABELS  = {"SWE-QTC-0001": "덧셈 연산 적격성 검증", "SWE-QTC-0002": "뺄셈 연산 적격성 검증", "SWE-QTC-0003": "곱셈 연산 적격성 검증", "SWE-QTC-0004": "나눗셈 연산 적격성 검증", "SWE-QTC-0005": "소수 나눗셈 결과 적격성 검증", "SWE-QTC-0006": "음수 피연산자 연산 적격성 검증", "SWE-QTC-0007": "0 나누기 오류 메시지 적격성 검증", "SWE-QTC-0008": "0 나누기 후 프로그램 정상 유지 적격성 검증", "SWE-QTC-0009": "잘못된 입력 후 루프 유지 적격성 검증", "SWE-QTC-0010": "빈 입력 처리 후 루프 유지 적격성 검증", "SWE-QTC-0011": "알 수 없는 연산자 처리 적격성 검증", "SWE-QTC-0012": "CLI 소수 입력 파싱 적격성 검증", "SWE-QTC-0013": "다중 연산 반복 루프 적격성 검증", "SWE-QTC-0014": "q 명령 정상 종료 적격성 검증", "SWE-QTC-0015": "quit 명령 정상 종료 적격성 검증", "SWE-QTC-0016": "C++17 빌드 플래그 적격성 검증", "SWE-QTC-0017": "단위 테스트 커버리지 100% 적격성 검증"};
+/* __DATA_BLOCK__ */
 
 /* ── 정적 문서 연결도 데이터 ── */
 const DOCUMENTS = [
@@ -439,3 +736,75 @@ function clearHL(){
 </script>
 </body>
 </html>
+"""
+
+def generate_html(data: dict) -> str:
+    """데이터 블록을 HTML 템플릿에 주입하여 완성된 HTML 반환"""
+    data_block = build_data_block(data)
+    return HTML_TEMPLATE.replace("/* __DATA_BLOCK__ */", data_block)
+
+# ══════════════════════════════════════════════════════════════════════════════
+# 9. 메인
+# ══════════════════════════════════════════════════════════════════════════════
+
+def main():
+    force  = "--force" in sys.argv
+    check  = "--check" in sys.argv
+    quiet  = "--quiet" in sys.argv
+
+    def log(msg: str):
+        if not quiet:
+            print(msg)
+
+    log("── ASPICE 추적성 동기화 ─────────────────────────")
+
+    # 1. 현재 데이터 빌드
+    log("  [1/3] docs/ 파싱 중...")
+    data = build_data()
+    new_hash = content_hash(data)
+
+    ids  = data["ids"]
+    rels = data["rels"]
+    log(f"       REQ:{len(ids['reqs'])}  TC:{len(ids['tcs'])}  "
+        f"ITC:{len(ids['itcs'])}  QTC:{len(ids['qtcs'])}")
+
+    # 2. 변경 감지
+    log("  [2/3] 변경 감지 중...")
+    cache    = load_cache()
+    old_hash = cache.get("hash", "")
+    changed  = (new_hash != old_hash) or force
+
+    if not changed:
+        log(f"     → 변경 없음 (hash={new_hash}). HTML 갱신 생략.")
+        if check:
+            sys.exit(0)
+        return
+
+    # diff 출력
+    if old_hash:
+        diffs = diff_summary(cache, data)
+        if diffs:
+            log("     변경 내용:")
+            for d in diffs:
+                log(d)
+        else:
+            log("     (레이블/메타 변경)")
+    else:
+        log("     (첫 실행 — 캐시 없음)")
+
+    if check:
+        log("  → --check 모드: 변경 감지됨 (exit 1)")
+        sys.exit(1)
+
+    # 3. HTML 생성 + 캐시 저장
+    log("  [3/3] HTML 생성 중...")
+    HTML_OUT.write_text(generate_html(data), encoding="utf-8")
+    save_cache(data, new_hash)
+
+    log(f"  ✓ 생성 완료: {HTML_OUT.relative_to(REPO_ROOT)}")
+    log(f"       (hash={new_hash})")
+    log("─────────────────────────────────────────────────")
+
+
+if __name__ == "__main__":
+    main()

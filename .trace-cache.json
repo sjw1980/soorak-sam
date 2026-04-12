@@ -1,0 +1,459 @@
+{
+  "gen_at": "2026-04-12 12:27:26",
+  "ids": {
+    "goals": [
+      "PROJ-GOAL-001",
+      "PROJ-GOAL-002",
+      "PROJ-GOAL-003",
+      "PROJ-GOAL-004"
+    ],
+    "reqs": [
+      "SWE-REQ-0001",
+      "SWE-REQ-0002",
+      "SWE-REQ-0003",
+      "SWE-REQ-0004",
+      "SWE-REQ-0005",
+      "SWE-REQ-0006",
+      "SWE-REQ-0007",
+      "SWE-REQ-0008",
+      "SWE-REQ-0009",
+      "SWE-REQ-0010"
+    ],
+    "comps": [
+      "SWE-COMP-0001",
+      "SWE-COMP-0002",
+      "SWE-COMP-0003"
+    ],
+    "ifs": [
+      "SWE-IF-0001",
+      "SWE-IF-0002",
+      "SWE-IF-0003"
+    ],
+    "units": [
+      "SWE-UNIT-0001",
+      "SWE-UNIT-0002",
+      "SWE-UNIT-0003",
+      "SWE-UNIT-0004"
+    ],
+    "tcs": [
+      "SWE-TC-0001",
+      "SWE-TC-0002",
+      "SWE-TC-0003",
+      "SWE-TC-0004",
+      "SWE-TC-0005",
+      "SWE-TC-0006",
+      "SWE-TC-0007",
+      "SWE-TC-0008",
+      "SWE-TC-0009",
+      "SWE-TC-0010",
+      "SWE-TC-0011",
+      "SWE-TC-0012",
+      "SWE-TC-0013",
+      "SWE-TC-0014",
+      "SWE-TC-0015",
+      "SWE-TC-0016",
+      "SWE-TC-0017",
+      "SWE-TC-0018",
+      "SWE-TC-0019",
+      "SWE-TC-0020",
+      "SWE-TC-0021",
+      "SWE-TC-0022",
+      "SWE-TC-0023"
+    ],
+    "itcs": [
+      "SWE-ITC-0001",
+      "SWE-ITC-0002",
+      "SWE-ITC-0003",
+      "SWE-ITC-0004",
+      "SWE-ITC-0005",
+      "SWE-ITC-0006",
+      "SWE-ITC-0007",
+      "SWE-ITC-0008",
+      "SWE-ITC-0009",
+      "SWE-ITC-0010",
+      "SWE-ITC-0011",
+      "SWE-ITC-0012",
+      "SWE-ITC-0013"
+    ],
+    "qtcs": [
+      "SWE-QTC-0001",
+      "SWE-QTC-0002",
+      "SWE-QTC-0003",
+      "SWE-QTC-0004",
+      "SWE-QTC-0005",
+      "SWE-QTC-0006",
+      "SWE-QTC-0007",
+      "SWE-QTC-0008",
+      "SWE-QTC-0009",
+      "SWE-QTC-0010",
+      "SWE-QTC-0011",
+      "SWE-QTC-0012",
+      "SWE-QTC-0013",
+      "SWE-QTC-0014",
+      "SWE-QTC-0015",
+      "SWE-QTC-0016",
+      "SWE-QTC-0017"
+    ]
+  },
+  "rels": {
+    "goal_req": {
+      "PROJ-GOAL-001": [
+        "SWE-REQ-0001",
+        "SWE-REQ-0002",
+        "SWE-REQ-0003",
+        "SWE-REQ-0004"
+      ],
+      "PROJ-GOAL-002": [
+        "SWE-REQ-0005"
+      ],
+      "PROJ-GOAL-003": [
+        "SWE-REQ-0006",
+        "SWE-REQ-0007",
+        "SWE-REQ-0008"
+      ],
+      "PROJ-GOAL-004": [
+        "SWE-REQ-0009",
+        "SWE-REQ-0010"
+      ]
+    },
+    "req_comp": {
+      "SWE-REQ-0001": [
+        "SWE-COMP-0001"
+      ],
+      "SWE-REQ-0002": [
+        "SWE-COMP-0001"
+      ],
+      "SWE-REQ-0003": [
+        "SWE-COMP-0001"
+      ],
+      "SWE-REQ-0004": [
+        "SWE-COMP-0001"
+      ],
+      "SWE-REQ-0005": [
+        "SWE-COMP-0001"
+      ],
+      "SWE-REQ-0006": [
+        "SWE-COMP-0002",
+        "SWE-COMP-0003"
+      ],
+      "SWE-REQ-0007": [
+        "SWE-COMP-0003"
+      ],
+      "SWE-REQ-0008": [
+        "SWE-COMP-0002",
+        "SWE-COMP-0003"
+      ],
+      "SWE-REQ-0009": [
+        "SWE-COMP-0001"
+      ],
+      "SWE-REQ-0010": [
+        "SWE-COMP-0001",
+        "SWE-COMP-0002"
+      ]
+    },
+    "comp_unit": {
+      "SWE-COMP-0001": [
+        "SWE-UNIT-0001",
+        "SWE-UNIT-0002",
+        "SWE-UNIT-0004"
+      ],
+      "SWE-COMP-0002": [
+        "SWE-UNIT-0001",
+        "SWE-UNIT-0002",
+        "SWE-UNIT-0003",
+        "SWE-UNIT-0004"
+      ],
+      "SWE-COMP-0003": [
+        "SWE-UNIT-0002",
+        "SWE-UNIT-0003"
+      ]
+    },
+    "unit_tc": {
+      "SWE-UNIT-0001": [
+        "SWE-TC-0001",
+        "SWE-TC-0002",
+        "SWE-TC-0003",
+        "SWE-TC-0004",
+        "SWE-TC-0005",
+        "SWE-TC-0006",
+        "SWE-TC-0007",
+        "SWE-TC-0008",
+        "SWE-TC-0014",
+        "SWE-TC-0017"
+      ],
+      "SWE-UNIT-0002": [
+        "SWE-TC-0001",
+        "SWE-TC-0008",
+        "SWE-TC-0009",
+        "SWE-TC-0010",
+        "SWE-TC-0011",
+        "SWE-TC-0012",
+        "SWE-TC-0013",
+        "SWE-TC-0014",
+        "SWE-TC-0015",
+        "SWE-TC-0016",
+        "SWE-TC-0017",
+        "SWE-TC-0018",
+        "SWE-TC-0019",
+        "SWE-TC-0020",
+        "SWE-TC-0021",
+        "SWE-TC-0022",
+        "SWE-TC-0023"
+      ],
+      "SWE-UNIT-0004": [
+        "SWE-TC-0001"
+      ]
+    },
+    "req_tc": {
+      "SWE-REQ-0001": [
+        "SWE-TC-0001",
+        "SWE-TC-0006"
+      ],
+      "SWE-REQ-0002": [
+        "SWE-TC-0002"
+      ],
+      "SWE-REQ-0003": [
+        "SWE-TC-0003"
+      ],
+      "SWE-REQ-0004": [
+        "SWE-TC-0004",
+        "SWE-TC-0007"
+      ],
+      "SWE-REQ-0005": [
+        "SWE-TC-0005",
+        "SWE-TC-0014"
+      ],
+      "SWE-REQ-0006": [
+        "SWE-TC-0013",
+        "SWE-TC-0019",
+        "SWE-TC-0020",
+        "SWE-TC-0021"
+      ],
+      "SWE-REQ-0007": [
+        "SWE-TC-0015",
+        "SWE-TC-0016",
+        "SWE-TC-0017",
+        "SWE-TC-0018",
+        "SWE-TC-0022",
+        "SWE-TC-0023"
+      ],
+      "SWE-REQ-0008": [
+        "SWE-TC-0009",
+        "SWE-TC-0010",
+        "SWE-TC-0011",
+        "SWE-TC-0012"
+      ],
+      "SWE-REQ-0009": [
+        "SWE-TC-0008",
+        "SWE-TC-0017"
+      ],
+      "SWE-REQ-0010": [
+        "SWE-TC-0001"
+      ]
+    },
+    "req_itc": {
+      "SWE-REQ-0001": [
+        "SWE-ITC-0001",
+        "SWE-ITC-0007",
+        "SWE-ITC-0013"
+      ],
+      "SWE-REQ-0002": [
+        "SWE-ITC-0002"
+      ],
+      "SWE-REQ-0003": [
+        "SWE-ITC-0003"
+      ],
+      "SWE-REQ-0004": [
+        "SWE-ITC-0004",
+        "SWE-ITC-0006",
+        "SWE-ITC-0013"
+      ],
+      "SWE-REQ-0005": [
+        "SWE-ITC-0005"
+      ],
+      "SWE-REQ-0006": [
+        "SWE-ITC-0001",
+        "SWE-ITC-0002",
+        "SWE-ITC-0003",
+        "SWE-ITC-0004",
+        "SWE-ITC-0006",
+        "SWE-ITC-0007",
+        "SWE-ITC-0013"
+      ],
+      "SWE-REQ-0007": [
+        "SWE-ITC-0010",
+        "SWE-ITC-0011",
+        "SWE-ITC-0012",
+        "SWE-ITC-0013"
+      ],
+      "SWE-REQ-0008": [
+        "SWE-ITC-0008",
+        "SWE-ITC-0009"
+      ],
+      "SWE-REQ-0009": [
+        "SWE-ITC-0012"
+      ],
+      "SWE-REQ-0010": [
+        "SWE-ITC-0001",
+        "SWE-ITC-0013"
+      ]
+    },
+    "req_qtc": {
+      "SWE-REQ-0001": [
+        "SWE-QTC-0001",
+        "SWE-QTC-0006"
+      ],
+      "SWE-REQ-0002": [
+        "SWE-QTC-0002"
+      ],
+      "SWE-REQ-0003": [
+        "SWE-QTC-0003"
+      ],
+      "SWE-REQ-0004": [
+        "SWE-QTC-0004",
+        "SWE-QTC-0005"
+      ],
+      "SWE-REQ-0005": [
+        "SWE-QTC-0007",
+        "SWE-QTC-0008"
+      ],
+      "SWE-REQ-0006": [
+        "SWE-QTC-0012",
+        "SWE-QTC-0013"
+      ],
+      "SWE-REQ-0007": [
+        "SWE-QTC-0009",
+        "SWE-QTC-0010",
+        "SWE-QTC-0011",
+        "SWE-QTC-0013"
+      ],
+      "SWE-REQ-0008": [
+        "SWE-QTC-0014",
+        "SWE-QTC-0015"
+      ],
+      "SWE-REQ-0009": [
+        "SWE-QTC-0016"
+      ],
+      "SWE-REQ-0010": [
+        "SWE-QTC-0017"
+      ]
+    }
+  },
+  "labels": {
+    "req": {
+      "SWE-REQ-0001": "덧셈 연산",
+      "SWE-REQ-0002": "뺄셈 연산",
+      "SWE-REQ-0003": "곱셈 연산",
+      "SWE-REQ-0004": "나눗셈 연산",
+      "SWE-REQ-0005": "0 나누기 예외 처리",
+      "SWE-REQ-0006": "CLI 사용자 인터페이스",
+      "SWE-REQ-0007": "반복 입력 루프",
+      "SWE-REQ-0008": "종료 명령 처리",
+      "SWE-REQ-0009": "C++17 준수",
+      "SWE-REQ-0010": "커버리지 100%"
+    },
+    "tc": {
+      "SWE-TC-0001": "덧셈 정상 동작",
+      "SWE-TC-0002": "뺄셈 정상 동작",
+      "SWE-TC-0003": "곱셈 정상 동작",
+      "SWE-TC-0004": "나눗셈 정상 동작",
+      "SWE-TC-0005": "0 나누기 예외 처리",
+      "SWE-TC-0006": "음수 피연산자 정상 동작",
+      "SWE-TC-0007": "소수 피연산자 정상 동작",
+      "SWE-TC-0008": "알 수 없는 연산자",
+      "SWE-TC-0009": "\"q\" → QUIT",
+      "SWE-TC-0010": "\"Q\" → QUIT (대소문자 무관)",
+      "SWE-TC-0011": "\"quit\" → QUIT",
+      "SWE-TC-0012": "\"QUIT\" → QUIT (대소문자 무관)",
+      "SWE-TC-0013": "유효한 정수 덧셈 파싱",
+      "SWE-TC-0014": "나누기 0 입력 파싱",
+      "SWE-TC-0015": "빈 입력 → INVALID",
+      "SWE-TC-0016": "문자열만 입력 → INVALID",
+      "SWE-TC-0017": "알 수 없는 연산자 → INVALID",
+      "SWE-TC-0018": "토큰 초과 입력 → INVALID",
+      "SWE-TC-0019": "앞뒤 공백 입력 → 정상 파싱",
+      "SWE-TC-0020": "소수 피연산자 파싱",
+      "SWE-TC-0021": "음수 피연산자 파싱",
+      "SWE-TC-0022": "숫자만 입력 → INVALID",
+      "SWE-TC-0023": "공백만 입력 → INVALID"
+    },
+    "itc": {
+      "SWE-ITC-0001": "덧셈 연산 E2E",
+      "SWE-ITC-0002": "뺄셈 연산 E2E",
+      "SWE-ITC-0003": "곱셈 연산 E2E",
+      "SWE-ITC-0004": "나눗셈 연산 E2E",
+      "SWE-ITC-0005": "0 나누기 오류 E2E",
+      "SWE-ITC-0006": "소수 연산 E2E",
+      "SWE-ITC-0007": "음수 피연산자 E2E",
+      "SWE-ITC-0008": "q 입력 → 정상 종료",
+      "SWE-ITC-0009": "quit 입력 → 정상 종료",
+      "SWE-ITC-0010": "잘못된 입력 오류 처리",
+      "SWE-ITC-0011": "빈 입력 오류 처리",
+      "SWE-ITC-0012": "알 수 없는 연산자 처리",
+      "SWE-ITC-0013": "다중 연산 후 종료"
+    },
+    "qtc": {
+      "SWE-QTC-0001": "덧셈 연산 적격성 검증",
+      "SWE-QTC-0002": "뺄셈 연산 적격성 검증",
+      "SWE-QTC-0003": "곱셈 연산 적격성 검증",
+      "SWE-QTC-0004": "나눗셈 연산 적격성 검증",
+      "SWE-QTC-0005": "소수 나눗셈 결과 적격성 검증",
+      "SWE-QTC-0006": "음수 피연산자 연산 적격성 검증",
+      "SWE-QTC-0007": "0 나누기 오류 메시지 적격성 검증",
+      "SWE-QTC-0008": "0 나누기 후 프로그램 정상 유지 적격성 검증",
+      "SWE-QTC-0009": "잘못된 입력 후 루프 유지 적격성 검증",
+      "SWE-QTC-0010": "빈 입력 처리 후 루프 유지 적격성 검증",
+      "SWE-QTC-0011": "알 수 없는 연산자 처리 적격성 검증",
+      "SWE-QTC-0012": "CLI 소수 입력 파싱 적격성 검증",
+      "SWE-QTC-0013": "다중 연산 반복 루프 적격성 검증",
+      "SWE-QTC-0014": "q 명령 정상 종료 적격성 검증",
+      "SWE-QTC-0015": "quit 명령 정상 종료 적격성 검증",
+      "SWE-QTC-0016": "C++17 빌드 플래그 적격성 검증",
+      "SWE-QTC-0017": "단위 테스트 커버리지 100% 적격성 검증"
+    },
+    "comp": {
+      "SWE-COMP-0001": "Calculator",
+      "SWE-COMP-0002": "InputParser",
+      "SWE-COMP-0003": "AppController"
+    },
+    "unit": {
+      "SWE-UNIT-0001": "Calculator",
+      "SWE-UNIT-0002": "InputParser",
+      "SWE-UNIT-0003": "AppController",
+      "SWE-UNIT-0004": "Types"
+    },
+    "goal": {
+      "PROJ-GOAL-001": "4칙 연산 기능 제공 (덧셈)",
+      "PROJ-GOAL-002": "예외 상황 안전 처리 (0 나누기)",
+      "PROJ-GOAL-003": "CLI 기반 사용자 인터페이스",
+      "PROJ-GOAL-004": "C++17 표준 준수"
+    }
+  },
+  "doc_meta": {
+    "SWE-1": {
+      "version": "v1.0 / 2026-04-05",
+      "status": "Approved"
+    },
+    "SWE-2": {
+      "version": "v1.0 / 2026-04-11",
+      "status": "Draft"
+    },
+    "SWE-3": {
+      "version": "v1.0 / 2026-04-11",
+      "status": "Draft"
+    },
+    "SWE-4": {
+      "version": "v1.0 / 2026-04-11",
+      "status": "Draft"
+    },
+    "SWE-5": {
+      "version": "v1.1 / 2026-04-11",
+      "status": "Draft"
+    },
+    "SWE-6": {
+      "version": "v1.0 / 2026-04-11",
+      "status": "Draft"
+    }
+  },
+  "hash": "5e099238ba10245f"
+}
