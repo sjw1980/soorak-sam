@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASPICE 추적성 시각화 — CLI Calculator (soorak-sam)</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --bg2: #1a1d27;
+      --bg3: #22263a;
+      --border: #2e3250;
+      --text: #e2e4f0;
+      --text-dim: #8890b0;
+      --accent: #4f8ef7;
+
+      --col-goal:   #6c3483;
+      --col-req:    #1a5276;
+      --col-comp:   #117a65;
+      --col-unit:   #1e8449;
+      --col-tc:     #784212;
+      --col-itc:    #7b241c;
+      --col-qtc:    #6e2f8a;
+
+      --col-goal-l:   #a569bd;
+      --col-req-l:    #5dade2;
+      --col-comp-l:   #48c9b0;
+      --col-unit-l:   #52be80;
+      --col-tc-l:     #f0a500;
+      --col-itc-l:    #ec7063;
+      --col-qtc-l:    #af7ac5;
+
+      --pass: #2ecc71;
+      --fail: #e74c3c;
+      --open: #e67e22;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', 'Noto Sans KR', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    header {
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    header h1 { font-size: 18px; font-weight: 600; }
+    header span { font-size: 12px; color: var(--text-dim); border: 1px solid var(--border); border-radius: 4px; padding: 2px 8px; }
+
+    .tabs {
+      display: flex;
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      padding: 0 16px;
+      gap: 4px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      color: var(--text-dim);
+      padding: 12px 18px;
+      cursor: pointer;
+      font-size: 14px;
+      border-bottom: 2px solid transparent;
+      transition: all .15s;
+    }
+    .tab-btn:hover { color: var(--text); }
+    .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+    .tab-panel { display: none; padding: 24px; height: calc(100vh - 110px); overflow: auto; }
+    .tab-panel.active { display: block; }
+
+    /* ─── 범례 ─── */
+    .legend {
+      display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px;
+    }
+    .legend-item {
+      display: flex; align-items: center; gap: 6px; font-size: 12px;
+    }
+    .legend-dot {
+      width: 12px; height: 12px; border-radius: 3px;
+    }
+
+    /* ─── TAB 1: 문서 연결도 ─── */
+    #doc-map-svg { width: 100%; min-height: 520px; }
+
+    .doc-node rect {
+      rx: 6; ry: 6;
+      stroke-width: 1.5;
+      cursor: pointer;
+      transition: filter .15s;
+    }
+    .doc-node:hover rect { filter: brightness(1.3); }
+    .doc-node text { font-size: 11px; fill: var(--text); pointer-events: none; }
+    .doc-arrow { fill: none; stroke: #4a5280; stroke-width: 1.5; marker-end: url(#arrowhead); opacity: .7; }
+    .doc-arrow.highlight { stroke: var(--accent); opacity: 1; stroke-width: 2.5; }
+
+    /* ─── TAB 2: 추적성 매트릭스 ─── */
+    .matrix-wrap { overflow: auto; }
+    table.matrix {
+      border-collapse: collapse;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    table.matrix th, table.matrix td {
+      border: 1px solid var(--border);
+      padding: 5px 8px;
+      text-align: center;
+    }
+    table.matrix th {
+      background: var(--bg3);
+      color: var(--text-dim);
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    table.matrix th.req-header {
+      position: sticky;
+      left: 0;
+      z-index: 3;
+    }
+    table.matrix td.req-id {
+      background: var(--bg2);
+      font-weight: 600;
+      text-align: left;
+      position: sticky;
+      left: 0;
+      z-index: 1;
+      color: var(--col-req-l);
+      min-width: 130px;
+    }
+    .cell-check {
+      color: var(--pass);
+      font-size: 14px;
+    }
+    .cell-empty { color: var(--border); }
+
+    .col-group-tc   { background: rgba(240,165,0,.08); }
+    .col-group-itc  { background: rgba(236,112,99,.08); }
+    .col-group-qtc  { background: rgba(175,122,197,.08); }
+
+    .group-header-tc  { background: rgba(240,165,0,.2) !important; color: var(--col-tc-l) !important; }
+    .group-header-itc { background: rgba(236,112,99,.2) !important; color: var(--col-itc-l) !important; }
+    .group-header-qtc { background: rgba(175,122,197,.2) !important; color: var(--col-qtc-l) !important; }
+
+    .row-highlight td { background: rgba(79,142,247,.12) !important; }
+
+    /* ─── TAB 3: ID 계층도 ─── */
+    #hierarchy-wrap {
+      overflow-x: auto;
+      overflow-y: auto;
+    }
+    #hierarchy-svg { display: block; }
+
+    .h-node {
+      cursor: pointer;
+    }
+    .h-node rect {
+      rx: 4; ry: 4;
+      stroke-width: 1;
+      transition: filter .15s;
+    }
+    .h-node:hover rect { filter: brightness(1.4); }
+    .h-node text {
+      font-size: 9.5px;
+      fill: var(--text);
+      pointer-events: none;
+      dominant-baseline: middle;
+      text-anchor: middle;
+    }
+    .h-link {
+      fill: none;
+      stroke-width: 1;
+      opacity: .25;
+      transition: opacity .15s, stroke-width .15s;
+    }
+    .h-link.highlight {
+      opacity: .9;
+      stroke-width: 2.5;
+    }
+    .h-link.dimmed { opacity: .05; }
+
+    /* ─── 정보 패널 ─── */
+    .info-panel {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      min-width: 260px;
+      max-width: 380px;
+      font-size: 13px;
+      display: none;
+      z-index: 100;
+    }
+    .info-panel.visible { display: block; }
+    .info-panel h3 { color: var(--accent); margin-bottom: 8px; font-size: 14px; }
+    .info-panel p   { color: var(--text-dim); font-size: 12px; line-height: 1.6; }
+    .info-panel .close-btn {
+      position: absolute; top: 8px; right: 10px;
+      background: none; border: none; color: var(--text-dim);
+      cursor: pointer; font-size: 16px;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 10px;
+      padding: 1px 6px;
+      border-radius: 3px;
+      margin: 1px;
+      font-weight: 600;
+    }
+    .badge-pass { background: rgba(46,204,113,.2); color: var(--pass); }
+    .badge-open { background: rgba(230,126,34,.2); color: var(--open); }
+
+    /* column headers for tab1 */
+    .col-header text { font-size: 13px; font-weight: 600; }
+
+    /* scrollbar */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>ASPICE 추적성 시각화</h1>
+  <span>CLI Calculator — soorak-sam</span>
+  <span>SWE-1 ～ SWE-6</span>
+  <span style="margin-left:auto; color: var(--pass)">&#10003; 전체 추적성 완결</span>
+</header>
+
+<nav class="tabs">
+  <button class="tab-btn active" onclick="switchTab('doc-map')">① 문서 연결도</button>
+  <button class="tab-btn" onclick="switchTab('matrix')">② 추적성 매트릭스</button>
+  <button class="tab-btn" onclick="switchTab('hierarchy')">③ ID 계층 추적도</button>
+</nav>
+
+<!-- ════════════════════════════════════════════════
+     TAB 1: 문서 연결도
+═══════════════════════════════════════════════════ -->
+<div id="tab-doc-map" class="tab-panel active">
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:var(--col-goal-l)"></div>MAN-3 프로젝트 관리</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--col-req-l)"></div>SWE-1 요구사항</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--col-comp-l)"></div>SWE-2 아키텍처</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--col-unit-l)"></div>SWE-3 단위설계</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--col-tc-l)"></div>SWE-4 단위TC</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--col-itc-l)"></div>SWE-5 통합TC</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--col-qtc-l)"></div>SWE-6 적격성TC</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#5d6d7e"></div>SUP/SPL 지원 프로세스</div>
+  </div>
+  <svg id="doc-map-svg" viewBox="0 0 1200 560">
+    <defs>
+      <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+        <polygon points="0 0, 8 3, 0 6" fill="#4a5280"/>
+      </marker>
+      <marker id="arrowhead-hi" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+        <polygon points="0 0, 8 3, 0 6" fill="var(--accent)"/>
+      </marker>
+    </defs>
+  </svg>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     TAB 2: 추적성 매트릭스
+═══════════════════════════════════════════════════ -->
+<div id="tab-matrix" class="tab-panel">
+  <p style="font-size:13px; color:var(--text-dim); margin-bottom:16px;">
+    행을 클릭하면 해당 요구사항의 매핑이 강조됩니다. 셀에 마우스를 올리면 해당 TC ID 목록이 표시됩니다.
+  </p>
+  <div class="matrix-wrap" id="matrix-container"></div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     TAB 3: ID 계층 추적도
+═══════════════════════════════════════════════════ -->
+<div id="tab-hierarchy" class="tab-panel">
+  <p style="font-size:13px; color:var(--text-dim); margin-bottom:16px;">
+    노드를 클릭하면 해당 ID에 연결된 전체 추적 체인이 강조됩니다.
+    <button onclick="clearHighlight()" style="margin-left:12px; background:var(--bg3); border:1px solid var(--border); color:var(--text-dim); padding:3px 10px; border-radius:4px; cursor:pointer; font-size:12px;">선택 해제</button>
+  </p>
+  <div id="hierarchy-wrap">
+    <svg id="hierarchy-svg"></svg>
+  </div>
+</div>
+
+<!-- 정보 패널 -->
+<div class="info-panel" id="info-panel">
+  <button class="close-btn" onclick="document.getElementById('info-panel').classList.remove('visible')">&times;</button>
+  <h3 id="info-title">—</h3>
+  <p id="info-body">—</p>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════
+   DATA
+═══════════════════════════════════════════════════════════ */
+
+const DOCUMENTS = [
+  // [id, label, x, y, color, process, path]
+  { id:'MAN3-PP-0001',          label:'MAN3-PP-0001\n프로젝트 계획서',            x:40,  y:60,  col:'#7d3c98', proc:'MAN-3', file:'MAN-3/MAN3-PP-0001-project-plan.md' },
+  { id:'SWE1-REQ-SPEC-0001',    label:'SWE1-REQ-SPEC\n요구사항 명세서',           x:240, y:60,  col:'#2471a3', proc:'SWE-1', file:'SWE-1/SWE-1-requirements.md' },
+  { id:'SWE1-TRACE-0001',       label:'SWE1-TRACE\n추적성 매핑',                  x:240, y:160, col:'#1f618d', proc:'SWE-1', file:'SWE-1/SWE1-TRACE-0001-traceability-review.md' },
+  { id:'SWE2-ARCH-0001',        label:'SWE2-ARCH-0001\n소프트웨어 아키텍처',      x:440, y:60,  col:'#0e6655', proc:'SWE-2', file:'SWE-2/SWE2-ARCH-0001-software-architecture.md' },
+  { id:'SWE2-TRACE-0001',       label:'SWE2-TRACE\n추적성 매핑',                  x:440, y:160, col:'#0b5345', proc:'SWE-2', file:'SWE-2/SWE2-TRACE-0001-traceability-review.md' },
+  { id:'SWE3-UNIT-SPEC-0001',   label:'SWE3-UNIT-SPEC\n단위 설계 명세',           x:600, y:60,  col:'#1d6a3a', proc:'SWE-3', file:'SWE-3/SWE3-UNIT-SPEC-0001-unit-design.md' },
+  { id:'SWE3-TRACE-0001',       label:'SWE3-TRACE\n추적성 매핑',                  x:600, y:160, col:'#196f3d', proc:'SWE-3', file:'SWE-3/SWE3-TRACE-0001-traceability-review.md' },
+  { id:'SWE4-TC-SPEC-0001',     label:'SWE4-TC-SPEC\n단위 테스트 케이스',         x:760, y:60,  col:'#9a6003', proc:'SWE-4', file:'SWE-4/SWE4-TC-SPEC-0001-unit-test.md' },
+  { id:'SWE4-TRACE-0001',       label:'SWE4-TRACE\n추적성 매핑',                  x:760, y:160, col:'#876000', proc:'SWE-4', file:'SWE-4/SWE4-TRACE-0001-traceability-review.md' },
+  { id:'SWE5-ITC-SPEC-0001',    label:'SWE5-ITC-SPEC\n통합 테스트 케이스',        x:920, y:60,  col:'#943126', proc:'SWE-5', file:'SWE-5/SWE5-ITC-SPEC-0001-integration-test.md' },
+  { id:'SWE5-TRACE-0001',       label:'SWE5-TRACE\n추적성 매핑',                  x:920, y:160, col:'#7b241c', proc:'SWE-5', file:'SWE-5/SWE5-TRACE-0001-traceability-review.md' },
+  { id:'SWE6-QTC-SPEC-0001',    label:'SWE6-QTC-SPEC\n적격성 테스트 케이스',      x:1080,y:60,  col:'#6c3483', proc:'SWE-6', file:'SWE-6/SWE6-QTC-SPEC-0001-qualification-test.md' },
+  { id:'SWE6-TRACE-0001',       label:'SWE6-TRACE\n추적성 매핑',                  x:1080,y:160, col:'#5b2c6f', proc:'SWE-6', file:'SWE-6/SWE6-TRACE-0001-traceability-review.md' },
+  { id:'SPL2-BUILD-0001',       label:'SPL2-BUILD\n빌드 환경',                     x:40,  y:280, col:'#4a5568', proc:'SPL-2', file:'SPL-2/SPL2-BUILD-0001-build-environment.md' },
+  { id:'SPL2-REL-0001',         label:'SPL2-REL\n출시 노트',                       x:240, y:280, col:'#4a5568', proc:'SPL-2', file:'SPL-2/SPL2-REL-0001-release-note.md' },
+  { id:'SUP1-QAR-0001',         label:'SUP1-QAR\nQA 감사 보고서',                 x:440, y:280, col:'#4a5568', proc:'SUP-1', file:'SUP-1/SUP1-QAR-0001-qa-audit-report.md' },
+  { id:'SUP8-CMP-0001',         label:'SUP8-CMP\n형상 관리 계획',                  x:600, y:280, col:'#4a5568', proc:'SUP-8', file:'SUP-8/SUP8-CMP-0001-cm-plan.md' },
+  { id:'SUP8-CI-LIST-0001',     label:'SUP8-CI-LIST\nCI 베이스라인',               x:760, y:280, col:'#4a5568', proc:'SUP-8', file:'SUP-8/SUP8-CI-LIST-0001-ci-baseline.md' },
+  { id:'SUP9-PRM-0001',         label:'SUP9-PRM\n문제 해결 관리',                  x:920, y:280, col:'#4a5568', proc:'SUP-9', file:'SUP-9/SUP9-PRM-0001-problem-resolution.md' },
+  { id:'SUP10-CR-0001',         label:'SUP10-CR\n변경 요청',                       x:1080,y:280, col:'#4a5568', proc:'SUP-10',file:'SUP-10/SUP10-CR-0001-change-request.md' },
+];
+
+const DOC_EDGES = [
+  ['MAN3-PP-0001',        'SWE1-REQ-SPEC-0001'],
+  ['SWE1-REQ-SPEC-0001',  'SWE1-TRACE-0001'],
+  ['SWE1-REQ-SPEC-0001',  'SWE2-ARCH-0001'],
+  ['SWE2-ARCH-0001',      'SWE2-TRACE-0001'],
+  ['SWE2-ARCH-0001',      'SWE3-UNIT-SPEC-0001'],
+  ['SWE3-UNIT-SPEC-0001', 'SWE3-TRACE-0001'],
+  ['SWE3-UNIT-SPEC-0001', 'SWE4-TC-SPEC-0001'],
+  ['SWE4-TC-SPEC-0001',   'SWE4-TRACE-0001'],
+  ['SWE4-TC-SPEC-0001',   'SWE5-ITC-SPEC-0001'],
+  ['SWE5-ITC-SPEC-0001',  'SWE5-TRACE-0001'],
+  ['SWE5-ITC-SPEC-0001',  'SWE6-QTC-SPEC-0001'],
+  ['SWE6-QTC-SPEC-0001',  'SWE6-TRACE-0001'],
+  ['SPL2-BUILD-0001',     'SWE3-UNIT-SPEC-0001'],
+  ['SUP1-QAR-0001',       'SWE4-TC-SPEC-0001'],
+  ['SUP8-CMP-0001',       'SWE2-ARCH-0001'],
+  ['SUP8-CI-LIST-0001',   'SWE4-TC-SPEC-0001'],
+  ['SUP9-PRM-0001',       'SWE5-ITC-SPEC-0001'],
+  ['SUP10-CR-0001',       'SWE6-QTC-SPEC-0001'],
+];
+
+/* ── 추적성 데이터 ── */
+const REQS = [
+  { id:'SWE-REQ-0001', label:'덧셈 연산', status:'Approved' },
+  { id:'SWE-REQ-0002', label:'뺄셈 연산', status:'Approved' },
+  { id:'SWE-REQ-0003', label:'곱셈 연산', status:'Approved' },
+  { id:'SWE-REQ-0004', label:'나눗셈 연산', status:'Approved' },
+  { id:'SWE-REQ-0005', label:'0 나누기 예외', status:'Approved' },
+  { id:'SWE-REQ-0006', label:'CLI 유효 입력 파싱', status:'Approved' },
+  { id:'SWE-REQ-0007', label:'반복/잘못된 입력', status:'Approved' },
+  { id:'SWE-REQ-0008', label:'종료 명령 처리', status:'Approved' },
+  { id:'SWE-REQ-0009', label:'C++17 표준 준수', status:'Approved' },
+  { id:'SWE-REQ-0010', label:'단위 커버리지 100%', status:'Approved' },
+];
+
+/* goal → req */
+const GOAL_REQ = {
+  'PROJ-GOAL-001': ['SWE-REQ-0001','SWE-REQ-0002','SWE-REQ-0003','SWE-REQ-0004'],
+  'PROJ-GOAL-002': ['SWE-REQ-0005'],
+  'PROJ-GOAL-003': ['SWE-REQ-0006','SWE-REQ-0007','SWE-REQ-0008'],
+  'PROJ-GOAL-004': ['SWE-REQ-0009','SWE-REQ-0010'],
+};
+
+/* req → comp */
+const REQ_COMP = {
+  'SWE-REQ-0001': ['SWE-COMP-0001'],
+  'SWE-REQ-0002': ['SWE-COMP-0001'],
+  'SWE-REQ-0003': ['SWE-COMP-0001'],
+  'SWE-REQ-0004': ['SWE-COMP-0001'],
+  'SWE-REQ-0005': ['SWE-COMP-0001'],
+  'SWE-REQ-0006': ['SWE-COMP-0002','SWE-COMP-0003'],
+  'SWE-REQ-0007': ['SWE-COMP-0002','SWE-COMP-0003'],
+  'SWE-REQ-0008': ['SWE-COMP-0002','SWE-COMP-0003'],
+  'SWE-REQ-0009': ['SWE-COMP-0001','SWE-COMP-0002','SWE-COMP-0003'],
+  'SWE-REQ-0010': ['SWE-COMP-0001','SWE-COMP-0002'],
+};
+
+/* comp → unit */
+const COMP_UNIT = {
+  'SWE-COMP-0001': ['SWE-UNIT-0001','SWE-UNIT-0004'],
+  'SWE-COMP-0002': ['SWE-UNIT-0002','SWE-UNIT-0004'],
+  'SWE-COMP-0003': ['SWE-UNIT-0003'],
+};
+
+/* req → tc */
+const REQ_TC = {
+  'SWE-REQ-0001': ['SWE-TC-0001','SWE-TC-0006'],
+  'SWE-REQ-0002': ['SWE-TC-0002'],
+  'SWE-REQ-0003': ['SWE-TC-0003'],
+  'SWE-REQ-0004': ['SWE-TC-0004','SWE-TC-0007'],
+  'SWE-REQ-0005': ['SWE-TC-0005','SWE-TC-0014'],
+  'SWE-REQ-0006': ['SWE-TC-0013','SWE-TC-0019','SWE-TC-0020','SWE-TC-0021'],
+  'SWE-REQ-0007': ['SWE-TC-0015','SWE-TC-0016','SWE-TC-0018','SWE-TC-0022','SWE-TC-0023'],
+  'SWE-REQ-0008': ['SWE-TC-0009','SWE-TC-0010','SWE-TC-0011','SWE-TC-0012'],
+  'SWE-REQ-0009': ['SWE-TC-0008','SWE-TC-0017'],
+  'SWE-REQ-0010': ['SWE-TC-0001','SWE-TC-0002','SWE-TC-0003','SWE-TC-0004','SWE-TC-0005',
+                   'SWE-TC-0006','SWE-TC-0007','SWE-TC-0008','SWE-TC-0009','SWE-TC-0010',
+                   'SWE-TC-0011','SWE-TC-0012','SWE-TC-0013','SWE-TC-0014','SWE-TC-0015',
+                   'SWE-TC-0016','SWE-TC-0017','SWE-TC-0018','SWE-TC-0019','SWE-TC-0020',
+                   'SWE-TC-0021','SWE-TC-0022','SWE-TC-0023'],
+};
+
+/* req → itc */
+const REQ_ITC = {
+  'SWE-REQ-0001': ['SWE-ITC-0001','SWE-ITC-0007'],
+  'SWE-REQ-0002': ['SWE-ITC-0002'],
+  'SWE-REQ-0003': ['SWE-ITC-0003'],
+  'SWE-REQ-0004': ['SWE-ITC-0004','SWE-ITC-0006'],
+  'SWE-REQ-0005': ['SWE-ITC-0005'],
+  'SWE-REQ-0006': ['SWE-ITC-0001','SWE-ITC-0002','SWE-ITC-0003','SWE-ITC-0004','SWE-ITC-0005','SWE-ITC-0006','SWE-ITC-0007','SWE-ITC-0013'],
+  'SWE-REQ-0007': ['SWE-ITC-0010','SWE-ITC-0011'],
+  'SWE-REQ-0008': ['SWE-ITC-0008','SWE-ITC-0009'],
+  'SWE-REQ-0009': ['SWE-ITC-0012'],
+  'SWE-REQ-0010': ['SWE-ITC-0001','SWE-ITC-0002','SWE-ITC-0003','SWE-ITC-0004','SWE-ITC-0005','SWE-ITC-0006','SWE-ITC-0007','SWE-ITC-0013'],
+};
+
+/* req → qtc */
+const REQ_QTC = {
+  'SWE-REQ-0001': ['SWE-QTC-0001','SWE-QTC-0006'],
+  'SWE-REQ-0002': ['SWE-QTC-0002'],
+  'SWE-REQ-0003': ['SWE-QTC-0003'],
+  'SWE-REQ-0004': ['SWE-QTC-0004','SWE-QTC-0005'],
+  'SWE-REQ-0005': ['SWE-QTC-0007','SWE-QTC-0008'],
+  'SWE-REQ-0006': ['SWE-QTC-0012','SWE-QTC-0013'],
+  'SWE-REQ-0007': ['SWE-QTC-0009','SWE-QTC-0010','SWE-QTC-0011','SWE-QTC-0013'],
+  'SWE-REQ-0008': ['SWE-QTC-0014','SWE-QTC-0015'],
+  'SWE-REQ-0009': ['SWE-QTC-0016'],
+  'SWE-REQ-0010': ['SWE-QTC-0017'],
+};
+
+const TCS  = Array.from({length:23},(_,i)=>({ id:`SWE-TC-${String(i+1).padStart(4,'0')}`,  result:'Pass' }));
+const ITCS = Array.from({length:13},(_,i)=>({ id:`SWE-ITC-${String(i+1).padStart(4,'0')}`, result:'Pass' }));
+const QTCS = Array.from({length:17},(_,i)=>({ id:`SWE-QTC-${String(i+1).padStart(4,'0')}`, result:'Pass' }));
+
+const TC_LABELS = {
+  'SWE-TC-0001':'덧셈 정상','SWE-TC-0002':'뺄셈 정상','SWE-TC-0003':'곱셈 정상',
+  'SWE-TC-0004':'나눗셈 정상','SWE-TC-0005':'0나누기 예외','SWE-TC-0006':'음수 덧셈',
+  'SWE-TC-0007':'소수 나눗셈','SWE-TC-0008':'알수없는 연산자','SWE-TC-0009':'q 종료',
+  'SWE-TC-0010':'quit 종료','SWE-TC-0011':'Q 종료','SWE-TC-0012':'QUIT 종료',
+  'SWE-TC-0013':'유효입력 파싱','SWE-TC-0014':'0나누기 파싱','SWE-TC-0015':'잘못된 연산자',
+  'SWE-TC-0016':'피연산자 누락','SWE-TC-0017':'알수없는 연산자 파싱','SWE-TC-0018':'비숫자 입력',
+  'SWE-TC-0019':'정수 파싱','SWE-TC-0020':'소수 파싱','SWE-TC-0021':'음수 파싱',
+  'SWE-TC-0022':'빈 입력','SWE-TC-0023':'공백만 입력',
+};
+const ITC_LABELS = {
+  'SWE-ITC-0001':'덧셈 E2E','SWE-ITC-0002':'뺄셈 E2E','SWE-ITC-0003':'곱셈 E2E',
+  'SWE-ITC-0004':'나눗셈 E2E','SWE-ITC-0005':'0나누기 E2E','SWE-ITC-0006':'소수 E2E',
+  'SWE-ITC-0007':'음수 E2E','SWE-ITC-0008':'q 종료 E2E','SWE-ITC-0009':'quit 종료 E2E',
+  'SWE-ITC-0010':'잘못된 입력 E2E','SWE-ITC-0011':'빈 입력 E2E','SWE-ITC-0012':'알수없는 연산자 E2E',
+  'SWE-ITC-0013':'다중 연산 E2E',
+};
+const QTC_LABELS = {
+  'SWE-QTC-0001':'덧셈 적격성','SWE-QTC-0002':'뺄셈 적격성','SWE-QTC-0003':'곱셈 적격성',
+  'SWE-QTC-0004':'나눗셈 적격성','SWE-QTC-0005':'소수 나눗셈 적격성','SWE-QTC-0006':'음수 피연산자 적격성',
+  'SWE-QTC-0007':'0나누기 오류 메시지','SWE-QTC-0008':'0나누기 후 정상 유지','SWE-QTC-0009':'잘못된 입력 후 루프 유지',
+  'SWE-QTC-0010':'빈 입력 후 루프 유지','SWE-QTC-0011':'알수없는 연산자 처리','SWE-QTC-0012':'소수 입력 파싱 적격성',
+  'SWE-QTC-0013':'다중 연산 반복 루프 적격성','SWE-QTC-0014':'q 명령 정상 종료','SWE-QTC-0015':'quit 명령 정상 종료',
+  'SWE-QTC-0016':'C++17 빌드 플래그 적격성','SWE-QTC-0017':'커버리지 100% 적격성',
+};
+
+/* ═══════════════════════════════════════════════════════════
+   UTILS
+═══════════════════════════════════════════════════════════ */
+function switchTab(name) {
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  event.target.classList.add('active');
+}
+
+function showInfo(title, body) {
+  const p = document.getElementById('info-panel');
+  document.getElementById('info-title').textContent = title;
+  document.getElementById('info-body').innerHTML = body;
+  p.classList.add('visible');
+}
+
+/* ═══════════════════════════════════════════════════════════
+   TAB 1: 문서 연결도
+═══════════════════════════════════════════════════════════ */
+(function buildDocMap() {
+  const svg = document.getElementById('doc-map-svg');
+  const NS = 'http://www.w3.org/2000/svg';
+  const W = 160, H = 50;
+
+  // draw edges first (behind nodes)
+  const edgesG = document.createElementNS(NS,'g');
+  edgesG.id = 'doc-edges';
+  svg.appendChild(edgesG);
+
+  const nodesG = document.createElementNS(NS,'g');
+  svg.appendChild(nodesG);
+
+  // index
+  const docMap = {};
+  DOCUMENTS.forEach(d => docMap[d.id] = d);
+
+  DOC_EDGES.forEach(([src,tgt]) => {
+    const s = docMap[src], t = docMap[tgt];
+    if (!s || !t) return;
+    const sx = s.x + W, sy = s.y + H/2;
+    const tx = t.x,      ty = t.y + H/2;
+    const mx = (sx+tx)/2;
+    const path = document.createElementNS(NS,'path');
+    path.setAttribute('d',`M${sx},${sy} C${mx},${sy} ${mx},${ty} ${tx},${ty}`);
+    path.setAttribute('class','doc-arrow');
+    path.dataset.src = src;
+    path.dataset.tgt = tgt;
+    edgesG.appendChild(path);
+  });
+
+  DOCUMENTS.forEach(doc => {
+    const g = document.createElementNS(NS,'g');
+    g.setAttribute('class','doc-node');
+    g.setAttribute('transform',`translate(${doc.x},${doc.y})`);
+    g.dataset.id = doc.id;
+
+    const rect = document.createElementNS(NS,'rect');
+    rect.setAttribute('width', W);
+    rect.setAttribute('height', H);
+    rect.setAttribute('fill', doc.col + '33');
+    rect.setAttribute('stroke', doc.col);
+    rect.setAttribute('rx','6');
+    g.appendChild(rect);
+
+    const lines = doc.label.split('\n');
+    lines.forEach((line, i) => {
+      const t = document.createElementNS(NS,'text');
+      t.setAttribute('x', W/2);
+      t.setAttribute('y', i===0 ? 18 : 35);
+      t.setAttribute('text-anchor','middle');
+      t.setAttribute('font-size', i===0 ? '11' : '10');
+      t.setAttribute('fill', i===0 ? '#e2e4f0' : '#8890b0');
+      t.textContent = line;
+      g.appendChild(t);
+    });
+
+    g.addEventListener('click', () => {
+      const edges = document.querySelectorAll('.doc-arrow');
+      edges.forEach(e=>{
+        e.setAttribute('class','doc-arrow');
+        e.setAttribute('marker-end','url(#arrowhead)');
+      });
+      edges.forEach(e=>{
+        if(e.dataset.src===doc.id || e.dataset.tgt===doc.id){
+          e.setAttribute('class','doc-arrow highlight');
+          e.setAttribute('marker-end','url(#arrowhead-hi)');
+        }
+      });
+      showInfo(doc.id, `프로세스: <b>${doc.proc}</b><br>파일: <code>${doc.file}</code>`);
+    });
+
+    nodesG.appendChild(g);
+  });
+
+  // section labels
+  const labels = [
+    {x:180,y:540,text:'SWE-1',col:'#5dade2'},
+    {x:380,y:540,text:'SWE-2',col:'#48c9b0'},
+    {x:540,y:540,text:'SWE-3',col:'#52be80'},
+    {x:700,y:540,text:'SWE-4',col:'#f0a500'},
+    {x:860,y:540,text:'SWE-5',col:'#ec7063'},
+    {x:1020,y:540,text:'SWE-6',col:'#af7ac5'},
+  ];
+  labels.forEach(l=>{
+    const line = document.createElementNS(NS,'line');
+    line.setAttribute('x1',l.x); line.setAttribute('y1',480);
+    line.setAttribute('x2',l.x); line.setAttribute('y2',530);
+    line.setAttribute('stroke',l.col); line.setAttribute('stroke-width','1');
+    line.setAttribute('stroke-dasharray','4,3'); line.setAttribute('opacity','.5');
+    svg.appendChild(line);
+    const t = document.createElementNS(NS,'text');
+    t.setAttribute('x',l.x+80); t.setAttribute('y',540);
+    t.setAttribute('text-anchor','middle');
+    t.setAttribute('font-size','13'); t.setAttribute('fill',l.col);
+    t.setAttribute('font-weight','600');
+    t.textContent = l.text;
+    svg.appendChild(t);
+  });
+})();
+
+/* ═══════════════════════════════════════════════════════════
+   TAB 2: 추적성 매트릭스
+═══════════════════════════════════════════════════════════ */
+(function buildMatrix() {
+  const container = document.getElementById('matrix-container');
+  const table = document.createElement('table');
+  table.className = 'matrix';
+
+  /* header row 1: group labels */
+  const hr1 = document.createElement('tr');
+  const emptyTh = document.createElement('th');
+  emptyTh.className = 'req-header';
+  emptyTh.setAttribute('rowspan','2');
+  emptyTh.textContent = 'SW 요구사항 (SWE-1)';
+  hr1.appendChild(emptyTh);
+
+  const tcGh = document.createElement('th');
+  tcGh.setAttribute('colspan', TCS.length);
+  tcGh.className = 'group-header-tc';
+  tcGh.textContent = `SWE-4 단위 TC (${TCS.length}개) — 모두 Pass`;
+  hr1.appendChild(tcGh);
+
+  const itcGh = document.createElement('th');
+  itcGh.setAttribute('colspan', ITCS.length);
+  itcGh.className = 'group-header-itc';
+  itcGh.textContent = `SWE-5 통합 ITC (${ITCS.length}개) — 모두 Pass`;
+  hr1.appendChild(itcGh);
+
+  const qtcGh = document.createElement('th');
+  qtcGh.setAttribute('colspan', QTCS.length);
+  qtcGh.className = 'group-header-qtc';
+  qtcGh.textContent = `SWE-6 적격성 QTC (${QTCS.length}개) — 모두 Pass`;
+  hr1.appendChild(qtcGh);
+
+  document.createElement('thead').appendChild(hr1);
+
+  /* header row 2: individual IDs */
+  const hr2 = document.createElement('tr');
+  [...TCS,...ITCS,...QTCS].forEach((tc, i) => {
+    const th = document.createElement('th');
+    th.textContent = tc.id.replace('SWE-TC-','TC-').replace('SWE-ITC-','ITC-').replace('SWE-QTC-','QTC-');
+    th.title = (TC_LABELS[tc.id]||ITC_LABELS[tc.id]||QTC_LABELS[tc.id]||'');
+    th.style.writingMode = 'vertical-rl';
+    th.style.minWidth = '28px';
+    th.style.height = '80px';
+    th.style.padding = '4px 2px';
+    if (i < TCS.length) th.className = 'col-group-tc';
+    else if (i < TCS.length + ITCS.length) th.className = 'col-group-itc';
+    else th.className = 'col-group-qtc';
+    hr2.appendChild(th);
+  });
+
+  const thead = document.createElement('thead');
+  thead.appendChild(hr1);
+  thead.appendChild(hr2);
+  table.appendChild(thead);
+
+  /* body rows */
+  const tbody = document.createElement('tbody');
+  REQS.forEach(req => {
+    const tr = document.createElement('tr');
+    tr.dataset.req = req.id;
+
+    const td0 = document.createElement('td');
+    td0.className = 'req-id';
+    td0.title = req.label;
+    td0.innerHTML = `${req.id}<br><span style="font-size:10px;color:#8890b0;font-weight:400">${req.label}</span>`;
+    tr.appendChild(td0);
+
+    const myTCs  = new Set(REQ_TC[req.id] || []);
+    const myITCs = new Set(REQ_ITC[req.id] || []);
+    const myQTCs = new Set(REQ_QTC[req.id] || []);
+
+    [...TCS,...ITCS,...QTCS].forEach((tc, i) => {
+      const td = document.createElement('td');
+      let hit = false;
+      if (i < TCS.length) { hit = myTCs.has(tc.id); td.className='col-group-tc'; }
+      else if (i < TCS.length+ITCS.length) { hit = myITCs.has(tc.id); td.className='col-group-itc'; }
+      else { hit = myQTCs.has(tc.id); td.className='col-group-qtc'; }
+
+      if (hit) {
+        td.innerHTML = '<span class="cell-check">✓</span>';
+        td.title = `${tc.id}\n${TC_LABELS[tc.id]||ITC_LABELS[tc.id]||QTC_LABELS[tc.id]||''}\n→ ${req.id}`;
+        td.style.cursor = 'pointer';
+      } else {
+        td.innerHTML = '<span class="cell-empty">·</span>';
+      }
+      tr.appendChild(td);
+    });
+
+    tr.addEventListener('mouseenter', ()=> tr.classList.add('row-highlight'));
+    tr.addEventListener('mouseleave', ()=> tr.classList.remove('row-highlight'));
+    tr.addEventListener('click', () => {
+      const tcList  = (REQ_TC[req.id]||[]).join(', ');
+      const itcList = (REQ_ITC[req.id]||[]).join(', ');
+      const qtcList = (REQ_QTC[req.id]||[]).join(', ');
+      showInfo(req.id + ' — ' + req.label,
+        `<b>단위 TC (SWE-4):</b><br><span style="font-size:11px">${tcList||'—'}</span><br><br>` +
+        `<b>통합 ITC (SWE-5):</b><br><span style="font-size:11px">${itcList||'—'}</span><br><br>` +
+        `<b>적격성 QTC (SWE-6):</b><br><span style="font-size:11px">${qtcList||'—'}</span>`);
+    });
+
+    tbody.appendChild(tr);
+  });
+  table.appendChild(tbody);
+  container.appendChild(table);
+})();
+
+/* ═══════════════════════════════════════════════════════════
+   TAB 3: ID 계층 추적도
+═══════════════════════════════════════════════════════════ */
+(function buildHierarchy() {
+  const NS = 'http://www.w3.org/2000/svg';
+
+  /* layer definitions */
+  const LAYERS = [
+    { key:'goal',  name:'프로젝트 목표\n(MAN-3)',   col:'#9b59b6', items:[
+      {id:'PROJ-GOAL-001',label:'4칙 연산'},
+      {id:'PROJ-GOAL-002',label:'예외 처리'},
+      {id:'PROJ-GOAL-003',label:'CLI I/F'},
+      {id:'PROJ-GOAL-004',label:'C++17/커버리지'},
+    ]},
+    { key:'req',   name:'SW 요구사항\n(SWE-1)',     col:'#2980b9', items: REQS.map(r=>({id:r.id,label:r.label})) },
+    { key:'comp',  name:'아키텍처 컴포넌트\n(SWE-2)',col:'#16a085', items:[
+      {id:'SWE-COMP-0001',label:'Calculator'},
+      {id:'SWE-COMP-0002',label:'InputParser'},
+      {id:'SWE-COMP-0003',label:'AppController'},
+    ]},
+    { key:'unit',  name:'소프트웨어 단위\n(SWE-3)',  col:'#27ae60', items:[
+      {id:'SWE-UNIT-0001',label:'Calculator'},
+      {id:'SWE-UNIT-0002',label:'InputParser'},
+      {id:'SWE-UNIT-0003',label:'AppController'},
+      {id:'SWE-UNIT-0004',label:'Types'},
+    ]},
+    { key:'tc',    name:'단위 TC\n(SWE-4)',          col:'#e67e22', items: TCS.map(t=>({id:t.id,label:TC_LABELS[t.id]||t.id})) },
+    { key:'itc',   name:'통합 ITC\n(SWE-5)',         col:'#c0392b', items: ITCS.map(t=>({id:t.id,label:ITC_LABELS[t.id]||t.id})) },
+    { key:'qtc',   name:'적격성 QTC\n(SWE-6)',       col:'#8e44ad', items: QTCS.map(t=>({id:t.id,label:QTC_LABELS[t.id]||t.id})) },
+  ];
+
+  const NW=120, NH=26, GAPX=60, GAPY=6, PADX=20, PADY=60;
+  const layerX = LAYERS.map((_,i)=>PADX + i*(NW+GAPX));
+  const totalW = layerX[LAYERS.length-1]+NW+PADX;
+  const totalH = PADY + Math.max(...LAYERS.map(l=>l.items.length))*(NH+GAPY) + PADY + 40;
+
+  const svg = document.getElementById('hierarchy-svg');
+  svg.setAttribute('width', totalW);
+  svg.setAttribute('height', totalH);
+
+  /* build position index */
+  const pos = {}; // id -> {x,y,cx,cy}
+  LAYERS.forEach((layer, li) => {
+    const x = layerX[li];
+    layer.items.forEach((item, ii) => {
+      const y = PADY + 40 + ii*(NH+GAPY);
+      pos[item.id] = { x, y, cx: x+NW/2, cy: y+NH/2 };
+    });
+  });
+
+  /* build edge set */
+  // goal→req, req→comp, comp→unit, req→tc, req→itc, req→qtc
+  const edges = [];
+  Object.entries(GOAL_REQ).forEach(([g,rs])=> rs.forEach(r=>edges.push({s:g,t:r,col:'#9b59b6'})));
+  Object.entries(REQ_COMP).forEach(([r,cs])=> cs.forEach(c=>edges.push({s:r,t:c,col:'#2980b9'})));
+  Object.entries(COMP_UNIT).forEach(([c,us])=> us.forEach(u=>edges.push({s:c,t:u,col:'#16a085'})));
+  Object.entries(REQ_TC).forEach(([r,ts])=> ts.forEach(t=>edges.push({s:r,t,col:'#e67e22'})));
+  Object.entries(REQ_ITC).forEach(([r,ts])=> ts.forEach(t=>edges.push({s:r,t,col:'#c0392b'})));
+  Object.entries(REQ_QTC).forEach(([r,ts])=> ts.forEach(t=>edges.push({s:r,t,col:'#8e44ad'})));
+
+  /* draw links */
+  const linksG = document.createElementNS(NS,'g');
+  linksG.id='h-links';
+  svg.appendChild(linksG);
+
+  edges.forEach(e => {
+    const sp=pos[e.s], tp=pos[e.t];
+    if(!sp||!tp) return;
+    const path = document.createElementNS(NS,'path');
+    const mx = (sp.x+NW+tp.x)/2;
+    path.setAttribute('d',`M${sp.x+NW},${sp.cy} C${mx},${sp.cy} ${mx},${tp.cy} ${tp.x},${tp.cy}`);
+    path.setAttribute('class','h-link');
+    path.setAttribute('stroke',e.col);
+    path.dataset.src=e.s; path.dataset.tgt=e.t;
+    linksG.appendChild(path);
+  });
+
+  /* draw layer headers */
+  LAYERS.forEach((layer,li) => {
+    const x = layerX[li];
+    const lines = layer.name.split('\n');
+
+    const bg = document.createElementNS(NS,'rect');
+    bg.setAttribute('x',x); bg.setAttribute('y',PADY-36);
+    bg.setAttribute('width',NW); bg.setAttribute('height',32);
+    bg.setAttribute('fill',layer.col+'44');
+    bg.setAttribute('rx','5');
+    bg.setAttribute('stroke',layer.col);
+    bg.setAttribute('stroke-width','1');
+    svg.appendChild(bg);
+
+    lines.forEach((line,i)=>{
+      const t = document.createElementNS(NS,'text');
+      t.setAttribute('x',x+NW/2); t.setAttribute('y',PADY-22+i*14);
+      t.setAttribute('text-anchor','middle');
+      t.setAttribute('font-size','11');
+      t.setAttribute('fill',layer.col==='#e67e22'?'#fcebd5':layer.col+'dd');
+      t.setAttribute('font-weight','600');
+      t.textContent=line;
+      svg.appendChild(t);
+    });
+  });
+
+  /* draw nodes */
+  const nodesG = document.createElementNS(NS,'g');
+  svg.appendChild(nodesG);
+
+  LAYERS.forEach((layer,li) => {
+    layer.items.forEach((item,ii) => {
+      const {x,y} = pos[item.id];
+      const g = document.createElementNS(NS,'g');
+      g.setAttribute('class','h-node');
+      g.setAttribute('transform',`translate(${x},${y})`);
+      g.dataset.id = item.id;
+      g.dataset.layer = layer.key;
+
+      const rect = document.createElementNS(NS,'rect');
+      rect.setAttribute('width',NW); rect.setAttribute('height',NH);
+      rect.setAttribute('fill',layer.col+'22');
+      rect.setAttribute('stroke',layer.col);
+      rect.setAttribute('rx','4');
+      g.appendChild(rect);
+
+      const tId = document.createElementNS(NS,'text');
+      tId.setAttribute('x',NW/2); tId.setAttribute('y',10);
+      tId.setAttribute('font-size','8.5');
+      tId.setAttribute('fill',layer.col);
+      tId.setAttribute('font-weight','600');
+      tId.textContent = item.id.replace('SWE-','').replace('PROJ-GOAL-','GOAL-');
+      tId.setAttribute('text-anchor','middle');
+      g.appendChild(tId);
+
+      const tLbl = document.createElementNS(NS,'text');
+      tLbl.setAttribute('x',NW/2); tLbl.setAttribute('y',20);
+      tLbl.setAttribute('font-size','8');
+      tLbl.setAttribute('fill','#8890b0');
+      tLbl.textContent = item.label.length>16 ? item.label.slice(0,15)+'…' : item.label;
+      tLbl.setAttribute('text-anchor','middle');
+      g.appendChild(tLbl);
+
+      g.addEventListener('click', () => highlightChain(item.id, layer.key));
+      nodesG.appendChild(g);
+    });
+  });
+})();
+
+/* ─── 계층도 하이라이트 ─── */
+let selectedId = null;
+
+function getConnected(id, layerKey) {
+  const connected = new Set([id]);
+
+  /* go backward: find what points TO this id */
+  function backward(nodeId, lKey) {
+    if (lKey==='req') {
+      Object.entries(GOAL_REQ).forEach(([g,rs])=>{ if(rs.includes(nodeId)) { connected.add(g); backward(g,'goal'); } });
+    }
+    if (lKey==='comp') {
+      Object.entries(REQ_COMP).forEach(([r,cs])=>{ if(cs.includes(nodeId)) { connected.add(r); backward(r,'req'); } });
+    }
+    if (lKey==='unit') {
+      Object.entries(COMP_UNIT).forEach(([c,us])=>{ if(us.includes(nodeId)) { connected.add(c); backward(c,'comp'); } });
+    }
+    if (lKey==='tc') {
+      Object.entries(REQ_TC).forEach(([r,ts])=>{ if(ts.includes(nodeId)) { connected.add(r); backward(r,'req'); } });
+    }
+    if (lKey==='itc') {
+      Object.entries(REQ_ITC).forEach(([r,ts])=>{ if(ts.includes(nodeId)) { connected.add(r); backward(r,'req'); } });
+    }
+    if (lKey==='qtc') {
+      Object.entries(REQ_QTC).forEach(([r,ts])=>{ if(ts.includes(nodeId)) { connected.add(r); backward(r,'req'); } });
+    }
+  }
+
+  /* go forward: find what this id points TO */
+  function forward(nodeId, lKey) {
+    if (lKey==='goal') {
+      (GOAL_REQ[nodeId]||[]).forEach(r=>{ connected.add(r); forward(r,'req'); });
+    }
+    if (lKey==='req') {
+      (REQ_COMP[nodeId]||[]).forEach(c=>{ connected.add(c); forward(c,'comp'); });
+      (REQ_TC[nodeId]||[]).forEach(t=>{ connected.add(t); forward(t,'tc'); });
+      (REQ_ITC[nodeId]||[]).forEach(t=>{ connected.add(t); forward(t,'itc'); });
+      (REQ_QTC[nodeId]||[]).forEach(t=>{ connected.add(t); forward(t,'qtc'); });
+    }
+    if (lKey==='comp') {
+      (COMP_UNIT[nodeId]||[]).forEach(u=>{ connected.add(u); forward(u,'unit'); });
+    }
+  }
+
+  backward(id, layerKey);
+  forward(id, layerKey);
+  return connected;
+}
+
+function highlightChain(id, layerKey) {
+  selectedId = id;
+  const connected = getConnected(id, layerKey);
+
+  document.querySelectorAll('.h-link').forEach(l=>{
+    const s = l.dataset.src, t = l.dataset.tgt;
+    if (connected.has(s) && connected.has(t)) {
+      l.classList.remove('dimmed'); l.classList.add('highlight');
+    } else {
+      l.classList.add('dimmed'); l.classList.remove('highlight');
+    }
+  });
+
+  document.querySelectorAll('.h-node').forEach(n=>{
+    n.querySelector('rect').style.filter = connected.has(n.dataset.id) ? 'brightness(2)' : 'brightness(0.5)';
+  });
+}
+
+function clearHighlight() {
+  selectedId = null;
+  document.querySelectorAll('.h-link').forEach(l=>{
+    l.classList.remove('dimmed','highlight');
+  });
+  document.querySelectorAll('.h-node rect').forEach(r=>{ r.style.filter=''; });
+}
+</script>
+</body>
+</html>
